@@ -7,706 +7,775 @@
 <title>CultoVision</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-:root {
-    --bg: #0f1117;
-    --sidebar: #151820;
-    --card: #1b1f2a;
-    --card-hover: #252a38;
-    --border: #2d3342;
-    --text: #ffffff;
-    --muted: #8d95a7;
-    --purple: #8b5cf6;
-    --green: #22c55e;
-    --blue: #3b82f6;
-    --pink: #ec4899;
-    --orange: #f59e0b;
-    --red: #ef4444;
+:root{
+    --bg:#0d0f14;
+    --sidebar:#151821;
+    --card:#1b1f2a;
+    --hover:#272c38;
+    --border:#303645;
+    --text:#fff;
+    --muted:#8d95a7;
+    --purple:#8b5cf6;
+    --pink:#ec4899;
+    --blue:#3b82f6;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --yellow:#facc15;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* =========================
-   TOPO
-========================= */
-
-header {
-    height: 64px;
-    background: var(--sidebar);
-    border-bottom: 1px solid var(--border);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 24px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.logo-icon {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--purple);
-    border-radius: 9px;
-
-    font-size: 18px;
-}
-
-.system-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.status-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--green);
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    height:100vh;
+    overflow:hidden;
 }
 
 /* =========================
-   LAYOUT
+   HEADER
 ========================= */
 
-.app {
-    display: flex;
-    height: calc(100vh - 64px);
+header{
+    height:64px;
+    background:var(--sidebar);
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logoIcon{
+    width:36px;
+    height:36px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--purple);
+    border-radius:10px;
+}
+
+.status{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.status span{
+    color:var(--green);
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    display:flex;
+    height:calc(100vh - 64px);
 }
 
 /* =========================
    SIDEBAR
 ========================= */
 
-.sidebar {
-    width: 230px;
+.sidebar{
+    width:230px;
 
-    background: var(--sidebar);
+    background:var(--sidebar);
 
-    border-right: 1px solid var(--border);
+    border-right:1px solid var(--border);
 
-    padding: 20px 12px;
+    padding:18px 12px;
 
-    overflow-y: auto;
+    overflow-y:auto;
 }
 
-.menu-title {
-    color: #626a7d;
+.menuTitle{
+    color:#606879;
+    font-size:11px;
+    font-weight:bold;
 
-    font-size: 11px;
-    font-weight: bold;
-
-    margin: 14px 10px 8px;
+    margin:15px 10px 8px;
 }
 
-.menu-button {
-    width: 100%;
+.menuButton{
+    width:100%;
 
-    border: none;
-    background: transparent;
+    border:none;
+    background:transparent;
 
-    color: #9da5b7;
+    color:#9da5b7;
 
-    padding: 12px 14px;
+    padding:12px 14px;
 
-    border-radius: 9px;
+    border-radius:9px;
 
-    margin-bottom: 4px;
+    display:flex;
+    align-items:center;
 
-    display: flex;
-    align-items: center;
+    gap:13px;
 
-    gap: 13px;
+    cursor:pointer;
 
-    cursor: pointer;
+    margin-bottom:4px;
 
-    font-size: 14px;
+    font-size:14px;
 
-    transition: 0.2s;
+    transition:.2s;
 }
 
-.menu-button:hover {
-    background: var(--card-hover);
-    color: white;
+.menuButton:hover{
+    background:var(--hover);
+    color:#fff;
 }
 
-.menu-button.active {
-    background: rgba(139, 92, 246, 0.15);
-    color: var(--purple);
+.menuButton.active{
+    background:rgba(139,92,246,.15);
 }
 
-.menu-icon {
-    width: 22px;
+.icon{
+    width:24px;
+    text-align:center;
+    font-size:19px;
 
-    display: flex;
-    justify-content: center;
+    filter:grayscale(1);
 
-    font-size: 18px;
-
-    filter: grayscale(1);
-
-    transition: 0.2s;
+    transition:.2s;
 }
 
-.menu-button:hover .menu-icon,
-.menu-button.active .menu-icon {
-    filter: grayscale(0);
+.menuButton:hover .icon{
+    filter:grayscale(0);
 }
 
-/* Cores dos ícones */
-
-.menu-button[data-page="home"].active .menu-icon {
-    color: var(--purple);
+.menuButton.active .icon{
+    filter:grayscale(0);
 }
 
-.menu-button[data-page="music"].active .menu-icon {
-    color: var(--pink);
+/* CORES DOS ÍCONES */
+
+.menuButton[data-page="home"].active .icon{
+    color:var(--purple);
 }
 
-.menu-button[data-page="bible"].active .menu-icon {
-    color: var(--blue);
+.menuButton[data-page="music"].active .icon{
+    color:var(--pink);
 }
 
-.menu-button[data-page="media"].active .menu-icon {
-    color: var(--orange);
+.menuButton[data-page="bible"].active .icon{
+    color:var(--blue);
 }
 
-.menu-button[data-page="service"].active .menu-icon {
-    color: var(--green);
+.menuButton[data-page="media"].active .icon{
+    color:var(--orange);
 }
 
-.menu-button[data-page="favorites"].active .menu-icon {
-    color: #facc15;
+.menuButton[data-page="service"].active .icon{
+    color:var(--green);
 }
 
-.menu-button[data-page="settings"].active .menu-icon {
-    color: #94a3b8;
+.menuButton[data-page="favorites"].active .icon{
+    color:var(--yellow);
 }
 
 /* =========================
-   CONTEÚDO
+   CONTENT
 ========================= */
 
-.content {
-    flex: 1;
-
-    padding: 28px;
-
-    overflow-y: auto;
+.content{
+    flex:1;
+    padding:28px;
+    overflow-y:auto;
 }
 
-.page {
-    display: none;
+.page{
+    display:none;
 }
 
-.page.active {
-    display: block;
+.page.active{
+    display:block;
 }
 
-.page-header {
-    display: flex;
+.pageHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
+    margin-bottom:22px;
 }
 
-.page-title {
-    font-size: 26px;
+.title{
+    font-size:27px;
+    font-weight:bold;
 }
 
-.page-description {
-    color: var(--muted);
-
-    margin-top: 7px;
-
-    font-size: 14px;
+.description{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:14px;
 }
 
 /* =========================
-   BOTÕES
+   BUTTONS
 ========================= */
 
-.button {
-    border: none;
+.button{
+    border:none;
+    background:var(--purple);
+    color:#fff;
 
-    padding: 11px 17px;
+    padding:11px 17px;
 
-    border-radius: 8px;
+    border-radius:8px;
 
-    background: var(--purple);
+    cursor:pointer;
 
-    color: white;
+    font-weight:bold;
 
-    cursor: pointer;
-
-    font-weight: bold;
-
-    transition: 0.2s;
+    transition:.2s;
 }
 
-.button:hover {
-    transform: translateY(-1px);
-
-    filter: brightness(1.1);
+.button:hover{
+    filter:brightness(1.12);
+    transform:translateY(-1px);
 }
 
-.button.secondary {
-    background: var(--card);
-    border: 1px solid var(--border);
+.button.secondary{
+    background:var(--card);
+    border:1px solid var(--border);
 }
 
-.button.green {
-    background: var(--green);
+.button.green{
+    background:var(--green);
 }
 
-.button.blue {
-    background: var(--blue);
+.button.blue{
+    background:var(--blue);
+}
+
+.button.google{
+    background:#fff;
+    color:#222;
 }
 
 /* =========================
    DASHBOARD
 ========================= */
 
-.dashboard {
-    display: grid;
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 15px;
-
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
-.stat-card {
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    padding: 20px;
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
 }
 
-.stat-icon {
-    font-size: 25px;
-
-    margin-bottom: 15px;
+.statIcon{
+    font-size:26px;
+    margin-bottom:13px;
 }
 
-.stat-number {
-    font-size: 25px;
-
-    font-weight: bold;
+.statNumber{
+    font-size:25px;
+    font-weight:bold;
 }
 
-.stat-label {
-    color: var(--muted);
-
-    font-size: 13px;
-
-    margin-top: 5px;
+.statLabel{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
 }
 
 /* =========================
-   ÁREA DE PROJEÇÃO
+   PRESENTATION
 ========================= */
 
-.presentation {
-    display: grid;
+.presentation{
+    display:grid;
+    grid-template-columns:1fr 280px;
 
-    grid-template-columns: 1fr 280px;
-
-    gap: 18px;
-
-    min-height: 520px;
+    gap:18px;
 }
 
-.preview-container {
-    background: #08090d;
+.previewContainer{
+    background:#08090d;
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: 13px;
+    border-radius:13px;
 
-    padding: 20px;
+    padding:18px;
 
-    display: flex;
-    flex-direction: column;
+    min-height:500px;
+
+    display:flex;
+    flex-direction:column;
 }
 
-.preview-label {
-    color: var(--muted);
-
-    font-size: 12px;
-
-    margin-bottom: 10px;
+.previewLabel{
+    color:var(--muted);
+    font-size:11px;
+    margin-bottom:10px;
 }
 
-.preview {
-    flex: 1;
+.preview{
+    flex:1;
 
-    border-radius: 10px;
+    border-radius:10px;
 
     background:
         radial-gradient(
-            circle at center,
-            #252044,
+            circle,
+            #29224c,
             #08090d 70%
         );
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    text-align: center;
+    text-align:center;
 
-    padding: 40px;
+    padding:40px;
 }
 
-.slide-text {
-    font-size: 42px;
-
-    font-weight: bold;
-
-    line-height: 1.3;
-
-    max-width: 90%;
+.slideText{
+    font-size:42px;
+    font-weight:bold;
+    line-height:1.3;
+    max-width:90%;
 }
 
-.slide-info {
-    display: flex;
+.slideInfo{
+    color:var(--muted);
 
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    color: var(--muted);
+    font-size:12px;
 
-    font-size: 12px;
-
-    margin-top: 12px;
+    margin-top:10px;
 }
 
 /* =========================
-   LISTA DE SLIDES
+   SLIDES
 ========================= */
 
-.slide-list {
-    background: var(--card);
+.slideList{
+    background:var(--card);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: 13px;
+    border-radius:13px;
 
-    padding: 15px;
+    padding:15px;
 
-    overflow-y: auto;
+    overflow-y:auto;
 }
 
-.slide-list-title {
-    font-weight: bold;
-
-    margin-bottom: 12px;
+.slideListTitle{
+    font-weight:bold;
+    margin-bottom:12px;
 }
 
-.slide-item {
-    padding: 13px;
+.slideItem{
+    background:#151821;
 
-    border-radius: 8px;
+    color:#aab1c1;
 
-    background: #151821;
+    padding:12px;
 
-    margin-bottom: 7px;
+    border-radius:8px;
 
-    color: #aab1c1;
+    margin-bottom:7px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    font-size: 13px;
-
-    transition: 0.2s;
+    font-size:13px;
 }
 
-.slide-item:hover {
-    background: var(--card-hover);
+.slideItem:hover{
+    background:var(--hover);
 }
 
-.slide-item.active {
-    background: rgba(139, 92, 246, 0.2);
-
-    color: white;
-
-    border-left: 3px solid var(--purple);
+.slideItem.active{
+    background:rgba(139,92,246,.2);
+    color:#fff;
+    border-left:3px solid var(--purple);
 }
 
 /* =========================
-   CONTROLES
+   CONTROLS
 ========================= */
 
-.presentation-controls {
-    display: flex;
+.controls{
+    display:flex;
+    gap:10px;
 
-    gap: 10px;
-
-    margin-top: 15px;
+    margin-top:12px;
 }
 
-.control-button {
-    flex: 1;
+.control{
+    flex:1;
 
-    padding: 13px;
+    border:1px solid var(--border);
 
-    border: 1px solid var(--border);
+    background:var(--card);
 
-    background: var(--card);
+    color:#fff;
 
-    color: white;
+    padding:13px;
 
-    border-radius: 8px;
+    border-radius:8px;
 
-    cursor: pointer;
+    cursor:pointer;
 }
 
-.control-button:hover {
-    background: var(--card-hover);
+.control:hover{
+    background:var(--hover);
 }
 
-.control-button.project {
-    background: var(--green);
-
-    border-color: var(--green);
-
-    font-weight: bold;
+.project{
+    background:var(--green);
+    border-color:var(--green);
+    font-weight:bold;
 }
 
 /* =========================
-   MÚSICAS
+   SEARCH
 ========================= */
 
-.search-box {
-    width: 100%;
+.search{
+    width:100%;
 
-    background: var(--card);
+    padding:13px;
 
-    border: 1px solid var(--border);
+    background:var(--card);
 
-    border-radius: 9px;
+    border:1px solid var(--border);
 
-    padding: 13px 15px;
+    border-radius:9px;
 
-    color: white;
+    color:#fff;
 
-    outline: none;
+    outline:none;
 
-    margin-bottom: 18px;
+    margin-bottom:15px;
 }
 
-.search-box:focus {
-    border-color: var(--purple);
+.search:focus{
+    border-color:var(--purple);
 }
 
-.music-grid {
-    display: grid;
+/* =========================
+   MUSIC
+========================= */
 
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+.musicGrid{
+    display:grid;
 
-    gap: 15px;
+    grid-template-columns:
+        repeat(auto-fill,minmax(220px,1fr));
+
+    gap:15px;
 }
 
-.music-card {
-    background: var(--card);
+.musicCard{
+    background:var(--card);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    padding: 18px;
+    padding:18px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: 0.2s;
+    transition:.2s;
 }
 
-.music-card:hover {
-    transform: translateY(-2px);
-
-    background: var(--card-hover);
+.musicCard:hover{
+    background:var(--hover);
+    transform:translateY(-2px);
 }
 
-.music-card-icon {
-    width: 45px;
-    height: 45px;
+.musicIcon{
+    width:45px;
+    height:45px;
 
-    border-radius: 10px;
+    background:rgba(236,72,153,.15);
 
-    background: rgba(236, 72, 153, 0.15);
+    border-radius:10px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 22px;
+    font-size:22px;
 
-    margin-bottom: 15px;
+    margin-bottom:13px;
 }
 
-.music-card h3 {
-    font-size: 16px;
+.musicCard h3{
+    font-size:16px;
 }
 
-.music-card p {
-    color: var(--muted);
+.musicCard p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
 
-    font-size: 12px;
+.musicActions{
+    display:flex;
+    gap:7px;
+    margin-top:13px;
+}
 
-    margin-top: 6px;
+.smallButton{
+    border:none;
+
+    padding:8px 10px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    background:#292e3b;
+
+    color:#fff;
+
+    font-size:12px;
+}
+
+.smallButton:hover{
+    background:#3a4151;
+}
+
+/* =========================
+   BIBLE
+========================= */
+
+.bibleControls{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-bottom:15px;
+}
+
+.select{
+    width:100%;
+
+    padding:13px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:#fff;
+
+    border-radius:8px;
+
+    outline:none;
+}
+
+.verseSearch{
+    margin-bottom:15px;
+}
+
+.verseList{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    max-height:430px;
+
+    overflow-y:auto;
+}
+
+.verse{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    padding:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.verse:hover{
+    background:var(--hover);
+}
+
+.verse.selected{
+    border-color:var(--blue);
+
+    background:rgba(59,130,246,.15);
+}
+
+.verseNumber{
+    color:var(--blue);
+    font-weight:bold;
+    margin-right:8px;
+}
+
+/* =========================
+   OTHER
+========================= */
+
+.empty{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    padding:30px;
+
+    border-radius:12px;
+
+    color:var(--muted);
 }
 
 /* =========================
    MODAL
 ========================= */
 
-.modal {
-    position: fixed;
+.modal{
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0, 0, 0, 0.75);
+    background:rgba(0,0,0,.78);
 
-    display: none;
+    display:none;
 
-    align-items: center;
+    align-items:center;
+    justify-content:center;
 
-    justify-content: center;
-
-    z-index: 100;
+    z-index:100;
 }
 
-.modal.show {
-    display: flex;
+.modal.show{
+    display:flex;
 }
 
-.modal-content {
-    width: min(600px, 90%);
+.modalContent{
+    width:min(600px,90%);
 
-    background: var(--card);
+    background:var(--card);
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius:14px;
 
-    padding: 25px;
+    padding:25px;
 }
 
-.modal-content h2 {
-    margin-bottom: 20px;
+.modalContent h2{
+    margin-bottom:18px;
 }
 
-.input {
-    width: 100%;
+.input{
+    width:100%;
 
-    background: #11141b;
+    padding:13px;
 
-    border: 1px solid var(--border);
+    background:#11141b;
 
-    border-radius: 8px;
+    border:1px solid var(--border);
 
-    padding: 13px;
+    color:#fff;
 
-    color: white;
+    border-radius:8px;
 
-    outline: none;
+    outline:none;
 
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
 
-.textarea {
-    min-height: 220px;
-
-    resize: vertical;
+.textarea{
+    height:230px;
+    resize:vertical;
 }
 
-.modal-buttons {
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 10px;
+.modalButtons{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
 }
 
 /* =========================
    RESPONSIVO
 ========================= */
 
-@media (max-width: 900px) {
+@media(max-width:900px){
 
-    .dashboard {
-        grid-template-columns: repeat(2, 1fr);
+    .dashboard{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .presentation {
-        grid-template-columns: 1fr;
+    .presentation{
+        grid-template-columns:1fr;
     }
 
-    .sidebar {
-        width: 190px;
-    }
 }
 
-@media (max-width: 650px) {
+@media(max-width:650px){
 
-    .sidebar {
-        width: 70px;
+    .sidebar{
+        width:70px;
     }
 
-    .menu-title {
-        display: none;
+    .menuTitle{
+        display:none;
     }
 
-    .menu-button span:last-child {
-        display: none;
+    .menuButton{
+        justify-content:center;
     }
 
-    .menu-button {
-        justify-content: center;
+    .menuButton span:last-child{
+        display:none;
     }
 
-    .content {
-        padding: 15px;
+    .content{
+        padding:15px;
     }
 
-    .dashboard {
-        grid-template-columns: 1fr 1fr;
-    }
 }
+
 </style>
 </head>
 
@@ -716,7 +785,7 @@ header {
 
     <div class="logo">
 
-        <div class="logo-icon">
+        <div class="logoIcon">
             ✦
         </div>
 
@@ -724,12 +793,9 @@ header {
 
     </div>
 
-    <div class="system-status">
-
-        <div class="status-dot"></div>
-
+    <div class="status">
+        <span>●</span>
         Sistema pronto
-
     </div>
 
 </header>
@@ -737,481 +803,486 @@ header {
 
 <div class="app">
 
-    <!-- MENU -->
+<!-- =========================
+     MENU
+========================= -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <div class="menu-title">
-            PRINCIPAL
+    <div class="menuTitle">
+        PRINCIPAL
+    </div>
+
+    <button class="menuButton active" data-page="home">
+        <span class="icon">⌂</span>
+        <span>Início</span>
+    </button>
+
+    <button class="menuButton" data-page="music">
+        <span class="icon">♫</span>
+        <span>Músicas</span>
+    </button>
+
+    <button class="menuButton" data-page="bible">
+        <span class="icon">▣</span>
+        <span>Bíblia</span>
+    </button>
+
+    <button class="menuButton" data-page="media">
+        <span class="icon">▧</span>
+        <span>Mídias</span>
+    </button>
+
+    <div class="menuTitle">
+        ORGANIZAÇÃO
+    </div>
+
+    <button class="menuButton" data-page="service">
+        <span class="icon">☷</span>
+        <span>Culto</span>
+    </button>
+
+    <button class="menuButton" data-page="favorites">
+        <span class="icon">★</span>
+        <span>Favoritos</span>
+    </button>
+
+</aside>
+
+
+<!-- =========================
+     CONTEÚDO
+========================= -->
+
+<main class="content">
+
+
+<!-- =========================
+     INÍCIO
+========================= -->
+
+<section class="page active" id="page-home">
+
+    <div class="pageHeader">
+
+        <div>
+
+            <div class="title">
+                Painel principal
+            </div>
+
+            <div class="description">
+                Controle suas apresentações.
+            </div>
+
         </div>
 
-        <button class="menu-button active" data-page="home">
-            <span class="menu-icon">⌂</span>
-            <span>Início</span>
+        <button class="button" onclick="openMusicModal()">
+            ＋ Nova música
         </button>
 
-        <button class="menu-button" data-page="music">
-            <span class="menu-icon">♫</span>
-            <span>Músicas</span>
-        </button>
-
-        <button class="menu-button" data-page="bible">
-            <span class="menu-icon">▣</span>
-            <span>Bíblia</span>
-        </button>
-
-        <button class="menu-button" data-page="media">
-            <span class="menu-icon">▧</span>
-            <span>Mídias</span>
-        </button>
+    </div>
 
 
-        <div class="menu-title">
-            ORGANIZAÇÃO
+    <div class="dashboard">
+
+        <div class="card">
+
+            <div class="statIcon">
+                🎵
+            </div>
+
+            <div class="statNumber" id="musicCount">
+                0
+            </div>
+
+            <div class="statLabel">
+                Músicas
+            </div>
+
         </div>
 
-        <button class="menu-button" data-page="service">
-            <span class="menu-icon">☷</span>
-            <span>Culto</span>
-        </button>
 
-        <button class="menu-button" data-page="favorites">
-            <span class="menu-icon">★</span>
-            <span>Favoritos</span>
-        </button>
+        <div class="card">
 
+            <div class="statIcon">
+                📖
+            </div>
 
-        <div class="menu-title">
-            SISTEMA
+            <div class="statNumber">
+                0
+            </div>
+
+            <div class="statLabel">
+                Versículos
+            </div>
+
         </div>
 
-        <button class="menu-button" data-page="settings">
-            <span class="menu-icon">⚙</span>
-            <span>Configurações</span>
-        </button>
 
-    </aside>
+        <div class="card">
+
+            <div class="statIcon">
+                🖼️
+            </div>
+
+            <div class="statNumber">
+                0
+            </div>
+
+            <div class="statLabel">
+                Mídias
+            </div>
+
+        </div>
 
 
-    <!-- CONTEÚDO -->
+        <div class="card">
 
-    <main class="content">
+            <div class="statIcon">
+                📋
+            </div>
+
+            <div class="statNumber">
+                0
+            </div>
+
+            <div class="statLabel">
+                Cultos
+            </div>
+
+        </div>
+
+    </div>
 
 
-        <!-- INÍCIO -->
+    <div class="presentation">
 
-        <section class="page active" id="page-home">
+        <div class="previewContainer">
 
-            <div class="page-header">
+            <div class="previewLabel">
+                PRÉ-VISUALIZAÇÃO
+            </div>
 
-                <div>
+            <div class="preview">
 
-                    <div class="page-title">
-                        Painel principal
-                    </div>
-
-                    <div class="page-description">
-                        Controle suas apresentações.
-                    </div>
-
+                <div class="slideText" id="slideText">
+                    Bem-vindo ao CultoVision
                 </div>
-
-                <button class="button" onclick="openMusicModal()">
-                    ＋ Nova música
-                </button>
 
             </div>
 
 
-            <div class="dashboard">
+            <div class="slideInfo">
 
-                <div class="stat-card">
+                <span id="slideCounter">
+                    Slide 1
+                </span>
 
-                    <div class="stat-icon">♫</div>
-
-                    <div class="stat-number" id="musicCount">
-                        2
-                    </div>
-
-                    <div class="stat-label">
-                        Músicas
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">▣</div>
-
-                    <div class="stat-number">
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        Versículos
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">▧</div>
-
-                    <div class="stat-number">
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        Mídias
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">☷</div>
-
-                    <div class="stat-number">
-                        0
-                    </div>
-
-                    <div class="stat-label">
-                        Cultos
-                    </div>
-
-                </div>
+                <span>
+                    Pré-visualização
+                </span>
 
             </div>
 
 
-            <div class="presentation">
-
-                <div class="preview-container">
-
-                    <div class="preview-label">
-                        PRÉ-VISUALIZAÇÃO
-                    </div>
-
-                    <div class="preview">
-
-                        <div class="slide-text" id="slideText">
-                            Bem-vindo ao CultoVision
-                        </div>
-
-                    </div>
-
-                    <div class="slide-info">
-
-                        <span id="slideCounter">
-                            Slide 1 de 3
-                        </span>
-
-                        <span>
-                            Pré-visualização
-                        </span>
-
-                    </div>
-
-
-                    <div class="presentation-controls">
-
-                        <button
-                            class="control-button"
-                            onclick="previousSlide()">
-
-                            ◀ Anterior
-
-                        </button>
-
-
-                        <button
-                            class="control-button project"
-                            onclick="openProjection()">
-
-                            📺 Projetar
-
-                        </button>
-
-
-                        <button
-                            class="control-button"
-                            onclick="nextSlide()">
-
-                            Próximo ▶
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="slide-list">
-
-                    <div class="slide-list-title">
-                        Slides
-                    </div>
-
-                    <div id="slideList"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- MÚSICAS -->
-
-        <section class="page" id="page-music">
-
-            <div class="page-header">
-
-                <div>
-
-                    <div class="page-title">
-                        🎵 Músicas
-                    </div>
-
-                    <div class="page-description">
-                        Suas músicas e letras.
-                    </div>
-
-                </div>
+            <div class="controls">
 
                 <button
-                    class="button"
-                    onclick="openMusicModal()">
+                    class="control"
+                    onclick="previousSlide()">
 
-                    ＋ Adicionar música
+                    ◀ Anterior
+
+                </button>
+
+                <button
+                    class="control project"
+                    onclick="openProjection()">
+
+                    📺 Projetar
+
+                </button>
+
+                <button
+                    class="control"
+                    onclick="nextSlide()">
+
+                    Próximo ▶
 
                 </button>
 
             </div>
 
-
-            <input
-                type="text"
-                class="search-box"
-                placeholder="🔎 Pesquisar música..."
-                id="musicSearch"
-                oninput="searchMusic()">
+        </div>
 
 
-            <div
-                class="music-grid"
-                id="musicGrid">
+        <div class="slideList">
 
+            <div class="slideListTitle">
+                Slides
             </div>
 
-        </section>
+            <div id="slideList"></div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-        <!-- BÍBLIA -->
+<!-- =========================
+     MÚSICAS
+========================= -->
 
-        <section class="page" id="page-bible">
+<section class="page" id="page-music">
 
-            <div class="page-header">
+    <div class="pageHeader">
 
-                <div>
+        <div>
 
-                    <div class="page-title">
-                        📖 Bíblia
-                    </div>
-
-                    <div class="page-description">
-                        Em breve: livros, capítulos e versículos.
-                    </div>
-
-                </div>
-
+            <div class="title">
+                🎵 Músicas
             </div>
 
-            <div class="stat-card">
-
-                <h2>
-                    Bíblia
-                </h2>
-
-                <p style="color:#8d95a7;margin-top:10px;">
-                    Esta área será desenvolvida no próximo passo.
-                </p>
-
+            <div class="description">
+                Pesquise e organize suas músicas.
             </div>
 
-        </section>
+        </div>
+
+        <button
+            class="button"
+            onclick="openMusicModal()">
+
+            ＋ Adicionar música
+
+        </button>
+
+    </div>
 
 
-        <!-- MÍDIAS -->
+    <input
+        id="musicSearch"
+        class="search"
+        placeholder="🔎 Pesquisar uma música..."
+        oninput="renderMusic()">
 
-        <section class="page" id="page-media">
 
-            <div class="page-header">
+    <button
+        class="button google"
+        onclick="googleMusicSearch()"
+        style="margin-bottom:18px;">
 
-                <div>
+        🔍 Pesquisar música no Google
 
-                    <div class="page-title">
-                        🖼️ Mídias
-                    </div>
+    </button>
 
-                    <div class="page-description">
-                        Imagens e vídeos para suas apresentações.
-                    </div>
 
-                </div>
+    <div
+        class="musicGrid"
+        id="musicGrid">
 
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BÍBLIA
+========================= -->
+
+<section class="page" id="page-bible">
+
+    <div class="pageHeader">
+
+        <div>
+
+            <div class="title">
+                📖 Bíblia
             </div>
 
-            <div class="stat-card">
-
-                <h2>
-                    Biblioteca de mídias
-                </h2>
-
-                <p style="color:#8d95a7;margin-top:10px;">
-                    Em breve você poderá adicionar imagens e vídeos.
-                </p>
-
+            <div class="description">
+                Pesquise e projete versículos.
             </div>
 
-        </section>
+        </div>
+
+    </div>
 
 
-        <!-- CULTO -->
+    <div class="bibleControls">
 
-        <section class="page" id="page-service">
+        <select
+            class="select"
+            id="bookSelect"
+            onchange="loadBible()">
 
-            <div class="page-header">
+        </select>
 
-                <div>
 
-                    <div class="page-title">
-                        📋 Culto
-                    </div>
+        <select
+            class="select"
+            id="chapterSelect"
+            onchange="loadBible()">
 
-                    <div class="page-description">
-                        Monte a ordem da apresentação.
-                    </div>
+        </select>
 
-                </div>
+    </div>
 
+
+    <input
+        id="verseSearch"
+        class="search verseSearch"
+        placeholder="🔎 Pesquisar versículo..."
+        oninput="filterVerses()">
+
+
+    <div
+        class="verseList"
+        id="verseList">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MÍDIAS
+========================= -->
+
+<section class="page" id="page-media">
+
+    <div class="pageHeader">
+
+        <div>
+
+            <div class="title">
+                🖼️ Mídias
             </div>
 
-            <div class="stat-card">
-
-                <h2>
-                    Novo culto
-                </h2>
-
-                <p style="color:#8d95a7;margin-top:10px;">
-                    Em breve criaremos playlists e ordem do culto.
-                </p>
-
+            <div class="description">
+                Imagens e vídeos para apresentação.
             </div>
 
-        </section>
+        </div>
+
+    </div>
 
 
-        <!-- FAVORITOS -->
+    <div class="empty">
 
-        <section class="page" id="page-favorites">
+        🖼️ Biblioteca de mídias.
 
-            <div class="page-header">
+        <br><br>
 
-                <div>
+        Esta função será adicionada em uma próxima versão.
 
-                    <div class="page-title">
-                        ⭐ Favoritos
-                    </div>
+    </div>
 
-                    <div class="page-description">
-                        Conteúdos favoritos.
-                    </div>
+</section>
 
-                </div>
 
+<!-- =========================
+     CULTO
+========================= -->
+
+<section class="page" id="page-service">
+
+    <div class="pageHeader">
+
+        <div>
+
+            <div class="title">
+                📋 Culto
             </div>
 
-            <div class="stat-card">
-
-                <h2>
-                    Seus favoritos
-                </h2>
-
-                <p style="color:#8d95a7;margin-top:10px;">
-                    Você poderá salvar músicas e conteúdos aqui.
-                </p>
-
+            <div class="description">
+                Organize a ordem da apresentação.
             </div>
 
-        </section>
+        </div>
+
+    </div>
 
 
-        <!-- CONFIGURAÇÕES -->
+    <div class="empty">
 
-        <section class="page" id="page-settings">
+        📋 Nenhum culto criado ainda.
 
-            <div class="page-header">
+        <br><br>
 
-                <div>
+        Essa área será usada para montar a programação do culto.
 
-                    <div class="page-title">
-                        ⚙️ Configurações
-                    </div>
+    </div>
 
-                    <div class="page-description">
-                        Personalize o CultoVision.
-                    </div>
+</section>
 
-                </div>
 
+<!-- =========================
+     FAVORITOS
+========================= -->
+
+<section class="page" id="page-favorites">
+
+    <div class="pageHeader">
+
+        <div>
+
+            <div class="title">
+                ⭐ Favoritos
             </div>
 
-            <div class="stat-card">
-
-                <h2>
-                    Configurações
-                </h2>
-
-                <p style="color:#8d95a7;margin-top:10px;">
-                    Em breve teremos configurações de fonte,
-                    fundo, cores e projeção.
-                </p>
-
+            <div class="description">
+                Suas músicas favoritas.
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </div>
+
+
+    <div
+        class="musicGrid"
+        id="favoriteGrid">
+
+    </div>
+
+</section>
+
+
+</main>
 
 </div>
 
 
-<!-- MODAL DE MÚSICA -->
+<!-- =========================
+     MODAL
+========================= -->
 
-<div class="modal" id="musicModal">
+<div
+    class="modal"
+    id="musicModal">
 
-    <div class="modal-content">
+    <div class="modalContent">
 
         <h2>
-            🎵 Nova música
+            🎵 Adicionar música
         </h2>
 
         <input
-            class="input"
             id="musicTitle"
+            class="input"
             placeholder="Nome da música">
 
 
         <textarea
-            class="input textarea"
             id="musicLyrics"
+            class="input textarea"
             placeholder="Digite a letra.
 
-Separe cada slide com uma linha contendo:
+Separe cada slide usando:
 
 ---
 
@@ -1228,7 +1299,7 @@ Segundo slide
 Terceiro slide"></textarea>
 
 
-        <div class="modal-buttons">
+        <div class="modalButtons">
 
             <button
                 class="button secondary"
@@ -1238,11 +1309,12 @@ Terceiro slide"></textarea>
 
             </button>
 
+
             <button
                 class="button"
                 onclick="saveMusic()">
 
-                Salvar música
+                Salvar
 
             </button>
 
@@ -1255,30 +1327,124 @@ Terceiro slide"></textarea>
 
 <script>
 
-/* =========================================
-   DADOS
-========================================= */
+/* =====================================================
+   BANCO DE MÚSICAS
+===================================================== */
 
-let songs = [
+let songs =
+JSON.parse(
+    localStorage.getItem("cultovision_songs")
+) || [
+
     {
-        title: "Grandes Coisas",
-        lyrics: [
+        title:"Grandes Coisas",
+        lyrics:[
             "Grandes coisas fez o Senhor",
             "Por isso estamos alegres",
             "Vamos celebrar e adorar"
-        ]
+        ],
+        favorite:false
     },
 
     {
-        title: "Teu Amor",
-        lyrics: [
+        title:"Teu Amor",
+        lyrics:[
             "Teu amor nunca falha",
             "Tua graça me alcançou",
             "Para sempre cantarei"
-        ]
+        ],
+        favorite:false
     }
+
 ];
 
+
+/* =====================================================
+   BÍBLIA
+===================================================== */
+
+/*
+    Nesta primeira versão colocamos uma pequena base
+    de demonstração para a função de pesquisa/projeção.
+
+    Depois podemos ampliar a base usando uma tradução
+    que possa ser utilizada legalmente no projeto.
+*/
+
+const bible = {
+
+    "Gênesis": {
+
+        "1":[
+
+            {
+                number:1,
+                text:"No princípio criou Deus os céus e a terra."
+            },
+
+            {
+                number:2,
+                text:"A terra, porém, estava sem forma e vazia."
+            },
+
+            {
+                number:3,
+                text:"E disse Deus: Haja luz. E houve luz."
+            }
+
+        ]
+
+    },
+
+
+    "Salmos": {
+
+        "23":[
+
+            {
+                number:1,
+                text:"O Senhor é o meu pastor; nada me faltará."
+            },
+
+            {
+                number:2,
+                text:"Deitar-me faz em verdes pastos, guia-me mansamente a águas tranquilas."
+            },
+
+            {
+                number:3,
+                text:"Refrigera a minha alma; guia-me pelas veredas da justiça por amor do seu nome."
+            }
+
+        ]
+
+    },
+
+
+    "João": {
+
+        "3":[
+
+            {
+                number:16,
+                text:"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito."
+            },
+
+            {
+                number:17,
+                text:"Porque Deus enviou o seu Filho ao mundo, não para condenar o mundo."
+            }
+
+        ]
+
+    }
+
+};
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
 
 let currentSong = songs[0];
 
@@ -1286,91 +1452,117 @@ let currentSlide = 0;
 
 let projectionWindow = null;
 
+let selectedVerse = null;
 
-/* =========================================
+
+/* =====================================================
    MENU
-========================================= */
+===================================================== */
 
-const menuButtons =
-    document.querySelectorAll(".menu-button");
+document
+.querySelectorAll(".menuButton")
+.forEach(button => {
 
+    button.addEventListener(
+        "click",
+        function(){
 
-menuButtons.forEach(button => {
+            document
+            .querySelectorAll(".menuButton")
+            .forEach(item => {
 
-    button.addEventListener("click", () => {
-
-        const page =
-            button.dataset.page;
-
-
-        menuButtons.forEach(item => {
-
-            item.classList.remove("active");
-
-        });
-
-
-        button.classList.add("active");
-
-
-        document
-            .querySelectorAll(".page")
-            .forEach(section => {
-
-                section.classList.remove("active");
+                item.classList.remove("active");
 
             });
 
 
-        const selectedPage =
+            this.classList.add("active");
+
+
+            document
+            .querySelectorAll(".page")
+            .forEach(page => {
+
+                page.classList.remove("active");
+
+            });
+
+
+            const page =
             document.getElementById(
-                "page-" + page
+                "page-" + this.dataset.page
             );
 
 
-        if (selectedPage) {
+            if(page){
 
-            selectedPage.classList.add("active");
+                page.classList.add("active");
+
+            }
+
+
+            if(
+                this.dataset.page === "music"
+            ){
+
+                renderMusic();
+
+            }
+
+
+            if(
+                this.dataset.page === "bible"
+            ){
+
+                initializeBible();
+
+            }
+
+
+            if(
+                this.dataset.page === "favorites"
+            ){
+
+                renderFavorites();
+
+            }
 
         }
-
-
-        if (page === "music") {
-
-            renderMusic();
-
-        }
-
-    });
+    );
 
 });
 
 
-/* =========================================
+/* =====================================================
    SLIDES
-========================================= */
+===================================================== */
 
-function renderSlides() {
+function renderSlides(){
 
     const list =
-        document.getElementById("slideList");
+    document.getElementById(
+        "slideList"
+    );
 
 
     list.innerHTML = "";
 
 
-    currentSong.lyrics.forEach(
-        (text, index) => {
+    currentSong.lyrics
+    .forEach(
+        (text,index) => {
 
             const item =
-                document.createElement("div");
+            document.createElement("div");
 
 
             item.className =
-                "slide-item";
+            "slideItem";
 
 
-            if (index === currentSlide) {
+            if(
+                index === currentSlide
+            ){
 
                 item.classList.add("active");
 
@@ -1378,10 +1570,10 @@ function renderSlides() {
 
 
             item.textContent =
-                `${index + 1}. ${text}`;
+            `${index + 1}. ${text}`;
 
 
-            item.onclick = () => {
+            item.onclick = function(){
 
                 currentSlide = index;
 
@@ -1398,14 +1590,21 @@ function renderSlides() {
 }
 
 
-/* =========================================
-   ATUALIZAR SLIDE
-========================================= */
+/* =====================================================
+   ATUALIZA SLIDE
+===================================================== */
 
-function updateSlide() {
+function updateSlide(){
+
+    if(!currentSong){
+
+        return;
+
+    }
+
 
     const text =
-        currentSong.lyrics[currentSlide];
+    currentSong.lyrics[currentSlide];
 
 
     document.getElementById(
@@ -1416,27 +1615,26 @@ function updateSlide() {
     document.getElementById(
         "slideCounter"
     ).textContent =
-        `Slide ${currentSlide + 1} de ${currentSong.lyrics.length}`;
+    `Slide ${currentSlide + 1} de ${currentSong.lyrics.length}`;
 
 
     renderSlides();
-
 
     updateProjection();
 
 }
 
 
-/* =========================================
+/* =====================================================
    PRÓXIMO
-========================================= */
+===================================================== */
 
-function nextSlide() {
+function nextSlide(){
 
-    if (
+    if(
         currentSlide <
         currentSong.lyrics.length - 1
-    ) {
+    ){
 
         currentSlide++;
 
@@ -1447,13 +1645,13 @@ function nextSlide() {
 }
 
 
-/* =========================================
+/* =====================================================
    ANTERIOR
-========================================= */
+===================================================== */
 
-function previousSlide() {
+function previousSlide(){
 
-    if (currentSlide > 0) {
+    if(currentSlide > 0){
 
         currentSlide--;
 
@@ -1464,16 +1662,16 @@ function previousSlide() {
 }
 
 
-/* =========================================
+/* =====================================================
    PROJEÇÃO
-========================================= */
+===================================================== */
 
-function openProjection() {
+function openProjection(){
 
-    if (
+    if(
         projectionWindow &&
         !projectionWindow.closed
-    ) {
+    ){
 
         projectionWindow.focus();
 
@@ -1483,17 +1681,17 @@ function openProjection() {
 
 
     projectionWindow =
-        window.open(
-            "",
-            "CultoVisionProjection",
-            "width=1200,height=700"
-        );
+    window.open(
+        "",
+        "CultoVisionProjection",
+        "width=1200,height=700"
+    );
 
 
-    if (!projectionWindow) {
+    if(!projectionWindow){
 
         alert(
-            "O navegador bloqueou a janela de projeção. Permita pop-ups para este site."
+            "O navegador bloqueou a janela. Permita pop-ups para o CultoVision."
         );
 
         return;
@@ -1505,7 +1703,7 @@ function openProjection() {
 
         <!DOCTYPE html>
 
-        <html lang="pt-BR">
+        <html>
 
         <head>
 
@@ -1513,50 +1711,48 @@ function openProjection() {
 
             <style>
 
-                * {
-                    box-sizing: border-box;
+                *{
+                    box-sizing:border-box;
                 }
 
-                html,
-                body {
+                html,body{
 
-                    margin: 0;
+                    width:100%;
+                    height:100%;
 
-                    width: 100%;
+                    margin:0;
 
-                    height: 100%;
+                    background:#000;
 
-                    background: #000;
+                    color:#fff;
 
-                    color: white;
+                    font-family:Arial;
 
-                    font-family: Arial;
-
-                }
-
-                body {
-
-                    display: flex;
-
-                    align-items: center;
-
-                    justify-content: center;
-
-                    text-align: center;
-
-                    overflow: hidden;
+                    overflow:hidden;
 
                 }
 
-                #projectionText {
+                body{
 
-                    width: 90%;
+                    display:flex;
 
-                    font-size: 70px;
+                    align-items:center;
 
-                    line-height: 1.3;
+                    justify-content:center;
 
-                    font-weight: bold;
+                    text-align:center;
+
+                }
+
+                #projectionText{
+
+                    width:90%;
+
+                    font-size:70px;
+
+                    font-weight:bold;
+
+                    line-height:1.3;
 
                 }
 
@@ -1582,28 +1778,28 @@ function openProjection() {
 }
 
 
-/* =========================================
+/* =====================================================
    ATUALIZAR PROJEÇÃO
-========================================= */
+===================================================== */
 
-function updateProjection() {
+function updateProjection(){
 
-    if (
+    if(
         projectionWindow &&
         !projectionWindow.closed
-    ) {
+    ){
 
-        const text =
-            projectionWindow.document
-            .getElementById(
-                "projectionText"
-            );
+        const element =
+        projectionWindow.document
+        .getElementById(
+            "projectionText"
+        );
 
 
-        if (text) {
+        if(element){
 
-            text.textContent =
-                currentSong.lyrics[currentSlide];
+            element.textContent =
+            currentSong.lyrics[currentSlide];
 
         }
 
@@ -1612,22 +1808,22 @@ function updateProjection() {
 }
 
 
-/* =========================================
+/* =====================================================
    TECLADO
-========================================= */
+===================================================== */
 
 document.addEventListener(
     "keydown",
-    event => {
+    function(event){
 
-        if (event.key === "ArrowRight") {
+        if(event.key === "ArrowRight"){
 
             nextSlide();
 
         }
 
 
-        if (event.key === "ArrowLeft") {
+        if(event.key === "ArrowLeft"){
 
             previousSlide();
 
@@ -1637,62 +1833,247 @@ document.addEventListener(
 );
 
 
-/* =========================================
+/* =====================================================
    MÚSICAS
-========================================= */
+===================================================== */
 
-function renderMusic(
-    search = ""
-) {
+function renderMusic(){
 
     const grid =
-        document.getElementById(
-            "musicGrid"
-        );
+    document.getElementById(
+        "musicGrid"
+    );
+
+
+    const search =
+    document.getElementById(
+        "musicSearch"
+    ).value
+    .toLowerCase();
 
 
     grid.innerHTML = "";
 
 
     songs
-        .filter(song =>
-            song.title
-                .toLowerCase()
-                .includes(
-                    search.toLowerCase()
-                )
-        )
-        .forEach(song => {
+    .filter(song =>
+        song.title
+        .toLowerCase()
+        .includes(search)
+    )
+    .forEach(
+        (song,index) => {
 
             const card =
-                document.createElement(
-                    "div"
-                );
+            document.createElement("div");
 
 
             card.className =
-                "music-card";
+            "musicCard";
 
 
             card.innerHTML = `
 
-                <div class="music-card-icon">
-                    ♫
+                <div class="musicIcon">
+                    🎵
                 </div>
 
                 <h3>
-                    ${song.title}
+                    ${escapeHTML(song.title)}
                 </h3>
 
                 <p>
-                    ${song.lyrics.length}
-                    slides
+                    ${song.lyrics.length} slides
+                </p>
+
+                <div class="musicActions">
+
+                    <button
+                        class="smallButton"
+                        onclick="selectMusic(${index})">
+
+                        ▶ Usar
+
+                    </button>
+
+                    <button
+                        class="smallButton"
+                        onclick="googleSearch('${escapeForJS(song.title)}')">
+
+                        🔍 Google
+
+                    </button>
+
+                    <button
+                        class="smallButton"
+                        onclick="toggleFavorite(${index})">
+
+                        ${song.favorite ? "⭐" : "☆"}
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+
+    document.getElementById(
+        "musicCount"
+    ).textContent =
+    songs.length;
+
+}
+
+
+/* =====================================================
+   SELECIONAR MÚSICA
+===================================================== */
+
+function selectMusic(index){
+
+    currentSong = songs[index];
+
+    currentSlide = 0;
+
+    updateSlide();
+
+    goHome();
+
+}
+
+
+/* =====================================================
+   GOOGLE
+===================================================== */
+
+function googleSearch(title){
+
+    const query =
+    encodeURIComponent(
+        title + " letra"
+    );
+
+
+    window.open(
+        "https://www.google.com/search?q=" + query,
+        "_blank"
+    );
+
+}
+
+
+function googleMusicSearch(){
+
+    const search =
+    document.getElementById(
+        "musicSearch"
+    ).value.trim();
+
+
+    if(!search){
+
+        alert(
+            "Digite o nome de uma música primeiro."
+        );
+
+        return;
+
+    }
+
+
+    googleSearch(search);
+
+}
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
+
+function toggleFavorite(index){
+
+    songs[index].favorite =
+    !songs[index].favorite;
+
+
+    saveSongs();
+
+    renderMusic();
+
+    renderFavorites();
+
+}
+
+
+function renderFavorites(){
+
+    const grid =
+    document.getElementById(
+        "favoriteGrid"
+    );
+
+
+    grid.innerHTML = "";
+
+
+    const favorites =
+    songs.filter(
+        song => song.favorite
+    );
+
+
+    if(favorites.length === 0){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+
+                ⭐ Você ainda não possui músicas favoritas.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    favorites.forEach(
+        song => {
+
+            const card =
+            document.createElement("div");
+
+
+            card.className =
+            "musicCard";
+
+
+            card.innerHTML = `
+
+                <div class="musicIcon">
+                    ⭐
+                </div>
+
+                <h3>
+                    ${escapeHTML(song.title)}
+                </h3>
+
+                <p>
+                    ${song.lyrics.length} slides
                 </p>
 
             `;
 
 
-            card.onclick = () => {
+            card.onclick = function(){
 
                 currentSong = song;
 
@@ -1707,78 +2088,57 @@ function renderMusic(
 
             grid.appendChild(card);
 
-        });
-
-
-    document.getElementById(
-        "musicCount"
-    ).textContent = songs.length;
+        }
+    );
 
 }
 
 
-/* =========================================
-   PESQUISA
-========================================= */
-
-function searchMusic() {
-
-    const value =
-        document.getElementById(
-            "musicSearch"
-        ).value;
-
-
-    renderMusic(value);
-
-}
-
-
-/* =========================================
+/* =====================================================
    MODAL
-========================================= */
+===================================================== */
 
-function openMusicModal() {
+function openMusicModal(){
 
     document
-        .getElementById("musicModal")
-        .classList.add("show");
+    .getElementById("musicModal")
+    .classList.add("show");
 
 }
 
 
-function closeMusicModal() {
+function closeMusicModal(){
 
     document
-        .getElementById("musicModal")
-        .classList.remove("show");
+    .getElementById("musicModal")
+    .classList.remove("show");
 
 }
 
 
-/* =========================================
+/* =====================================================
    SALVAR MÚSICA
-========================================= */
+===================================================== */
 
-function saveMusic() {
+function saveMusic(){
 
     const title =
-        document
-        .getElementById("musicTitle")
-        .value
-        .trim();
+    document
+    .getElementById("musicTitle")
+    .value
+    .trim();
 
 
     const lyrics =
-        document
-        .getElementById("musicLyrics")
-        .value
-        .split("---")
-        .map(item => item.trim())
-        .filter(item => item);
+    document
+    .getElementById("musicLyrics")
+    .value
+    .split("---")
+    .map(item => item.trim())
+    .filter(item => item);
 
 
-    if (!title) {
+    if(!title){
 
         alert(
             "Digite o nome da música."
@@ -1789,7 +2149,7 @@ function saveMusic() {
     }
 
 
-    if (lyrics.length === 0) {
+    if(lyrics.length === 0){
 
         alert(
             "Digite pelo menos um slide."
@@ -1802,28 +2162,33 @@ function saveMusic() {
 
     songs.push({
 
-        title: title,
+        title:title,
 
-        lyrics: lyrics
+        lyrics:lyrics,
+
+        favorite:false
 
     });
 
 
     currentSong =
-        songs[songs.length - 1];
+    songs[songs.length - 1];
 
 
     currentSlide = 0;
 
 
-    document
-        .getElementById("musicTitle")
-        .value = "";
+    saveSongs();
 
 
     document
-        .getElementById("musicLyrics")
-        .value = "";
+    .getElementById("musicTitle")
+    .value = "";
+
+
+    document
+    .getElementById("musicLyrics")
+    .value = "";
 
 
     closeMusicModal();
@@ -1835,29 +2200,296 @@ function saveMusic() {
 
 
     alert(
-        "Música adicionada com sucesso!"
+        "Música salva com sucesso!"
     );
 
 }
 
 
-/* =========================================
+/* =====================================================
+   LOCAL STORAGE
+===================================================== */
+
+function saveSongs(){
+
+    localStorage.setItem(
+        "cultovision_songs",
+        JSON.stringify(songs)
+    );
+
+}
+
+
+/* =====================================================
+   BÍBLIA
+===================================================== */
+
+function initializeBible(){
+
+    const bookSelect =
+    document.getElementById(
+        "bookSelect"
+    );
+
+
+    bookSelect.innerHTML = "";
+
+
+    Object.keys(bible)
+    .forEach(book => {
+
+        const option =
+        document.createElement("option");
+
+
+        option.value = book;
+
+        option.textContent = book;
+
+
+        bookSelect.appendChild(option);
+
+    });
+
+
+    updateChapterOptions();
+
+}
+
+
+/* =====================================================
+   CAPÍTULOS
+===================================================== */
+
+function updateChapterOptions(){
+
+    const book =
+    document.getElementById(
+        "bookSelect"
+    ).value;
+
+
+    const chapterSelect =
+    document.getElementById(
+        "chapterSelect"
+    );
+
+
+    chapterSelect.innerHTML = "";
+
+
+    Object.keys(
+        bible[book]
+    )
+    .forEach(chapter => {
+
+        const option =
+        document.createElement("option");
+
+
+        option.value = chapter;
+
+        option.textContent =
+        "Capítulo " + chapter;
+
+
+        chapterSelect.appendChild(
+            option
+        );
+
+    });
+
+
+    loadBible();
+
+}
+
+
+/* =====================================================
+   CARREGAR BÍBLIA
+===================================================== */
+
+function loadBible(){
+
+    const book =
+    document.getElementById(
+        "bookSelect"
+    ).value;
+
+
+    const chapter =
+    document.getElementById(
+        "chapterSelect"
+    ).value;
+
+
+    if(!book || !chapter){
+
+        return;
+
+    }
+
+
+    const list =
+    document.getElementById(
+        "verseList"
+    );
+
+
+    list.innerHTML = "";
+
+
+    bible[book][chapter]
+    .forEach(
+        verse => {
+
+            const element =
+            document.createElement("div");
+
+
+            element.className =
+            "verse";
+
+
+            element.innerHTML = `
+
+                <span class="verseNumber">
+                    ${verse.number}
+                </span>
+
+                ${escapeHTML(verse.text)}
+
+            `;
+
+
+            element.onclick =
+            function(){
+
+                selectVerse(
+                    book,
+                    chapter,
+                    verse
+                );
+
+            };
+
+
+            list.appendChild(
+                element
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SELECIONAR VERSÍCULO
+===================================================== */
+
+function selectVerse(
+    book,
+    chapter,
+    verse
+){
+
+    selectedVerse = {
+
+        book:book,
+
+        chapter:chapter,
+
+        number:verse.number,
+
+        text:verse.text
+
+    };
+
+
+    currentSong = {
+
+        title:
+        `${book} ${chapter}:${verse.number}`,
+
+        lyrics:[
+            verse.text
+        ]
+
+    };
+
+
+    currentSlide = 0;
+
+
+    updateSlide();
+
+
+    alert(
+        `${book} ${chapter}:${verse.number} selecionado.`
+    );
+
+}
+
+
+/* =====================================================
+   PESQUISAR VERSÍCULO
+===================================================== */
+
+function filterVerses(){
+
+    const search =
+    document
+    .getElementById(
+        "verseSearch"
+    )
+    .value
+    .toLowerCase();
+
+
+    const verses =
+    document.querySelectorAll(
+        ".verse"
+    );
+
+
+    verses.forEach(
+        verse => {
+
+            const text =
+            verse.textContent
+            .toLowerCase();
+
+
+            verse.style.display =
+            text.includes(search)
+            ? "block"
+            : "none";
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    VOLTAR PARA INÍCIO
-========================================= */
+===================================================== */
 
-function goHome() {
+function goHome(){
 
-    menuButtons.forEach(button => {
+    document
+    .querySelectorAll(".menuButton")
+    .forEach(button => {
 
         button.classList.remove(
             "active"
         );
 
 
-        if (
-            button.dataset.page ===
-            "home"
-        ) {
+        if(
+            button.dataset.page === "home"
+        ){
 
             button.classList.add(
                 "active"
@@ -1869,32 +2501,59 @@ function goHome() {
 
 
     document
-        .querySelectorAll(".page")
-        .forEach(page => {
+    .querySelectorAll(".page")
+    .forEach(page => {
 
-            page.classList.remove(
-                "active"
-            );
+        page.classList.remove(
+            "active"
+        );
 
-        });
+    });
 
 
     document
-        .getElementById("page-home")
-        .classList.add("active");
+    .getElementById("page-home")
+    .classList.add("active");
 
 }
 
 
-/* =========================================
-   INICIALIZAÇÃO
-========================================= */
+/* =====================================================
+   SEGURANÇA DO HTML
+===================================================== */
 
-renderSlides();
+function escapeHTML(text){
+
+    return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeForJS(text){
+
+    return String(text)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
 
 renderMusic();
 
+renderSlides();
+
 updateSlide();
+
+initializeBible();
 
 </script>
 
