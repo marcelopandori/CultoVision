@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CultoVision</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* CABEÇALHO */
+    header {
+      height: 60px;
+      background: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+      border-bottom: 1px solid #333;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #8b5cf6;
+    }
+
+    .status {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* ESTRUTURA PRINCIPAL */
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+
+    /* MENU LATERAL */
+    aside {
+      width: 220px;
+      background: #181818;
+      padding: 20px 10px;
+      border-right: 1px solid #333;
+    }
+
+    .menu-title {
+      color: #777;
+      font-size: 12px;
+      margin: 10px;
+    }
+
+    .menu-item {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 8px;
+      background: transparent;
+      color: white;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: #292929;
+    }
+
+    .menu-item.active {
+      background: #8b5cf6;
+    }
+
+    /* ÁREA PRINCIPAL */
+    main {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .top-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    .btn {
+      background: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background: #7c3aed;
+    }
+
+    /* TELA DE PRÉ-VISUALIZAÇÃO */
+    .preview {
+      flex: 1;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid #333;
+      min-height: 300px;
+    }
+
+    .preview-content h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .preview-content p {
+      color: #aaa;
+      font-size: 18px;
+    }
+
+    /* CONTROLES */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .control-btn {
+      flex: 1;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #292929;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .control-btn:hover {
+      background: #3a3a3a;
+    }
+
+    .project-btn {
+      background: #16a34a;
+    }
+
+    .project-btn:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="logo">✦ CultoVision</div>
+    <div class="status">● Sistema pronto</div>
+  </header>
+
+  <div class="container">
+
+    <!-- MENU -->
+    <aside>
+      <div class="menu-title">APRESENTAÇÃO</div>
+
+      <button class="menu-item active">🏠 Início</button>
+      <button class="menu-item">🎵 Músicas</button>
+      <button class="menu-item">📖 Bíblia</button>
+      <button class="menu-item">🖼️ Mídias</button>
+
+      <div class="menu-title">ORGANIZAÇÃO</div>
+
+      <button class="menu-item">📋 Culto</button>
+      <button class="menu-item">⭐ Favoritos</button>
+
+      <div class="menu-title">SISTEMA</div>
+
+      <button class="menu-item">⚙️ Configurações</button>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main>
+
+      <div class="top-area">
+        <div>
+          <h1>Bem-vindo ao CultoVision 👋</h1>
+          <p style="color: #aaa; margin-top: 8px;">
+            Selecione um conteúdo para começar a apresentação.
+          </p>
+        </div>
+
+        <button class="btn">＋ Novo conteúdo</button>
+      </div>
+
+      <!-- PRÉ-VISUALIZAÇÃO -->
+      <div class="preview">
+
+        <div class="preview-content">
+          <h2>Sua apresentação aparecerá aqui</h2>
+
+          <p>
+            Músicas, versículos, imagens e vídeos.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CONTROLES -->
+      <div class="controls">
+
+        <button class="control-btn">
+          ◀ Anterior
+        </button>
+
+        <button class="control-btn project-btn">
+          📺 Projetar
+        </button>
+
+        <button class="control-btn">
+          Próximo ▶
+        </button>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
