@@ -1,253 +1,1902 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CultoVision</title>
+<title>CultoVision</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0f1117;
+    --sidebar: #151820;
+    --card: #1b1f2a;
+    --card-hover: #252a38;
+    --border: #2d3342;
+    --text: #ffffff;
+    --muted: #8d95a7;
+    --purple: #8b5cf6;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --pink: #ec4899;
+    --orange: #f59e0b;
+    --red: #ef4444;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+header {
+    height: 64px;
+    background: var(--sidebar);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--purple);
+    border-radius: 9px;
+
+    font-size: 18px;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.app {
+    display: flex;
+    height: calc(100vh - 64px);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 230px;
+
+    background: var(--sidebar);
+
+    border-right: 1px solid var(--border);
+
+    padding: 20px 12px;
+
+    overflow-y: auto;
+}
+
+.menu-title {
+    color: #626a7d;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    margin: 14px 10px 8px;
+}
+
+.menu-button {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    color: #9da5b7;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    margin-bottom: 4px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.menu-button:hover {
+    background: var(--card-hover);
+    color: white;
+}
+
+.menu-button.active {
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--purple);
+}
+
+.menu-icon {
+    width: 22px;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 18px;
+
+    filter: grayscale(1);
+
+    transition: 0.2s;
+}
+
+.menu-button:hover .menu-icon,
+.menu-button.active .menu-icon {
+    filter: grayscale(0);
+}
+
+/* Cores dos ícones */
+
+.menu-button[data-page="home"].active .menu-icon {
+    color: var(--purple);
+}
+
+.menu-button[data-page="music"].active .menu-icon {
+    color: var(--pink);
+}
+
+.menu-button[data-page="bible"].active .menu-icon {
+    color: var(--blue);
+}
+
+.menu-button[data-page="media"].active .menu-icon {
+    color: var(--orange);
+}
+
+.menu-button[data-page="service"].active .menu-icon {
+    color: var(--green);
+}
+
+.menu-button[data-page="favorites"].active .menu-icon {
+    color: #facc15;
+}
+
+.menu-button[data-page="settings"].active .menu-icon {
+    color: #94a3b8;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.content {
+    flex: 1;
+
+    padding: 28px;
+
+    overflow-y: auto;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.page-title {
+    font-size: 26px;
+}
+
+.page-description {
+    color: var(--muted);
+
+    margin-top: 7px;
+
+    font-size: 14px;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.button {
+    border: none;
+
+    padding: 11px 17px;
+
+    border-radius: 8px;
+
+    background: var(--purple);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.1);
+}
+
+.button.secondary {
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+.button.green {
+    background: var(--green);
+}
+
+.button.blue {
+    background: var(--blue);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+}
+
+.stat-icon {
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+.stat-label {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 5px;
+}
+
+/* =========================
+   ÁREA DE PROJEÇÃO
+========================= */
+
+.presentation {
+    display: grid;
+
+    grid-template-columns: 1fr 280px;
+
+    gap: 18px;
+
+    min-height: 520px;
+}
+
+.preview-container {
+    background: #08090d;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-label {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.preview {
+    flex: 1;
+
+    border-radius: 10px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #252044,
+            #08090d 70%
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.slide-text {
+    font-size: 42px;
+
+    font-weight: bold;
+
+    line-height: 1.3;
+
+    max-width: 90%;
+}
+
+.slide-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 12px;
+}
+
+/* =========================
+   LISTA DE SLIDES
+========================= */
+
+.slide-list {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 15px;
+
+    overflow-y: auto;
+}
+
+.slide-list-title {
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.slide-item {
+    padding: 13px;
+
+    border-radius: 8px;
+
+    background: #151821;
+
+    margin-bottom: 7px;
+
+    color: #aab1c1;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.slide-item:hover {
+    background: var(--card-hover);
+}
+
+.slide-item.active {
+    background: rgba(139, 92, 246, 0.2);
+
+    color: white;
+
+    border-left: 3px solid var(--purple);
+}
+
+/* =========================
+   CONTROLES
+========================= */
+
+.presentation-controls {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.control-button {
+    flex: 1;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.control-button:hover {
+    background: var(--card-hover);
+}
+
+.control-button.project {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    font-weight: bold;
+}
+
+/* =========================
+   MÚSICAS
+========================= */
+
+.search-box {
+    width: 100%;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    padding: 13px 15px;
+
+    color: white;
+
+    outline: none;
+
+    margin-bottom: 18px;
+}
+
+.search-box:focus {
+    border-color: var(--purple);
+}
+
+.music-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 15px;
+}
+
+.music-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.music-card:hover {
+    transform: translateY(-2px);
+
+    background: var(--card-hover);
+}
+
+.music-card-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 10px;
+
+    background: rgba(236, 72, 153, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.music-card h3 {
+    font-size: 16px;
+}
+
+.music-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 6px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 100;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: min(600px, 90%);
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 25px;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+
+    background: #11141b;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    padding: 13px;
+
+    color: white;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+.textarea {
+    min-height: 220px;
+
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    body {
-      background: #121212;
-      color: white;
-      height: 100vh;
-      overflow: hidden;
+    .presentation {
+        grid-template-columns: 1fr;
     }
 
-    /* CABEÇALHO */
-    header {
-      height: 60px;
-      background: #1e1e1e;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
-      border-bottom: 1px solid #333;
+    .sidebar {
+        width: 190px;
     }
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #8b5cf6;
-    }
+@media (max-width: 650px) {
 
-    .status {
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    /* ESTRUTURA PRINCIPAL */
-    .container {
-      display: flex;
-      height: calc(100vh - 60px);
-    }
-
-    /* MENU LATERAL */
-    aside {
-      width: 220px;
-      background: #181818;
-      padding: 20px 10px;
-      border-right: 1px solid #333;
+    .sidebar {
+        width: 70px;
     }
 
     .menu-title {
-      color: #777;
-      font-size: 12px;
-      margin: 10px;
+        display: none;
     }
 
-    .menu-item {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 8px;
-      background: transparent;
-      color: white;
-      border: none;
-      text-align: left;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
+    .menu-button span:last-child {
+        display: none;
     }
 
-    .menu-item:hover {
-      background: #292929;
+    .menu-button {
+        justify-content: center;
     }
 
-    .menu-item.active {
-      background: #8b5cf6;
+    .content {
+        padding: 15px;
     }
 
-    /* ÁREA PRINCIPAL */
-    main {
-      flex: 1;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .dashboard {
+        grid-template-columns: 1fr 1fr;
     }
-
-    .top-area {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    .btn {
-      background: #8b5cf6;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .btn:hover {
-      background: #7c3aed;
-    }
-
-    /* TELA DE PRÉ-VISUALIZAÇÃO */
-    .preview {
-      flex: 1;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border: 1px solid #333;
-      min-height: 300px;
-    }
-
-    .preview-content h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .preview-content p {
-      color: #aaa;
-      font-size: 18px;
-    }
-
-    /* CONTROLES */
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .control-btn {
-      flex: 1;
-      padding: 16px;
-      border: none;
-      border-radius: 8px;
-      background: #292929;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .control-btn:hover {
-      background: #3a3a3a;
-    }
-
-    .project-btn {
-      background: #16a34a;
-    }
-
-    .project-btn:hover {
-      background: #15803d;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- CABEÇALHO -->
-  <header>
-    <div class="logo">✦ CultoVision</div>
-    <div class="status">● Sistema pronto</div>
-  </header>
+<header>
 
-  <div class="container">
+    <div class="logo">
+
+        <div class="logo-icon">
+            ✦
+        </div>
+
+        CultoVision
+
+    </div>
+
+    <div class="system-status">
+
+        <div class="status-dot"></div>
+
+        Sistema pronto
+
+    </div>
+
+</header>
+
+
+<div class="app">
 
     <!-- MENU -->
-    <aside>
-      <div class="menu-title">APRESENTAÇÃO</div>
 
-      <button class="menu-item active">🏠 Início</button>
-      <button class="menu-item">🎵 Músicas</button>
-      <button class="menu-item">📖 Bíblia</button>
-      <button class="menu-item">🖼️ Mídias</button>
+    <aside class="sidebar">
 
-      <div class="menu-title">ORGANIZAÇÃO</div>
+        <div class="menu-title">
+            PRINCIPAL
+        </div>
 
-      <button class="menu-item">📋 Culto</button>
-      <button class="menu-item">⭐ Favoritos</button>
+        <button class="menu-button active" data-page="home">
+            <span class="menu-icon">⌂</span>
+            <span>Início</span>
+        </button>
 
-      <div class="menu-title">SISTEMA</div>
+        <button class="menu-button" data-page="music">
+            <span class="menu-icon">♫</span>
+            <span>Músicas</span>
+        </button>
 
-      <button class="menu-item">⚙️ Configurações</button>
+        <button class="menu-button" data-page="bible">
+            <span class="menu-icon">▣</span>
+            <span>Bíblia</span>
+        </button>
+
+        <button class="menu-button" data-page="media">
+            <span class="menu-icon">▧</span>
+            <span>Mídias</span>
+        </button>
+
+
+        <div class="menu-title">
+            ORGANIZAÇÃO
+        </div>
+
+        <button class="menu-button" data-page="service">
+            <span class="menu-icon">☷</span>
+            <span>Culto</span>
+        </button>
+
+        <button class="menu-button" data-page="favorites">
+            <span class="menu-icon">★</span>
+            <span>Favoritos</span>
+        </button>
+
+
+        <div class="menu-title">
+            SISTEMA
+        </div>
+
+        <button class="menu-button" data-page="settings">
+            <span class="menu-icon">⚙</span>
+            <span>Configurações</span>
+        </button>
+
     </aside>
 
+
     <!-- CONTEÚDO -->
-    <main>
 
-      <div class="top-area">
-        <div>
-          <h1>Bem-vindo ao CultoVision 👋</h1>
-          <p style="color: #aaa; margin-top: 8px;">
-            Selecione um conteúdo para começar a apresentação.
-          </p>
-        </div>
+    <main class="content">
 
-        <button class="btn">＋ Novo conteúdo</button>
-      </div>
 
-      <!-- PRÉ-VISUALIZAÇÃO -->
-      <div class="preview">
+        <!-- INÍCIO -->
 
-        <div class="preview-content">
-          <h2>Sua apresentação aparecerá aqui</h2>
+        <section class="page active" id="page-home">
 
-          <p>
-            Músicas, versículos, imagens e vídeos.
-          </p>
-        </div>
+            <div class="page-header">
 
-      </div>
+                <div>
 
-      <!-- CONTROLES -->
-      <div class="controls">
+                    <div class="page-title">
+                        Painel principal
+                    </div>
 
-        <button class="control-btn">
-          ◀ Anterior
-        </button>
+                    <div class="page-description">
+                        Controle suas apresentações.
+                    </div>
 
-        <button class="control-btn project-btn">
-          📺 Projetar
-        </button>
+                </div>
 
-        <button class="control-btn">
-          Próximo ▶
-        </button>
+                <button class="button" onclick="openMusicModal()">
+                    ＋ Nova música
+                </button>
 
-      </div>
+            </div>
+
+
+            <div class="dashboard">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">♫</div>
+
+                    <div class="stat-number" id="musicCount">
+                        2
+                    </div>
+
+                    <div class="stat-label">
+                        Músicas
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">▣</div>
+
+                    <div class="stat-number">
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Versículos
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">▧</div>
+
+                    <div class="stat-number">
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Mídias
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">☷</div>
+
+                    <div class="stat-number">
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Cultos
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="presentation">
+
+                <div class="preview-container">
+
+                    <div class="preview-label">
+                        PRÉ-VISUALIZAÇÃO
+                    </div>
+
+                    <div class="preview">
+
+                        <div class="slide-text" id="slideText">
+                            Bem-vindo ao CultoVision
+                        </div>
+
+                    </div>
+
+                    <div class="slide-info">
+
+                        <span id="slideCounter">
+                            Slide 1 de 3
+                        </span>
+
+                        <span>
+                            Pré-visualização
+                        </span>
+
+                    </div>
+
+
+                    <div class="presentation-controls">
+
+                        <button
+                            class="control-button"
+                            onclick="previousSlide()">
+
+                            ◀ Anterior
+
+                        </button>
+
+
+                        <button
+                            class="control-button project"
+                            onclick="openProjection()">
+
+                            📺 Projetar
+
+                        </button>
+
+
+                        <button
+                            class="control-button"
+                            onclick="nextSlide()">
+
+                            Próximo ▶
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slide-list">
+
+                    <div class="slide-list-title">
+                        Slides
+                    </div>
+
+                    <div id="slideList"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MÚSICAS -->
+
+        <section class="page" id="page-music">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        🎵 Músicas
+                    </div>
+
+                    <div class="page-description">
+                        Suas músicas e letras.
+                    </div>
+
+                </div>
+
+                <button
+                    class="button"
+                    onclick="openMusicModal()">
+
+                    ＋ Adicionar música
+
+                </button>
+
+            </div>
+
+
+            <input
+                type="text"
+                class="search-box"
+                placeholder="🔎 Pesquisar música..."
+                id="musicSearch"
+                oninput="searchMusic()">
+
+
+            <div
+                class="music-grid"
+                id="musicGrid">
+
+            </div>
+
+        </section>
+
+
+        <!-- BÍBLIA -->
+
+        <section class="page" id="page-bible">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        📖 Bíblia
+                    </div>
+
+                    <div class="page-description">
+                        Em breve: livros, capítulos e versículos.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>
+                    Bíblia
+                </h2>
+
+                <p style="color:#8d95a7;margin-top:10px;">
+                    Esta área será desenvolvida no próximo passo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MÍDIAS -->
+
+        <section class="page" id="page-media">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        🖼️ Mídias
+                    </div>
+
+                    <div class="page-description">
+                        Imagens e vídeos para suas apresentações.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>
+                    Biblioteca de mídias
+                </h2>
+
+                <p style="color:#8d95a7;margin-top:10px;">
+                    Em breve você poderá adicionar imagens e vídeos.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CULTO -->
+
+        <section class="page" id="page-service">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        📋 Culto
+                    </div>
+
+                    <div class="page-description">
+                        Monte a ordem da apresentação.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>
+                    Novo culto
+                </h2>
+
+                <p style="color:#8d95a7;margin-top:10px;">
+                    Em breve criaremos playlists e ordem do culto.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAVORITOS -->
+
+        <section class="page" id="page-favorites">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        ⭐ Favoritos
+                    </div>
+
+                    <div class="page-description">
+                        Conteúdos favoritos.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>
+                    Seus favoritos
+                </h2>
+
+                <p style="color:#8d95a7;margin-top:10px;">
+                    Você poderá salvar músicas e conteúdos aqui.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONFIGURAÇÕES -->
+
+        <section class="page" id="page-settings">
+
+            <div class="page-header">
+
+                <div>
+
+                    <div class="page-title">
+                        ⚙️ Configurações
+                    </div>
+
+                    <div class="page-description">
+                        Personalize o CultoVision.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h2>
+                    Configurações
+                </h2>
+
+                <p style="color:#8d95a7;margin-top:10px;">
+                    Em breve teremos configurações de fonte,
+                    fundo, cores e projeção.
+                </p>
+
+            </div>
+
+        </section>
 
     </main>
 
-  </div>
+</div>
+
+
+<!-- MODAL DE MÚSICA -->
+
+<div class="modal" id="musicModal">
+
+    <div class="modal-content">
+
+        <h2>
+            🎵 Nova música
+        </h2>
+
+        <input
+            class="input"
+            id="musicTitle"
+            placeholder="Nome da música">
+
+
+        <textarea
+            class="input textarea"
+            id="musicLyrics"
+            placeholder="Digite a letra.
+
+Separe cada slide com uma linha contendo:
+
+---
+
+Exemplo:
+
+Primeiro slide
+
+---
+
+Segundo slide
+
+---
+
+Terceiro slide"></textarea>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="button secondary"
+                onclick="closeMusicModal()">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="button"
+                onclick="saveMusic()">
+
+                Salvar música
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   DADOS
+========================================= */
+
+let songs = [
+    {
+        title: "Grandes Coisas",
+        lyrics: [
+            "Grandes coisas fez o Senhor",
+            "Por isso estamos alegres",
+            "Vamos celebrar e adorar"
+        ]
+    },
+
+    {
+        title: "Teu Amor",
+        lyrics: [
+            "Teu amor nunca falha",
+            "Tua graça me alcançou",
+            "Para sempre cantarei"
+        ]
+    }
+];
+
+
+let currentSong = songs[0];
+
+let currentSlide = 0;
+
+let projectionWindow = null;
+
+
+/* =========================================
+   MENU
+========================================= */
+
+const menuButtons =
+    document.querySelectorAll(".menu-button");
+
+
+menuButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const page =
+            button.dataset.page;
+
+
+        menuButtons.forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        document
+            .querySelectorAll(".page")
+            .forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+
+        const selectedPage =
+            document.getElementById(
+                "page-" + page
+            );
+
+
+        if (selectedPage) {
+
+            selectedPage.classList.add("active");
+
+        }
+
+
+        if (page === "music") {
+
+            renderMusic();
+
+        }
+
+    });
+
+});
+
+
+/* =========================================
+   SLIDES
+========================================= */
+
+function renderSlides() {
+
+    const list =
+        document.getElementById("slideList");
+
+
+    list.innerHTML = "";
+
+
+    currentSong.lyrics.forEach(
+        (text, index) => {
+
+            const item =
+                document.createElement("div");
+
+
+            item.className =
+                "slide-item";
+
+
+            if (index === currentSlide) {
+
+                item.classList.add("active");
+
+            }
+
+
+            item.textContent =
+                `${index + 1}. ${text}`;
+
+
+            item.onclick = () => {
+
+                currentSlide = index;
+
+                updateSlide();
+
+            };
+
+
+            list.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   ATUALIZAR SLIDE
+========================================= */
+
+function updateSlide() {
+
+    const text =
+        currentSong.lyrics[currentSlide];
+
+
+    document.getElementById(
+        "slideText"
+    ).textContent = text;
+
+
+    document.getElementById(
+        "slideCounter"
+    ).textContent =
+        `Slide ${currentSlide + 1} de ${currentSong.lyrics.length}`;
+
+
+    renderSlides();
+
+
+    updateProjection();
+
+}
+
+
+/* =========================================
+   PRÓXIMO
+========================================= */
+
+function nextSlide() {
+
+    if (
+        currentSlide <
+        currentSong.lyrics.length - 1
+    ) {
+
+        currentSlide++;
+
+        updateSlide();
+
+    }
+
+}
+
+
+/* =========================================
+   ANTERIOR
+========================================= */
+
+function previousSlide() {
+
+    if (currentSlide > 0) {
+
+        currentSlide--;
+
+        updateSlide();
+
+    }
+
+}
+
+
+/* =========================================
+   PROJEÇÃO
+========================================= */
+
+function openProjection() {
+
+    if (
+        projectionWindow &&
+        !projectionWindow.closed
+    ) {
+
+        projectionWindow.focus();
+
+        return;
+
+    }
+
+
+    projectionWindow =
+        window.open(
+            "",
+            "CultoVisionProjection",
+            "width=1200,height=700"
+        );
+
+
+    if (!projectionWindow) {
+
+        alert(
+            "O navegador bloqueou a janela de projeção. Permita pop-ups para este site."
+        );
+
+        return;
+
+    }
+
+
+    projectionWindow.document.write(`
+
+        <!DOCTYPE html>
+
+        <html lang="pt-BR">
+
+        <head>
+
+            <title>CultoVision - Projeção</title>
+
+            <style>
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                html,
+                body {
+
+                    margin: 0;
+
+                    width: 100%;
+
+                    height: 100%;
+
+                    background: #000;
+
+                    color: white;
+
+                    font-family: Arial;
+
+                }
+
+                body {
+
+                    display: flex;
+
+                    align-items: center;
+
+                    justify-content: center;
+
+                    text-align: center;
+
+                    overflow: hidden;
+
+                }
+
+                #projectionText {
+
+                    width: 90%;
+
+                    font-size: 70px;
+
+                    line-height: 1.3;
+
+                    font-weight: bold;
+
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <div id="projectionText">
+                ${currentSong.lyrics[currentSlide]}
+            </div>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    projectionWindow.document.close();
+
+}
+
+
+/* =========================================
+   ATUALIZAR PROJEÇÃO
+========================================= */
+
+function updateProjection() {
+
+    if (
+        projectionWindow &&
+        !projectionWindow.closed
+    ) {
+
+        const text =
+            projectionWindow.document
+            .getElementById(
+                "projectionText"
+            );
+
+
+        if (text) {
+
+            text.textContent =
+                currentSong.lyrics[currentSlide];
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   TECLADO
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "ArrowRight") {
+
+            nextSlide();
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            previousSlide();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MÚSICAS
+========================================= */
+
+function renderMusic(
+    search = ""
+) {
+
+    const grid =
+        document.getElementById(
+            "musicGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    songs
+        .filter(song =>
+            song.title
+                .toLowerCase()
+                .includes(
+                    search.toLowerCase()
+                )
+        )
+        .forEach(song => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "music-card";
+
+
+            card.innerHTML = `
+
+                <div class="music-card-icon">
+                    ♫
+                </div>
+
+                <h3>
+                    ${song.title}
+                </h3>
+
+                <p>
+                    ${song.lyrics.length}
+                    slides
+                </p>
+
+            `;
+
+
+            card.onclick = () => {
+
+                currentSong = song;
+
+                currentSlide = 0;
+
+                updateSlide();
+
+                goHome();
+
+            };
+
+
+            grid.appendChild(card);
+
+        });
+
+
+    document.getElementById(
+        "musicCount"
+    ).textContent = songs.length;
+
+}
+
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+function searchMusic() {
+
+    const value =
+        document.getElementById(
+            "musicSearch"
+        ).value;
+
+
+    renderMusic(value);
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+function openMusicModal() {
+
+    document
+        .getElementById("musicModal")
+        .classList.add("show");
+
+}
+
+
+function closeMusicModal() {
+
+    document
+        .getElementById("musicModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================
+   SALVAR MÚSICA
+========================================= */
+
+function saveMusic() {
+
+    const title =
+        document
+        .getElementById("musicTitle")
+        .value
+        .trim();
+
+
+    const lyrics =
+        document
+        .getElementById("musicLyrics")
+        .value
+        .split("---")
+        .map(item => item.trim())
+        .filter(item => item);
+
+
+    if (!title) {
+
+        alert(
+            "Digite o nome da música."
+        );
+
+        return;
+
+    }
+
+
+    if (lyrics.length === 0) {
+
+        alert(
+            "Digite pelo menos um slide."
+        );
+
+        return;
+
+    }
+
+
+    songs.push({
+
+        title: title,
+
+        lyrics: lyrics
+
+    });
+
+
+    currentSong =
+        songs[songs.length - 1];
+
+
+    currentSlide = 0;
+
+
+    document
+        .getElementById("musicTitle")
+        .value = "";
+
+
+    document
+        .getElementById("musicLyrics")
+        .value = "";
+
+
+    closeMusicModal();
+
+
+    updateSlide();
+
+    renderMusic();
+
+
+    alert(
+        "Música adicionada com sucesso!"
+    );
+
+}
+
+
+/* =========================================
+   VOLTAR PARA INÍCIO
+========================================= */
+
+function goHome() {
+
+    menuButtons.forEach(button => {
+
+        button.classList.remove(
+            "active"
+        );
+
+
+        if (
+            button.dataset.page ===
+            "home"
+        ) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+    });
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById("page-home")
+        .classList.add("active");
+
+}
+
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+renderSlides();
+
+renderMusic();
+
+updateSlide();
+
+</script>
 
 </body>
 </html>
