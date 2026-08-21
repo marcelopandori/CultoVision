@@ -5,16 +5,14 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CultoVision</title>
-
 
 <style>
 
 /* =====================================================
-   CONFIGURAÇÕES GERAIS
+   CONFIGURAÇÕES
 ===================================================== */
 
 * {
@@ -24,147 +22,100 @@
 }
 
 :root {
-
-    --background: #090b10;
-
+    --bg: #090b10;
     --sidebar: #11151d;
-
     --card: #171c25;
-
     --card-hover: #222936;
-
-    --border: #2b3341;
-
+    --border: #2c3442;
     --text: #ffffff;
-
     --muted: #8d96a8;
 
-    --purple: #8b5cf6;
-
+    --purple: #a855f7;
     --pink: #ec4899;
-
-    --blue: #3b82f6;
-
     --green: #22c55e;
-
+    --blue: #3b82f6;
     --orange: #f59e0b;
-
     --cyan: #06b6d4;
-
-    --yellow: #facc15;
-
 }
 
-
 body {
-
-    background: var(--background);
-
+    background: var(--bg);
     color: var(--text);
-
     font-family: Arial, Helvetica, sans-serif;
-
     height: 100vh;
-
     overflow: hidden;
-
 }
 
 
 /* =====================================================
-   CABEÇALHO
+   HEADER
 ===================================================== */
 
 header {
-
     height: 65px;
-
     background: var(--sidebar);
-
     border-bottom: 1px solid var(--border);
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 0 22px;
-
 }
 
-
 .logo {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 
     font-size: 21px;
-
     font-weight: bold;
-
 }
 
-
 .logo-icon {
-
     width: 38px;
-
     height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 10px;
 
-    background: var(--purple);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ec4899
+    );
 
     font-size: 20px;
-
 }
-
 
 .status {
-
-    color: var(--muted);
-
     font-size: 13px;
-
+    color: var(--muted);
 }
 
-
 .status span {
-
     color: var(--green);
-
 }
 
 
 /* =====================================================
-   APLICAÇÃO
+   APP
 ===================================================== */
 
 .app {
-
     display: flex;
-
     height: calc(100vh - 65px);
-
 }
 
 
 /* =====================================================
-   MENU
+   SIDEBAR
 ===================================================== */
 
 .sidebar {
-
     width: 235px;
 
     background: var(--sidebar);
@@ -172,25 +123,23 @@ header {
     border-right: 1px solid var(--border);
 
     padding: 15px 12px;
-
 }
 
-
 .menu-title {
-
-    color: #5f6879;
+    color: #606a7c;
 
     font-size: 10px;
-
     font-weight: bold;
 
     margin: 15px 10px 8px;
-
 }
 
 
-.menu-button {
+/* =====================================================
+   BOTÕES DO MENU
+===================================================== */
 
+.menu-button {
     width: 100%;
 
     border: none;
@@ -206,101 +155,128 @@ header {
     cursor: pointer;
 
     display: flex;
-
     align-items: center;
 
     gap: 12px;
 
     margin-bottom: 4px;
 
-    transition: .25s;
-
+    transition:
+        background .25s,
+        color .25s;
 }
 
-
 .menu-button:hover {
-
     background: var(--card-hover);
-
     color: white;
+}
 
+.menu-button.active {
+    background: rgba(139, 92, 246, .15);
+    color: white;
 }
 
 
 /* =====================================================
-   ÍCONES MUDANDO DE COR
+   ÍCONES COLORIDOS
 ===================================================== */
 
 .menu-icon {
-
-    width: 28px;
+    width: 30px;
+    min-width: 30px;
 
     text-align: center;
 
-    font-size: 20px;
+    font-size: 21px;
 
-    transition: .25s;
-
+    transition:
+        color .25s ease,
+        transform .25s ease,
+        filter .25s ease;
 }
 
 
-/* Início */
+/* INÍCIO */
 
-.menu-button[data-page="home"]:hover
-.menu-icon {
-
+.menu-button[data-page="home"]:hover .menu-icon {
     color: var(--purple);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--purple)
+        );
 }
 
 
-/* Música */
+/* MÚSICA */
 
-.menu-button[data-page="music"]:hover
-.menu-icon {
-
+.menu-button[data-page="music"]:hover .menu-icon {
     color: var(--pink);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--pink)
+        );
 }
 
 
-/* Projeção */
+/* PROJEÇÃO */
 
-.menu-button[data-page="projection"]:hover
-.menu-icon {
-
+.menu-button[data-page="projection"]:hover .menu-icon {
     color: var(--green);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--green)
+        );
 }
 
 
-/* Fundo */
+/* FUNDOS */
 
-.menu-button[data-page="backgrounds"]:hover
-.menu-icon {
-
+.menu-button[data-page="backgrounds"]:hover .menu-icon {
     color: var(--orange);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--orange)
+        );
 }
 
 
-/* Culto */
+/* CULTO */
 
-.menu-button[data-page="service"]:hover
-.menu-icon {
-
+.menu-button[data-page="service"]:hover .menu-icon {
     color: var(--blue);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--blue)
+        );
 }
 
 
-/* Mídias */
+/* MÍDIAS */
 
-.menu-button[data-page="media"]:hover
-.menu-icon {
-
+.menu-button[data-page="media"]:hover .menu-icon {
     color: var(--cyan);
 
+    transform: scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 7px var(--cyan)
+        );
 }
 
 
@@ -309,47 +285,32 @@ header {
 ===================================================== */
 
 .content {
-
     flex: 1;
 
     padding: 28px;
 
     overflow-y: auto;
-
 }
-
 
 .page {
-
     display: none;
-
 }
-
 
 .page.active {
-
     display: block;
-
 }
 
-
 .title {
-
     font-size: 28px;
-
     font-weight: bold;
 
     margin-bottom: 7px;
-
 }
 
-
 .subtitle {
-
     color: var(--muted);
 
     margin-bottom: 25px;
-
 }
 
 
@@ -358,7 +319,6 @@ header {
 ===================================================== */
 
 .button {
-
     border: none;
 
     padding: 11px 17px;
@@ -375,38 +335,27 @@ header {
 
     transition: .2s;
 
+    margin-right: 6px;
 }
 
-
 .button:hover {
-
     filter: brightness(1.15);
 
     transform: translateY(-1px);
-
 }
-
 
 .button.green {
-
     background: var(--green);
-
 }
-
 
 .button.blue {
-
     background: var(--blue);
-
 }
 
-
 .button.dark {
-
     background: var(--card);
 
     border: 1px solid var(--border);
-
 }
 
 
@@ -415,19 +364,15 @@ header {
 ===================================================== */
 
 .cards {
-
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
     gap: 15px;
-
 }
 
-
 .card {
-
     background: var(--card);
 
     border: 1px solid var(--border);
@@ -435,58 +380,45 @@ header {
     border-radius: 12px;
 
     padding: 20px;
-
 }
 
-
 .card-icon {
-
     font-size: 27px;
 
     margin-bottom: 12px;
-
 }
 
-
 .card-number {
-
     font-size: 25px;
 
     font-weight: bold;
-
 }
 
-
 .card-label {
-
     color: var(--muted);
 
     font-size: 13px;
 
     margin-top: 5px;
-
 }
 
 
 /* =====================================================
-   ÁREA DE APRESENTAÇÃO
+   APRESENTAÇÃO
 ===================================================== */
 
 .presentation {
-
     display: grid;
 
-    grid-template-columns: 1fr 280px;
+    grid-template-columns:
+        1fr 280px;
 
     gap: 18px;
 
     margin-top: 20px;
-
 }
 
-
 .preview-container {
-
     background: #050608;
 
     border: 1px solid var(--border);
@@ -494,12 +426,9 @@ header {
     border-radius: 13px;
 
     padding: 15px;
-
 }
 
-
 .preview {
-
     height: 430px;
 
     border-radius: 10px;
@@ -514,13 +443,11 @@ header {
 
     padding: 50px;
 
-    transition: background .4s;
-
+    transition:
+        background .4s ease;
 }
 
-
 .slide-text {
-
     font-size: 42px;
 
     font-weight: bold;
@@ -528,8 +455,7 @@ header {
     line-height: 1.3;
 
     text-shadow:
-        0 3px 15px rgba(0,0,0,.7);
-
+        0 4px 20px rgba(0,0,0,.8);
 }
 
 
@@ -538,7 +464,6 @@ header {
 ===================================================== */
 
 .slide-list {
-
     background: var(--card);
 
     border: 1px solid var(--border);
@@ -550,21 +475,15 @@ header {
     max-height: 500px;
 
     overflow-y: auto;
-
 }
 
-
 .slide-title {
-
     font-weight: bold;
 
     margin-bottom: 12px;
-
 }
 
-
 .slide-item {
-
     padding: 12px;
 
     background: #12161d;
@@ -580,27 +499,22 @@ header {
     font-size: 13px;
 
     transition: .2s;
-
 }
 
-
 .slide-item:hover {
-
     background: var(--card-hover);
 
     color: white;
-
 }
 
-
 .slide-item.active {
+    background:
+        rgba(139,92,246,.2);
 
-    background: rgba(139,92,246,.2);
-
-    border-left: 3px solid var(--purple);
+    border-left:
+        3px solid var(--purple);
 
     color: white;
-
 }
 
 
@@ -609,18 +523,14 @@ header {
 ===================================================== */
 
 .controls {
-
     display: flex;
 
     gap: 10px;
 
     margin-top: 12px;
-
 }
 
-
 .control {
-
     flex: 1;
 
     border: 1px solid var(--border);
@@ -635,24 +545,21 @@ header {
 
     cursor: pointer;
 
+    transition: .2s;
 }
-
 
 .control:hover {
-
     background: var(--card-hover);
 
+    transform: translateY(-1px);
 }
 
-
 .control.project {
-
     background: var(--green);
 
     border-color: var(--green);
 
     font-weight: bold;
-
 }
 
 
@@ -661,7 +568,6 @@ header {
 ===================================================== */
 
 .search {
-
     width: 100%;
 
     padding: 14px;
@@ -677,31 +583,27 @@ header {
     outline: none;
 
     margin-bottom: 15px;
-
 }
-
 
 .search:focus {
-
     border-color: var(--purple);
-
 }
 
-
 .music-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill,minmax(220px,1fr));
+        repeat(
+            auto-fill,
+            minmax(220px,1fr)
+        );
 
     gap: 15px;
 
+    margin-top: 20px;
 }
 
-
 .music-card {
-
     background: var(--card);
 
     border: 1px solid var(--border);
@@ -711,52 +613,37 @@ header {
     border-radius: 12px;
 
     transition: .2s;
-
 }
 
-
 .music-card:hover {
-
     background: var(--card-hover);
 
     transform: translateY(-2px);
-
 }
 
-
 .music-icon {
-
     font-size: 28px;
 
     margin-bottom: 12px;
-
 }
 
-
 .music-card p {
-
     color: var(--muted);
 
     font-size: 13px;
 
     margin-top: 5px;
-
 }
 
-
 .music-actions {
-
     display: flex;
 
     gap: 7px;
 
     margin-top: 14px;
-
 }
 
-
 .small-button {
-
     border: none;
 
     background: #303846;
@@ -768,14 +655,10 @@ header {
     border-radius: 6px;
 
     cursor: pointer;
-
 }
 
-
 .small-button:hover {
-
     background: #414b5c;
-
 }
 
 
@@ -784,19 +667,18 @@ header {
 ===================================================== */
 
 .background-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill,minmax(190px,1fr));
+        repeat(
+            auto-fill,
+            minmax(190px,1fr)
+        );
 
     gap: 15px;
-
 }
 
-
 .background-card {
-
     height: 120px;
 
     border-radius: 12px;
@@ -814,23 +696,41 @@ header {
     font-weight: bold;
 
     transition: .2s;
-
 }
 
-
 .background-card:hover {
-
     transform: scale(1.03);
 
     border-color: white;
+}
 
+.background-card.selected {
+    border-color: var(--purple);
 }
 
 
-.background-card.selected {
+/* =====================================================
+   STATUS DE PROJEÇÃO
+===================================================== */
 
-    border-color: var(--purple);
+.projection-status {
+    margin-top: 15px;
 
+    padding: 14px;
+
+    border-radius: 9px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    color: var(--muted);
+}
+
+.projection-status.online {
+    border-color: var(--green);
+
+    color: var(--green);
 }
 
 
@@ -839,12 +739,12 @@ header {
 ===================================================== */
 
 .modal {
-
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0,0,0,.75);
+    background:
+        rgba(0,0,0,.78);
 
     display: none;
 
@@ -853,19 +753,13 @@ header {
     justify-content: center;
 
     z-index: 100;
-
 }
-
 
 .modal.show {
-
     display: flex;
-
 }
 
-
 .modal-content {
-
     width: min(600px,90%);
 
     background: var(--card);
@@ -875,12 +769,9 @@ header {
     border-radius: 13px;
 
     padding: 25px;
-
 }
 
-
 .input {
-
     width: 100%;
 
     padding: 13px;
@@ -896,16 +787,39 @@ header {
     border-radius: 8px;
 
     outline: none;
-
 }
 
-
 textarea {
-
     min-height: 220px;
 
     resize: vertical;
+}
 
+
+/* =====================================================
+   AVISO DE SEGUNDA TELA
+===================================================== */
+
+.screen-box {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+}
+
+.screen-box h3 {
+    margin-bottom: 8px;
+}
+
+.screen-box p {
+    color: var(--muted);
+
+    line-height: 1.5;
 }
 
 
@@ -916,39 +830,28 @@ textarea {
 @media(max-width:900px) {
 
     .cards {
-
         grid-template-columns:
             repeat(2,1fr);
-
     }
 
     .presentation {
-
         grid-template-columns: 1fr;
-
     }
 
 }
 
-
 @media(max-width:650px) {
 
     .sidebar {
-
         width: 70px;
-
     }
 
     .menu-button span:last-child {
-
         display: none;
-
     }
 
     .content {
-
         padding: 15px;
-
     }
 
 }
@@ -993,7 +896,7 @@ textarea {
 
 
 <!-- =====================================================
-     SIDEBAR
+     MENU LATERAL
 ===================================================== -->
 
 <aside class="sidebar">
@@ -1145,9 +1048,7 @@ textarea {
             <div
                 class="card-number"
                 id="musicCount">
-
                 0
-
             </div>
 
             <div class="card-label">
@@ -1183,9 +1084,7 @@ textarea {
             <div
                 class="card-number"
                 id="backgroundCount">
-
                 5
-
             </div>
 
             <div class="card-label">
@@ -1215,7 +1114,9 @@ textarea {
     </div>
 
 
-    <!-- APRESENTAÇÃO -->
+    <!-- =================================================
+         APRESENTAÇÃO
+    ================================================== -->
 
     <div class="presentation">
 
@@ -1223,8 +1124,9 @@ textarea {
         <div class="preview-container">
 
 
-            <div class="preview"
-                 id="preview">
+            <div
+                class="preview"
+                id="preview">
 
 
                 <div
@@ -1253,9 +1155,9 @@ textarea {
 
                 <button
                     class="control project"
-                    onclick="openProjection()">
+                    onclick="startPresentation()">
 
-                    📺 Projetar na TV
+                    📺 Apresentar
 
                 </button>
 
@@ -1272,6 +1174,15 @@ textarea {
             </div>
 
 
+            <div
+                class="projection-status"
+                id="projectionStatus">
+
+                ● A apresentação ainda não foi iniciada.
+
+            </div>
+
+
         </div>
 
 
@@ -1280,15 +1191,12 @@ textarea {
 
             <div class="slide-title">
 
-                Slides da música
+                Slides
 
             </div>
 
 
-            <div
-                id="slideList">
-
-            </div>
+            <div id="slideList"></div>
 
 
         </div>
@@ -1315,7 +1223,7 @@ textarea {
 
 
     <div class="subtitle">
-        Escolha a música que será apresentada.
+        Escolha ou adicione uma música.
     </div>
 
 
@@ -1346,8 +1254,7 @@ textarea {
 
     <div
         class="music-grid"
-        id="musicGrid"
-        style="margin-top:20px;">
+        id="musicGrid">
 
     </div>
 
@@ -1370,7 +1277,7 @@ textarea {
 
 
     <div class="subtitle">
-        Essa é a tela que será enviada para a TV.
+        A TV exibirá somente esta apresentação.
     </div>
 
 
@@ -1379,6 +1286,7 @@ textarea {
         id="projectionPreview"
         style="height:500px;">
 
+
         <div
             class="slide-text"
             id="projectionText">
@@ -1386,6 +1294,7 @@ textarea {
             Nenhum conteúdo
 
         </div>
+
 
     </div>
 
@@ -1404,9 +1313,9 @@ textarea {
 
         <button
             class="control project"
-            onclick="openProjection()">
+            onclick="startPresentation()">
 
-            📺 Abrir tela
+            📺 Iniciar apresentação
 
         </button>
 
@@ -1419,6 +1328,23 @@ textarea {
 
         </button>
 
+
+    </div>
+
+
+    <div class="screen-box">
+
+        <h3>
+            🖥️ Segunda tela
+        </h3>
+
+        <p id="screenInfo">
+
+            Clique em "Iniciar apresentação".
+            O CultoVision tentará identificar
+            automaticamente a segunda tela.
+
+        </p>
 
     </div>
 
@@ -1470,29 +1396,30 @@ textarea {
 
 
     <div class="subtitle">
-        Organize a programação do culto.
+        Organize a ordem do culto.
     </div>
 
 
-    <div class="empty">
+    <div class="screen-box">
 
-        Em breve poderemos colocar:
+        <h3>
+            🚧 Em desenvolvimento
+        </h3>
 
-        <br><br>
+        <p>
 
-        🎵 Louvor
+            Aqui vamos criar posteriormente
+            a programação completa do culto.
 
-        <br>
+            <br><br>
 
-        📖 Palavra
+            🎵 Louvor<br>
+            📖 Palavra<br>
+            🙏 Oração<br>
+            🎤 Avisos<br>
+            🎬 Vídeos
 
-        <br>
-
-        🙏 Oração
-
-        <br>
-
-        🎤 Avisos
+        </p>
 
     </div>
 
@@ -1519,9 +1446,16 @@ textarea {
     </div>
 
 
-    <div class="empty">
+    <div class="screen-box">
 
-        Sistema de mídias será adicionado depois.
+        <h3>
+            🚧 Em desenvolvimento
+        </h3>
+
+        <p>
+            Aqui adicionaremos imagens,
+            vídeos e outros arquivos.
+        </p>
 
     </div>
 
@@ -1535,7 +1469,7 @@ textarea {
 
 
 <!-- =====================================================
-     MODAL MÚSICA
+     MODAL
 ===================================================== -->
 
 <div
@@ -1547,7 +1481,7 @@ textarea {
 
 
         <h2>
-            🎵 Nova música
+            🎵 Adicionar música
         </h2>
 
 
@@ -1563,11 +1497,7 @@ textarea {
         <textarea
             class="input"
             id="musicLyrics"
-            placeholder="Digite os slides.
-
-Separe cada slide com:
-
----
+            placeholder="Digite cada slide separado por ---.
 
 Exemplo:
 
@@ -1580,7 +1510,6 @@ Segundo slide
 ---
 
 Terceiro slide">
-
         </textarea>
 
 
@@ -1597,7 +1526,7 @@ Terceiro slide">
             class="button"
             onclick="saveMusic()">
 
-            Salvar música
+            Salvar
 
         </button>
 
@@ -1609,63 +1538,45 @@ Terceiro slide">
 
 <script>
 
-
 /* =====================================================
    MÚSICAS
 ===================================================== */
 
-let songs = JSON.parse(
-    localStorage.getItem("cultovision_songs")
+let songs =
+JSON.parse(
+    localStorage.getItem(
+        "cultovision_songs"
+    )
 ) || [
 
     {
-
         title: "Grandes Coisas",
 
         lyrics: [
-
             "Grandes coisas fez o Senhor",
-
             "Por isso estamos alegres",
-
             "Vamos celebrar e adorar"
-
         ]
-
     },
 
-
     {
-
         title: "Teu Amor",
 
         lyrics: [
-
             "Teu amor nunca falha",
-
             "Tua graça me alcançou",
-
             "Para sempre cantarei"
-
         ]
-
     },
 
-
     {
-
         title: "Minha Adoração",
 
         lyrics: [
-
             "Receba a minha adoração",
-
             "Receba o meu coração",
-
             "Tudo entrego a Ti"
-
         ]
-
     }
 
 ];
@@ -1678,69 +1589,56 @@ let songs = JSON.parse(
 const backgrounds = [
 
     {
-
         name: "Escuro",
 
         css:
         "linear-gradient(135deg,#050505,#171717)"
-
     },
 
-
     {
-
         name: "Roxo",
 
         css:
         "linear-gradient(135deg,#24103f,#080014)"
-
     },
 
-
     {
-
         name: "Azul",
 
         css:
         "linear-gradient(135deg,#071d3b,#020812)"
-
     },
 
-
     {
-
         name: "Vermelho",
 
         css:
         "linear-gradient(135deg,#3b0808,#100000)"
-
     },
 
-
     {
-
         name: "Pôr do Sol",
 
         css:
         "linear-gradient(135deg,#ff7b00,#351000)"
-
     }
 
 ];
 
 
-let currentBackground = 0;
-
-
 /* =====================================================
-   CONTROLE
+   ESTADO
 ===================================================== */
 
 let currentSong = songs[0];
 
 let currentSlide = 0;
 
+let currentBackground = 0;
+
 let projectionWindow = null;
+
+let secondScreen = null;
 
 
 /* =====================================================
@@ -1751,11 +1649,9 @@ document
 .querySelectorAll(".menu-button")
 .forEach(button => {
 
-
     button.addEventListener(
         "click",
         function() {
-
 
             document
             .querySelectorAll(".menu-button")
@@ -1766,7 +1662,6 @@ document
                 );
 
             });
-
 
             this.classList.add(
                 "active"
@@ -1811,7 +1706,6 @@ document
 
 function renderMusic() {
 
-
     const grid =
         document.getElementById(
             "musicGrid"
@@ -1838,7 +1732,6 @@ function renderMusic() {
     .forEach(
         (song,index) => {
 
-
             const card =
                 document.createElement(
                     "div"
@@ -1856,7 +1749,7 @@ function renderMusic() {
                 </div>
 
                 <h3>
-                    ${song.title}
+                    ${escapeHTML(song.title)}
                 </h3>
 
                 <p>
@@ -1876,20 +1769,17 @@ function renderMusic() {
 
                     <button
                         class="small-button"
-                        onclick="googleSong('${song.title}')">
+                        onclick="googleSong('${escapeAttribute(song.title)}')">
 
                         🔍 Google
 
                     </button>
 
                 </div>
-
             `;
 
 
-            grid.appendChild(
-                card
-            );
+            grid.appendChild(card);
 
         }
     );
@@ -1909,16 +1799,12 @@ function renderMusic() {
 
 function selectSong(index) {
 
-
     currentSong =
         songs[index];
 
-
     currentSlide = 0;
 
-
     updateSlide();
-
 
     goToPage("home");
 
@@ -1930,7 +1816,6 @@ function selectSong(index) {
 ===================================================== */
 
 function updateSlide() {
-
 
     if(!currentSong)
         return;
@@ -1955,14 +1840,6 @@ function updateSlide() {
 
 
     document.getElementById(
-        "projectionPreview"
-    ).style.background =
-        backgrounds[
-            currentBackground
-        ].css;
-
-
-    document.getElementById(
         "preview"
     ).style.background =
         backgrounds[
@@ -1970,8 +1847,15 @@ function updateSlide() {
         ].css;
 
 
-    renderSlides();
+    document.getElementById(
+        "projectionPreview"
+    ).style.background =
+        backgrounds[
+            currentBackground
+        ].css;
 
+
+    renderSlides();
 
     updateProjection();
 
@@ -1983,7 +1867,6 @@ function updateSlide() {
 ===================================================== */
 
 function renderSlides() {
-
 
     const list =
         document.getElementById(
@@ -1998,7 +1881,6 @@ function renderSlides() {
     .forEach(
         (text,index) => {
 
-
             const item =
                 document.createElement(
                     "div"
@@ -2009,9 +1891,7 @@ function renderSlides() {
                 "slide-item";
 
 
-            if(
-                index === currentSlide
-            ) {
+            if(index === currentSlide) {
 
                 item.classList.add(
                     "active"
@@ -2027,19 +1907,15 @@ function renderSlides() {
             item.onclick =
                 function() {
 
-
                     currentSlide =
                         index;
-
 
                     updateSlide();
 
                 };
 
 
-            list.appendChild(
-                item
-            );
+            list.appendChild(item);
 
         }
     );
@@ -2048,20 +1924,17 @@ function renderSlides() {
 
 
 /* =====================================================
-   PRÓXIMO SLIDE
+   PRÓXIMO
 ===================================================== */
 
 function nextSlide() {
-
 
     if(
         currentSlide <
         currentSong.lyrics.length - 1
     ) {
 
-
         currentSlide++;
-
 
         updateSlide();
 
@@ -2071,17 +1944,14 @@ function nextSlide() {
 
 
 /* =====================================================
-   SLIDE ANTERIOR
+   ANTERIOR
 ===================================================== */
 
 function previousSlide() {
 
-
     if(currentSlide > 0) {
 
-
         currentSlide--;
-
 
         updateSlide();
 
@@ -2096,7 +1966,6 @@ function previousSlide() {
 
 function renderBackgrounds() {
 
-
     const grid =
         document.getElementById(
             "backgroundGrid"
@@ -2108,7 +1977,6 @@ function renderBackgrounds() {
 
     backgrounds.forEach(
         (background,index) => {
-
 
             const card =
                 document.createElement(
@@ -2143,22 +2011,17 @@ function renderBackgrounds() {
             card.onclick =
                 function() {
 
-
                     currentBackground =
                         index;
 
-
                     renderBackgrounds();
-
 
                     updateSlide();
 
                 };
 
 
-            grid.appendChild(
-                card
-            );
+            grid.appendChild(card);
 
         }
     );
@@ -2167,20 +2030,223 @@ function renderBackgrounds() {
 
 
 /* =====================================================
-   PROJEÇÃO NA TV
+   INICIAR APRESENTAÇÃO
 ===================================================== */
 
-function openProjection() {
+async function startPresentation() {
 
+    /*
+       Primeiro tentamos descobrir
+       se existe uma segunda tela.
+    */
+
+    await detectSecondScreen();
+
+
+    /*
+       Se conseguimos detectar,
+       abrimos a apresentação
+       diretamente nela.
+    */
+
+    if(secondScreen) {
+
+        openOnSecondScreen();
+
+        return;
+
+    }
+
+
+    /*
+       Caso o navegador não permita
+       a detecção automática,
+       usamos uma janela normal.
+    */
+
+    openProjectionWindow();
+
+}
+
+
+/* =====================================================
+   DETECTAR SEGUNDA TELA
+===================================================== */
+
+async function detectSecondScreen() {
+
+    secondScreen = null;
+
+
+    const info =
+        document.getElementById(
+            "screenInfo"
+        );
+
+
+    /*
+       API experimental de múltiplas telas.
+    */
+
+    if(
+        "getScreenDetails" in window
+    ) {
+
+        try {
+
+            const details =
+                await window.getScreenDetails();
+
+
+            const screens =
+                details.screens;
+
+
+            const current =
+                details.currentScreen;
+
+
+            /*
+               Procura uma tela diferente
+               da tela atual.
+            */
+
+            secondScreen =
+                screens.find(
+                    screen =>
+                        screen !== current
+                );
+
+
+            if(secondScreen) {
+
+                info.textContent =
+                    "✓ Segunda tela detectada. A apresentação será aberta nela.";
+
+                info.style.color =
+                    "#22c55e";
+
+                return;
+
+            }
+
+        }
+
+        catch(error) {
+
+            console.log(
+                "Não foi possível acessar as telas:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /*
+       Caso a API não exista,
+       mostramos uma mensagem.
+    */
+
+    info.textContent =
+        "O navegador não liberou a detecção automática da segunda tela. Será aberta uma janela de apresentação.";
+
+}
+
+
+/* =====================================================
+   ABRIR NA SEGUNDA TELA
+===================================================== */
+
+function openOnSecondScreen() {
+
+    if(!secondScreen) {
+
+        openProjectionWindow();
+
+        return;
+
+    }
+
+
+    /*
+       Calculamos a posição
+       da segunda tela.
+    */
+
+    const left =
+        secondScreen.availLeft;
+
+
+    const top =
+        secondScreen.availTop;
+
+
+    const width =
+        secondScreen.availWidth;
+
+
+    const height =
+        secondScreen.availHeight;
+
+
+    projectionWindow =
+        window.open(
+            "",
+            "CultoVisionTV",
+            `
+            left=${left},
+            top=${top},
+            width=${width},
+            height=${height}
+            `
+        );
+
+
+    if(!projectionWindow) {
+
+        alert(
+            "O navegador bloqueou a janela de apresentação."
+        );
+
+        return;
+
+    }
+
+
+    writeProjectionPage();
+
+
+    projectionWindow.focus();
+
+
+    document.getElementById(
+        "projectionStatus"
+    ).textContent =
+        "● Apresentação ativa na segunda tela.";
+
+    document.getElementById(
+        "projectionStatus"
+    ).classList.add(
+        "online"
+    );
+
+}
+
+
+/* =====================================================
+   JANELA NORMAL DE PROJEÇÃO
+===================================================== */
+
+function openProjectionWindow() {
 
     if(
         projectionWindow &&
         !projectionWindow.closed
     ) {
 
-
         projectionWindow.focus();
-
 
         return;
 
@@ -2197,35 +2263,61 @@ function openProjection() {
 
     if(!projectionWindow) {
 
-
         alert(
-            "O navegador bloqueou a janela. Permita pop-ups."
+            "Permita pop-ups para o CultoVision."
         );
-
 
         return;
 
     }
 
 
+    writeProjectionPage();
+
+
+    projectionWindow.focus();
+
+
+    document.getElementById(
+        "projectionStatus"
+    ).textContent =
+        "● Apresentação ativa.";
+
+    document.getElementById(
+        "projectionStatus"
+    ).classList.add(
+        "online"
+    );
+
+}
+
+
+/* =====================================================
+   CRIAR PÁGINA DA TV
+===================================================== */
+
+function writeProjectionPage() {
+
+    projectionWindow.document.open();
+
+
     projectionWindow.document.write(`
 
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-BR">
 
 <head>
+
+<meta charset="UTF-8">
 
 <title>CultoVision TV</title>
 
 <style>
 
 * {
-
     box-sizing: border-box;
-
 }
-
 
 html,
 body {
@@ -2240,8 +2332,11 @@ body {
 
 }
 
-
 body {
+
+    background: #000;
+
+    color: white;
 
     display: flex;
 
@@ -2251,16 +2346,11 @@ body {
 
     text-align: center;
 
-    color: white;
-
     font-family: Arial, sans-serif;
-
-    background: #000;
 
 }
 
-
-#tvBackground {
+#background {
 
     position: fixed;
 
@@ -2270,8 +2360,7 @@ body {
 
 }
 
-
-#tvText {
+#text {
 
     position: relative;
 
@@ -2279,7 +2368,7 @@ body {
 
     width: 90%;
 
-    font-size: 65px;
+    font-size: 70px;
 
     font-weight: bold;
 
@@ -2290,6 +2379,29 @@ body {
 
 }
 
+#fullscreenButton {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 5;
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.15);
+
+    color: white;
+
+    cursor: pointer;
+
+}
 
 </style>
 
@@ -2299,30 +2411,36 @@ body {
 <body>
 
 
-<div id="tvBackground"></div>
+<div id="background"></div>
 
 
-<div id="tvText">
+<div id="text">
 
-    ${currentSong.lyrics[currentSlide]}
+    ${escapeHTML(
+        currentSong.lyrics[currentSlide]
+    )}
 
 </div>
 
 
+<button
+    id="fullscreenButton"
+    onclick="goFullscreen()">
+
+    ⛶ Tela cheia
+
+</button>
+
+
 <script>
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+function goFullscreen() {
 
-        if(event.key === "F11") {
+    document.documentElement
+        .requestFullscreen()
+        .catch(() => {});
 
-            return;
-
-        }
-
-    }
-);
+}
 
 <\/script>
 
@@ -2348,7 +2466,6 @@ document.addEventListener(
 
 function updateProjection() {
 
-
     if(
         !projectionWindow ||
         projectionWindow.closed
@@ -2359,38 +2476,46 @@ function updateProjection() {
     }
 
 
-    const text =
-        projectionWindow.document
-        .getElementById(
-            "tvText"
-        );
+    try {
+
+        const text =
+            projectionWindow.document
+            .getElementById(
+                "text"
+            );
 
 
-    const background =
-        projectionWindow.document
-        .getElementById(
-            "tvBackground"
-        );
+        const background =
+            projectionWindow.document
+            .getElementById(
+                "background"
+            );
 
 
-    if(text) {
+        if(text) {
+
+            text.textContent =
+                currentSong.lyrics[
+                    currentSlide
+                ];
+
+        }
 
 
-        text.textContent =
-            currentSong.lyrics[
-                currentSlide
-            ];
+        if(background) {
+
+            background.style.background =
+                backgrounds[
+                    currentBackground
+                ].css;
+
+        }
 
     }
 
+    catch(error) {
 
-    if(background) {
-
-
-        background.style.background =
-            backgrounds[
-                currentBackground
-            ].css;
+        console.log(error);
 
     }
 
@@ -2405,26 +2530,27 @@ document.addEventListener(
     "keydown",
     function(event) {
 
+        /*
+           Só controla pelo teclado
+           quando o foco estiver no painel.
+        */
 
-        if(event.key === "ArrowRight") {
+        if(
+            event.key === "ArrowRight"
+        ) {
 
             nextSlide();
 
         }
 
 
-        if(event.key === "ArrowLeft") {
+        if(
+            event.key === "ArrowLeft"
+        ) {
 
             previousSlide();
 
         }
-
-
-        /*
-            ESC não fecha a apresentação,
-            apenas deixa o navegador controlar
-            o modo de tela cheia.
-        */
 
     }
 );
@@ -2435,7 +2561,6 @@ document.addEventListener(
 ===================================================== */
 
 function googleSong(title) {
-
 
     const query =
         encodeURIComponent(
@@ -2454,7 +2579,6 @@ function googleSong(title) {
 
 function searchGoogle() {
 
-
     const text =
         document.getElementById(
             "musicSearch"
@@ -2465,11 +2589,9 @@ function searchGoogle() {
 
     if(!text) {
 
-
         alert(
-            "Digite o nome da música."
+            "Digite o nome da música primeiro."
         );
-
 
         return;
 
@@ -2482,11 +2604,10 @@ function searchGoogle() {
 
 
 /* =====================================================
-   ADICIONAR MÚSICA
+   MODAL
 ===================================================== */
 
 function openMusicModal() {
-
 
     document
     .getElementById(
@@ -2501,7 +2622,6 @@ function openMusicModal() {
 
 function closeMusicModal() {
 
-
     document
     .getElementById(
         "musicModal"
@@ -2513,8 +2633,11 @@ function closeMusicModal() {
 }
 
 
-function saveMusic() {
+/* =====================================================
+   SALVAR MÚSICA
+===================================================== */
 
+function saveMusic() {
 
     const title =
         document.getElementById(
@@ -2535,17 +2658,16 @@ function saveMusic() {
                 item.trim()
         )
         .filter(
-            item => item
+            item =>
+                item.length > 0
         );
 
 
     if(!title) {
 
-
         alert(
             "Digite o nome da música."
         );
-
 
         return;
 
@@ -2554,11 +2676,9 @@ function saveMusic() {
 
     if(!lyrics.length) {
 
-
         alert(
-            "Digite os slides."
+            "Digite pelo menos um slide."
         );
-
 
         return;
 
@@ -2598,8 +2718,18 @@ function saveMusic() {
     updateSlide();
 
 
+    document.getElementById(
+        "musicTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "musicLyrics"
+    ).value = "";
+
+
     alert(
-        "Música adicionada!"
+        "✓ Música adicionada!"
     );
 
 }
@@ -2611,12 +2741,10 @@ function saveMusic() {
 
 function goToPage(pageName) {
 
-
     document
     .querySelectorAll(".menu-button")
     .forEach(
         button => {
-
 
             button.classList.remove(
                 "active"
@@ -2627,7 +2755,6 @@ function goToPage(pageName) {
                 button.dataset.page ===
                 pageName
             ) {
-
 
                 button.classList.add(
                     "active"
@@ -2644,7 +2771,6 @@ function goToPage(pageName) {
     .forEach(
         page => {
 
-
             page.classList.remove(
                 "active"
             );
@@ -2653,19 +2779,51 @@ function goToPage(pageName) {
     );
 
 
-    document
-    .getElementById(
-        "page-" + pageName
-    )
-    .classList.add(
-        "active"
-    );
+    const page =
+        document.getElementById(
+            "page-" + pageName
+        );
+
+
+    if(page) {
+
+        page.classList.add(
+            "active"
+        );
+
+    }
 
 }
 
 
 /* =====================================================
-   INICIAR
+   SEGURANÇA DE TEXTO
+===================================================== */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+function escapeAttribute(text) {
+
+    return String(text)
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'")
+        .replaceAll('"', "&quot;");
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
 ===================================================== */
 
 renderMusic();
@@ -2673,7 +2831,6 @@ renderMusic();
 renderBackgrounds();
 
 updateSlide();
-
 
 </script>
 
