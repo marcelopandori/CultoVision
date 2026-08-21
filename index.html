@@ -11,9 +11,9 @@
 
 <style>
 
-/* =====================================================
-   CONFIGURAÇÕES
-===================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -22,13 +22,16 @@
 }
 
 :root {
-    --bg: #090b10;
-    --sidebar: #11151d;
-    --card: #171c25;
-    --card-hover: #222936;
-    --border: #2c3442;
+
+    --background: #080a0f;
+    --sidebar: #10131a;
+    --card: #151922;
+    --card2: #1b202b;
+
+    --border: #2b3240;
+
     --text: #ffffff;
-    --muted: #8d96a8;
+    --muted: #8992a3;
 
     --purple: #a855f7;
     --pink: #ec4899;
@@ -36,169 +39,258 @@
     --blue: #3b82f6;
     --orange: #f59e0b;
     --cyan: #06b6d4;
+
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
     height: 100vh;
+
     overflow: hidden;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 header {
+
     height: 65px;
-    background: var(--sidebar);
-    border-bottom: 1px solid var(--border);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background:
+        var(--sidebar);
 
-    padding: 0 22px;
+    border-bottom:
+        1px solid var(--border);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 22px;
+
 }
 
+
 .logo {
-    display: flex;
-    align-items: center;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
     gap: 10px;
 
     font-size: 21px;
+
     font-weight: bold;
+
 }
 
-.logo-icon {
-    width: 38px;
-    height: 38px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo-icon {
+
+    width: 39px;
+
+    height: 39px;
 
     border-radius: 10px;
 
-    background: linear-gradient(
-        135deg,
-        #8b5cf6,
-        #ec4899
-    );
+    display:
+        flex;
 
-    font-size: 20px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #ec4899
+        );
+
+    font-size: 21px;
+
 }
+
 
 .status {
+
+    color:
+        var(--muted);
+
     font-size: 13px;
-    color: var(--muted);
+
 }
+
 
 .status span {
-    color: var(--green);
+
+    color:
+        var(--green);
+
 }
 
 
-/* =====================================================
+/* =========================================================
    APP
-===================================================== */
+========================================================= */
 
 .app {
-    display: flex;
-    height: calc(100vh - 65px);
+
+    height:
+        calc(100vh - 65px);
+
+    display:
+        flex;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    SIDEBAR
-===================================================== */
+========================================================= */
 
 .sidebar {
+
     width: 235px;
 
-    background: var(--sidebar);
+    flex-shrink: 0;
 
-    border-right: 1px solid var(--border);
+    background:
+        var(--sidebar);
 
-    padding: 15px 12px;
+    border-right:
+        1px solid var(--border);
+
+    padding:
+        14px 12px;
+
 }
+
 
 .menu-title {
-    color: #606a7c;
+
+    color:
+        #596274;
 
     font-size: 10px;
+
     font-weight: bold;
 
-    margin: 15px 10px 8px;
+    margin:
+        15px 10px 8px;
+
 }
 
 
-/* =====================================================
-   BOTÕES DO MENU
-===================================================== */
-
 .menu-button {
+
     width: 100%;
 
     border: none;
 
     background: transparent;
 
-    color: #929bab;
+    color:
+        #929baa;
 
-    padding: 12px;
+    padding:
+        12px;
 
     border-radius: 9px;
 
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
+    display:
+        flex;
+
+    align-items:
+        center;
 
     gap: 12px;
 
     margin-bottom: 4px;
 
     transition:
-        background .25s,
-        color .25s;
+        .25s;
+
 }
+
 
 .menu-button:hover {
-    background: var(--card-hover);
-    color: white;
+
+    background:
+        var(--card2);
+
+    color:
+        white;
+
 }
+
 
 .menu-button.active {
-    background: rgba(139, 92, 246, .15);
-    color: white;
+
+    background:
+        rgba(168,85,247,.15);
+
+    color:
+        white;
+
 }
 
 
-/* =====================================================
-   ÍCONES COLORIDOS
-===================================================== */
-
 .menu-icon {
+
     width: 30px;
+
     min-width: 30px;
 
-    text-align: center;
+    text-align:
+        center;
 
     font-size: 21px;
 
     transition:
-        color .25s ease,
-        transform .25s ease,
-        filter .25s ease;
+        .25s;
+
 }
 
 
-/* INÍCIO */
+/* =========================================================
+   CORES DOS ÍCONES
+========================================================= */
 
 .menu-button[data-page="home"]:hover .menu-icon {
+
     color: var(--purple);
 
     transform: scale(1.25);
@@ -207,12 +299,12 @@ header {
         drop-shadow(
             0 0 7px var(--purple)
         );
+
 }
 
 
-/* MÚSICA */
-
 .menu-button[data-page="music"]:hover .menu-icon {
+
     color: var(--pink);
 
     transform: scale(1.25);
@@ -221,12 +313,12 @@ header {
         drop-shadow(
             0 0 7px var(--pink)
         );
+
 }
 
 
-/* PROJEÇÃO */
-
 .menu-button[data-page="projection"]:hover .menu-icon {
+
     color: var(--green);
 
     transform: scale(1.25);
@@ -235,12 +327,12 @@ header {
         drop-shadow(
             0 0 7px var(--green)
         );
+
 }
 
 
-/* FUNDOS */
-
 .menu-button[data-page="backgrounds"]:hover .menu-icon {
+
     color: var(--orange);
 
     transform: scale(1.25);
@@ -249,12 +341,12 @@ header {
         drop-shadow(
             0 0 7px var(--orange)
         );
+
 }
 
 
-/* CULTO */
-
 .menu-button[data-page="service"]:hover .menu-icon {
+
     color: var(--blue);
 
     transform: scale(1.25);
@@ -263,12 +355,12 @@ header {
         drop-shadow(
             0 0 7px var(--blue)
         );
+
 }
 
 
-/* MÍDIAS */
+.menu-button[data-page="settings"]:hover .menu-icon {
 
-.menu-button[data-page="media"]:hover .menu-icon {
     color: var(--cyan);
 
     transform: scale(1.25);
@@ -277,397 +369,694 @@ header {
         drop-shadow(
             0 0 7px var(--cyan)
         );
+
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTEÚDO
-===================================================== */
+========================================================= */
 
 .content {
+
     flex: 1;
 
     padding: 28px;
 
     overflow-y: auto;
+
 }
+
 
 .page {
+
     display: none;
+
 }
+
 
 .page.active {
+
     display: block;
+
 }
 
+
 .title {
+
     font-size: 28px;
+
     font-weight: bold;
 
     margin-bottom: 7px;
+
 }
+
 
 .subtitle {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     margin-bottom: 25px;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    BOTÕES
-===================================================== */
+========================================================= */
 
 .button {
+
     border: none;
 
-    padding: 11px 17px;
-
-    border-radius: 8px;
-
-    background: var(--purple);
+    background:
+        var(--purple);
 
     color: white;
 
-    font-weight: bold;
+    padding:
+        11px 17px;
+
+    border-radius: 8px;
 
     cursor: pointer;
 
-    transition: .2s;
+    font-weight: bold;
 
-    margin-right: 6px;
+    transition:
+        .2s;
+
 }
+
 
 .button:hover {
-    filter: brightness(1.15);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
+
+    filter:
+        brightness(1.15);
+
 }
+
 
 .button.green {
-    background: var(--green);
+
+    background:
+        var(--green);
+
 }
+
 
 .button.blue {
-    background: var(--blue);
+
+    background:
+        var(--blue);
+
 }
+
 
 .button.dark {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+    background:
+        var(--card2);
+
+    border:
+        1px solid var(--border);
+
 }
 
 
-/* =====================================================
+/* =========================================================
    CARDS
-===================================================== */
+========================================================= */
 
 .cards {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 15px;
+
 }
 
-.card {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+.card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
 
     border-radius: 12px;
 
     padding: 20px;
+
 }
+
 
 .card-icon {
-    font-size: 27px;
+
+    font-size: 28px;
 
     margin-bottom: 12px;
+
 }
 
+
 .card-number {
+
     font-size: 25px;
 
     font-weight: bold;
+
 }
 
+
 .card-label {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     font-size: 13px;
 
     margin-top: 5px;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    APRESENTAÇÃO
-===================================================== */
+========================================================= */
 
 .presentation {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
-        1fr 280px;
+        1fr 290px;
 
     gap: 18px;
 
     margin-top: 20px;
+
 }
 
-.preview-container {
-    background: #050608;
 
-    border: 1px solid var(--border);
+.preview-container {
+
+    background:
+        #040506;
+
+    border:
+        1px solid var(--border);
 
     border-radius: 13px;
 
     padding: 15px;
+
 }
 
+
 .preview {
+
     height: 430px;
 
     border-radius: 10px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    text-align: center;
+    text-align:
+        center;
 
     padding: 50px;
 
+    background:
+        linear-gradient(
+            135deg,
+            #050505,
+            #171717
+        );
+
     transition:
-        background .4s ease;
+        .3s;
+
 }
 
+
 .slide-text {
-    font-size: 42px;
+
+    font-size: 43px;
 
     font-weight: bold;
 
     line-height: 1.3;
 
     text-shadow:
-        0 4px 20px rgba(0,0,0,.8);
+        0 4px 20px rgba(0,0,0,.85);
+
+    white-space:
+        pre-line;
+
 }
 
 
-/* =====================================================
+.controls {
+
+    display:
+        flex;
+
+    gap: 9px;
+
+    margin-top: 12px;
+
+}
+
+
+.control {
+
+    flex: 1;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    color:
+        white;
+
+    padding:
+        13px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+.control:hover {
+
+    background:
+        var(--card2);
+
+}
+
+
+.control.project {
+
+    background:
+        var(--green);
+
+    border-color:
+        var(--green);
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
    LISTA DE SLIDES
-===================================================== */
+========================================================= */
 
 .slide-list {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
 
     border-radius: 13px;
 
     padding: 15px;
 
-    max-height: 500px;
+    max-height: 510px;
 
     overflow-y: auto;
+
 }
 
+
 .slide-title {
+
     font-weight: bold;
 
     margin-bottom: 12px;
+
 }
 
-.slide-item {
-    padding: 12px;
 
-    background: #12161d;
+.slide-item {
+
+    background:
+        #11151c;
 
     border-radius: 8px;
+
+    padding: 12px;
 
     margin-bottom: 7px;
 
     cursor: pointer;
 
-    color: #9da5b5;
+    color:
+        #9ca5b5;
 
     font-size: 13px;
 
-    transition: .2s;
 }
+
 
 .slide-item:hover {
-    background: var(--card-hover);
 
-    color: white;
+    background:
+        var(--card2);
+
+    color:
+        white;
+
 }
 
+
 .slide-item.active {
+
     background:
-        rgba(139,92,246,.2);
+        rgba(168,85,247,.18);
+
+    color:
+        white;
 
     border-left:
         3px solid var(--purple);
 
-    color: white;
 }
 
 
-/* =====================================================
-   CONTROLES
-===================================================== */
+/* =========================================================
+   BUSCA
+========================================================= */
 
-.controls {
-    display: flex;
+.search-row {
+
+    display:
+        flex;
 
     gap: 10px;
 
-    margin-top: 12px;
+    margin-bottom: 18px;
+
 }
 
-.control {
+
+.search {
+
     flex: 1;
 
-    border: 1px solid var(--border);
+    padding:
+        14px;
 
-    background: var(--card);
-
-    color: white;
-
-    padding: 13px;
+    border:
+        1px solid var(--border);
 
     border-radius: 8px;
 
+    background:
+        var(--card);
+
+    color:
+        white;
+
+    outline: none;
+
+}
+
+
+.search:focus {
+
+    border-color:
+        var(--purple);
+
+}
+
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+.results {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(250px,1fr)
+        );
+
+    gap: 15px;
+
+}
+
+
+.result-card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+}
+
+
+.result-card h3 {
+
+    margin-bottom: 6px;
+
+}
+
+
+.result-card p {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.result-actions {
+
+    display:
+        flex;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+}
+
+
+.small-button {
+
+    border: none;
+
+    background:
+        #303846;
+
+    color:
+        white;
+
+    padding:
+        8px 11px;
+
+    border-radius: 6px;
+
     cursor: pointer;
 
-    transition: .2s;
-}
-
-.control:hover {
-    background: var(--card-hover);
-
-    transform: translateY(-1px);
-}
-
-.control.project {
-    background: var(--green);
-
-    border-color: var(--green);
-
-    font-weight: bold;
 }
 
 
-/* =====================================================
-   MÚSICAS
-===================================================== */
+.small-button:hover {
 
-.search {
+    background:
+        #414b5c;
+
+}
+
+
+/* =========================================================
+   EDITOR
+========================================================= */
+
+.editor {
+
+    margin-top: 20px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+}
+
+
+.input {
+
     width: 100%;
 
-    padding: 14px;
+    background:
+        #0c1016;
 
-    background: var(--card);
+    border:
+        1px solid var(--border);
 
-    border: 1px solid var(--border);
+    color:
+        white;
 
-    color: white;
+    padding:
+        13px;
 
     border-radius: 8px;
 
     outline: none;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+
 }
 
-.search:focus {
-    border-color: var(--purple);
+
+textarea {
+
+    min-height: 260px;
+
+    resize:
+        vertical;
+
+    line-height: 1.5;
+
 }
+
+
+.editor-info {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================================
+   MÚSICAS SALVAS
+========================================================= */
 
 .music-grid {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(220px,1fr)
+            minmax(230px,1fr)
         );
 
     gap: 15px;
 
-    margin-top: 20px;
+    margin-top: 22px;
+
 }
 
+
 .music-card {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+    background:
+        var(--card);
 
-    padding: 18px;
+    border:
+        1px solid var(--border);
+
+    padding:
+        18px;
 
     border-radius: 12px;
 
-    transition: .2s;
 }
 
-.music-card:hover {
-    background: var(--card-hover);
-
-    transform: translateY(-2px);
-}
 
 .music-icon {
+
     font-size: 28px;
 
     margin-bottom: 12px;
+
 }
 
+
 .music-card p {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     font-size: 13px;
 
-    margin-top: 5px;
+    margin-top: 6px;
+
 }
 
+
 .music-actions {
-    display: flex;
+
+    display:
+        flex;
 
     gap: 7px;
 
     margin-top: 14px;
-}
 
-.small-button {
-    border: none;
-
-    background: #303846;
-
-    color: white;
-
-    padding: 8px 10px;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-}
-
-.small-button:hover {
-    background: #414b5c;
 }
 
 
-/* =====================================================
+/* =========================================================
    FUNDOS
-===================================================== */
+========================================================= */
 
 .background-grid {
-    display: grid;
+
+    display:
+        grid;
 
     grid-template-columns:
         repeat(
@@ -676,182 +1065,247 @@ header {
         );
 
     gap: 15px;
+
 }
 
+
 .background-card {
-    height: 120px;
+
+    height: 130px;
 
     border-radius: 12px;
 
-    border: 2px solid transparent;
+    border:
+        2px solid transparent;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     cursor: pointer;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
     font-weight: bold;
 
-    transition: .2s;
+    text-shadow:
+        0 2px 5px #000;
+
+    transition:
+        .2s;
+
 }
+
 
 .background-card:hover {
-    transform: scale(1.03);
 
-    border-color: white;
+    transform:
+        scale(1.03);
+
 }
+
 
 .background-card.selected {
-    border-color: var(--purple);
+
+    border-color:
+        white;
+
+    box-shadow:
+        0 0 0 3px var(--purple);
+
 }
 
 
-/* =====================================================
-   STATUS DE PROJEÇÃO
-===================================================== */
+/* =========================================================
+   PROJEÇÃO
+========================================================= */
 
-.projection-status {
-    margin-top: 15px;
+.projection-preview {
 
-    padding: 14px;
+    height: 500px;
 
-    border-radius: 9px;
+    border-radius: 12px;
 
-    background: var(--card);
+    display:
+        flex;
 
-    border: 1px solid var(--border);
+    align-items:
+        center;
 
-    color: var(--muted);
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
 }
 
-.projection-status.online {
-    border-color: var(--green);
-
-    color: var(--green);
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0,0,0,.78);
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 100;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-content {
-    width: min(600px,90%);
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 13px;
-
-    padding: 25px;
-}
-
-.input {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-bottom: 12px;
-
-    background: #0d1117;
-
-    border: 1px solid var(--border);
-
-    color: white;
-
-    border-radius: 8px;
-
-    outline: none;
-}
-
-textarea {
-    min-height: 220px;
-
-    resize: vertical;
-}
-
-
-/* =====================================================
-   AVISO DE SEGUNDA TELA
-===================================================== */
 
 .screen-box {
-    background: var(--card);
 
-    border: 1px solid var(--border);
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
 
     border-radius: 12px;
 
     padding: 20px;
 
-    margin-top: 20px;
+    margin-top: 18px;
+
 }
+
 
 .screen-box h3 {
+
     margin-bottom: 8px;
+
 }
+
 
 .screen-box p {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     line-height: 1.5;
+
 }
 
 
-/* =====================================================
-   RESPONSIVO
-===================================================== */
+/* =========================================================
+   CONFIGURAÇÕES
+========================================================= */
 
-@media(max-width:900px) {
+.setting {
+
+    margin-bottom: 25px;
+
+}
+
+
+.setting label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+}
+
+
+input[type="range"] {
+
+    width: 300px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.8);
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    z-index: 100;
+
+}
+
+
+.modal.show {
+
+    display:
+        flex;
+
+}
+
+
+.modal-content {
+
+    width:
+        min(750px,92%);
+
+    max-height:
+        90vh;
+
+    overflow-y:
+        auto;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media(max-width:950px) {
 
     .cards {
+
         grid-template-columns:
             repeat(2,1fr);
+
     }
 
     .presentation {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
 }
+
 
 @media(max-width:650px) {
 
     .sidebar {
+
         width: 70px;
+
     }
 
     .menu-button span:last-child {
+
         display: none;
+
     }
 
     .content {
+
         padding: 15px;
+
     }
 
 }
@@ -896,7 +1350,7 @@ textarea {
 
 
 <!-- =====================================================
-     MENU LATERAL
+     MENU
 ===================================================== -->
 
 <aside class="sidebar">
@@ -994,14 +1448,14 @@ textarea {
 
     <button
         class="menu-button"
-        data-page="media">
+        data-page="settings">
 
         <span class="menu-icon">
-            🖼️
+            ⚙️
         </span>
 
         <span>
-            Mídias
+            Configurações
         </span>
 
     </button>
@@ -1018,7 +1472,7 @@ textarea {
 
 
 <!-- =====================================================
-     INÍCIO
+     HOME
 ===================================================== -->
 
 <section
@@ -1069,7 +1523,7 @@ textarea {
             </div>
 
             <div class="card-label">
-                Tela de projeção
+                Projeção
             </div>
 
         </div>
@@ -1081,10 +1535,8 @@ textarea {
                 🎨
             </div>
 
-            <div
-                class="card-number"
-                id="backgroundCount">
-                5
+            <div class="card-number">
+                12
             </div>
 
             <div class="card-label">
@@ -1114,10 +1566,6 @@ textarea {
     </div>
 
 
-    <!-- =================================================
-         APRESENTAÇÃO
-    ================================================== -->
-
     <div class="presentation">
 
 
@@ -1133,7 +1581,7 @@ textarea {
                     class="slide-text"
                     id="slideText">
 
-                    Bem-vindo ao CultoVision
+                    Escolha uma música
 
                 </div>
 
@@ -1157,7 +1605,7 @@ textarea {
                     class="control project"
                     onclick="startPresentation()">
 
-                    📺 Apresentar
+                    📺 APRESENTAR
 
                 </button>
 
@@ -1175,10 +1623,10 @@ textarea {
 
 
             <div
-                class="projection-status"
+                class="screen-box"
                 id="projectionStatus">
 
-                ● A apresentação ainda não foi iniciada.
+                ● Apresentação parada.
 
             </div>
 
@@ -1188,16 +1636,11 @@ textarea {
 
         <div class="slide-list">
 
-
             <div class="slide-title">
-
                 Slides
-
             </div>
 
-
             <div id="slideList"></div>
-
 
         </div>
 
@@ -1218,38 +1661,118 @@ textarea {
 
 
     <div class="title">
-        🎵 Músicas
+        🎵 Banco de músicas
     </div>
 
 
     <div class="subtitle">
-        Escolha ou adicione uma música.
+
+        Pesquise uma música ou cadastre
+        uma versão autorizada para uso.
+
     </div>
 
 
-    <input
-        class="search"
-        id="musicSearch"
-        placeholder="🔎 Pesquisar música..."
-        oninput="renderMusic()">
+    <div class="search-row">
 
 
-    <button
-        class="button"
-        onclick="openMusicModal()">
-
-        ＋ Adicionar música
-
-    </button>
+        <input
+            class="search"
+            id="musicSearch"
+            placeholder="🔎 Digite nome da música ou cantor..."
+            oninput="showSearchSuggestions()">
 
 
-    <button
-        class="button dark"
-        onclick="searchGoogle()">
+        <button
+            class="button"
+            onclick="searchMusicWeb()">
 
-        🔍 Pesquisar no Google
+            🔍 Pesquisar
 
-    </button>
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="results"
+        id="searchResults">
+
+    </div>
+
+
+    <div class="editor">
+
+
+        <h2>
+            ✨ Criar slides automaticamente
+        </h2>
+
+
+        <p class="editor-info">
+
+            Cole abaixo o texto que você tem
+            autorização para utilizar.
+
+            O CultoVision vai separar automaticamente
+            estrofes e blocos em slides.
+
+        </p>
+
+
+        <input
+            class="input"
+            id="songTitle"
+            placeholder="Nome da música">
+
+
+        <input
+            class="input"
+            id="songArtist"
+            placeholder="Cantor / artista">
+
+
+        <textarea
+            class="input"
+            id="songText"
+            placeholder="Cole o texto aqui.
+
+Exemplo:
+
+Primeira estrofe
+linha 1
+linha 2
+linha 3
+
+Refrão
+linha 1
+linha 2
+linha 3
+
+Segunda estrofe
+linha 1
+linha 2
+linha 3"></textarea>
+
+
+        <button
+            class="button"
+            onclick="organizeSong()">
+
+            ✨ ORGANIZAR EM SLIDES
+
+        </button>
+
+
+    </div>
+
+
+    <h2 style="margin-top:30px; margin-bottom:15px;">
+
+        ❤️ Minhas músicas
+
+    </h2>
 
 
     <div
@@ -1277,21 +1800,23 @@ textarea {
 
 
     <div class="subtitle">
-        A TV exibirá somente esta apresentação.
+
+        O notebook controla a apresentação
+        e a TV mostra os slides.
+
     </div>
 
 
     <div
-        class="preview"
-        id="projectionPreview"
-        style="height:500px;">
+        class="projection-preview"
+        id="projectionPreview">
 
 
         <div
             class="slide-text"
             id="projectionText">
 
-            Nenhum conteúdo
+            Nenhuma música selecionada
 
         </div>
 
@@ -1315,7 +1840,7 @@ textarea {
             class="control project"
             onclick="startPresentation()">
 
-            📺 Iniciar apresentação
+            📺 INICIAR
 
         </button>
 
@@ -1334,17 +1859,20 @@ textarea {
 
     <div class="screen-box">
 
+
         <h3>
             🖥️ Segunda tela
         </h3>
 
+
         <p id="screenInfo">
 
-            Clique em "Iniciar apresentação".
-            O CultoVision tentará identificar
+            Ao clicar em iniciar,
+            o CultoVision tentará identificar
             automaticamente a segunda tela.
 
         </p>
+
 
     </div>
 
@@ -1391,35 +1919,52 @@ textarea {
 
 
     <div class="title">
-        📋 Culto
+        📋 Programação do culto
     </div>
 
 
     <div class="subtitle">
-        Organize a ordem do culto.
+        Monte a ordem da apresentação.
     </div>
 
 
     <div class="screen-box">
 
+
         <h3>
-            🚧 Em desenvolvimento
+            🎤 Ordem sugerida
         </h3>
+
+
+        <br>
+
 
         <p>
 
-            Aqui vamos criar posteriormente
-            a programação completa do culto.
+            1. 🎵 Louvor
 
             <br><br>
 
-            🎵 Louvor<br>
-            📖 Palavra<br>
-            🙏 Oração<br>
-            🎤 Avisos<br>
-            🎬 Vídeos
+            2. 🙏 Oração
+
+            <br><br>
+
+            3. 📢 Avisos
+
+            <br><br>
+
+            4. 🎵 Segundo louvor
+
+            <br><br>
+
+            5. 📖 Palavra
+
+            <br><br>
+
+            6. 🙏 Oração final
 
         </p>
+
 
     </div>
 
@@ -1428,34 +1973,84 @@ textarea {
 
 
 <!-- =====================================================
-     MÍDIAS
+     CONFIGURAÇÕES
 ===================================================== -->
 
 <section
     class="page"
-    id="page-media">
+    id="page-settings">
 
 
     <div class="title">
-        🖼️ Mídias
+        ⚙️ Configurações
     </div>
 
 
     <div class="subtitle">
-        Imagens e vídeos.
+        Personalize os slides.
     </div>
 
 
     <div class="screen-box">
 
-        <h3>
-            🚧 Em desenvolvimento
-        </h3>
 
-        <p>
-            Aqui adicionaremos imagens,
-            vídeos e outros arquivos.
-        </p>
+        <div class="setting">
+
+
+            <label>
+
+                Tamanho da letra:
+
+                <strong
+                    id="fontSizeValue">
+
+                    43
+
+                </strong>
+
+                px
+
+            </label>
+
+
+            <input
+                type="range"
+                min="25"
+                max="90"
+                value="43"
+                id="fontSizeRange"
+                oninput="changeFontSize(this.value)">
+
+
+        </div>
+
+
+        <div class="setting">
+
+
+            <label>
+                Cor da letra
+            </label>
+
+
+            <input
+                type="color"
+                id="fontColor"
+                value="#ffffff"
+                onchange="changeFontColor(this.value)">
+
+
+        </div>
+
+
+        <button
+            class="button dark"
+            onclick="clearAllSongs()">
+
+            🗑️ Apagar músicas salvas
+
+        </button>
+
 
     </div>
 
@@ -1468,169 +2063,21 @@ textarea {
 </div>
 
 
-<!-- =====================================================
-     MODAL
-===================================================== -->
-
-<div
-    class="modal"
-    id="musicModal">
-
-
-    <div class="modal-content">
-
-
-        <h2>
-            🎵 Adicionar música
-        </h2>
-
-
-        <br>
-
-
-        <input
-            class="input"
-            id="musicTitle"
-            placeholder="Nome da música">
-
-
-        <textarea
-            class="input"
-            id="musicLyrics"
-            placeholder="Digite cada slide separado por ---.
-
-Exemplo:
-
-Primeiro slide
-
----
-
-Segundo slide
-
----
-
-Terceiro slide">
-        </textarea>
-
-
-        <button
-            class="button dark"
-            onclick="closeMusicModal()">
-
-            Cancelar
-
-        </button>
-
-
-        <button
-            class="button"
-            onclick="saveMusic()">
-
-            Salvar
-
-        </button>
-
-
-    </div>
-
-</div>
-
-
 <script>
 
-/* =====================================================
-   MÚSICAS
-===================================================== */
+/* =========================================================
+   DADOS
+========================================================= */
 
 let songs =
-JSON.parse(
-    localStorage.getItem(
-        "cultovision_songs"
-    )
-) || [
-
-    {
-        title: "Grandes Coisas",
-
-        lyrics: [
-            "Grandes coisas fez o Senhor",
-            "Por isso estamos alegres",
-            "Vamos celebrar e adorar"
-        ]
-    },
-
-    {
-        title: "Teu Amor",
-
-        lyrics: [
-            "Teu amor nunca falha",
-            "Tua graça me alcançou",
-            "Para sempre cantarei"
-        ]
-    },
-
-    {
-        title: "Minha Adoração",
-
-        lyrics: [
-            "Receba a minha adoração",
-            "Receba o meu coração",
-            "Tudo entrego a Ti"
-        ]
-    }
-
-];
+    JSON.parse(
+        localStorage.getItem(
+            "cultovision_songs"
+        )
+    ) || [];
 
 
-/* =====================================================
-   FUNDOS
-===================================================== */
-
-const backgrounds = [
-
-    {
-        name: "Escuro",
-
-        css:
-        "linear-gradient(135deg,#050505,#171717)"
-    },
-
-    {
-        name: "Roxo",
-
-        css:
-        "linear-gradient(135deg,#24103f,#080014)"
-    },
-
-    {
-        name: "Azul",
-
-        css:
-        "linear-gradient(135deg,#071d3b,#020812)"
-    },
-
-    {
-        name: "Vermelho",
-
-        css:
-        "linear-gradient(135deg,#3b0808,#100000)"
-    },
-
-    {
-        name: "Pôr do Sol",
-
-        css:
-        "linear-gradient(135deg,#ff7b00,#351000)"
-    }
-
-];
-
-
-/* =====================================================
-   ESTADO
-===================================================== */
-
-let currentSong = songs[0];
+let currentSong = null;
 
 let currentSlide = 0;
 
@@ -1640,10 +2087,95 @@ let projectionWindow = null;
 
 let secondScreen = null;
 
+let fontSize = 43;
 
-/* =====================================================
+let fontColor = "#ffffff";
+
+
+/* =========================================================
+   FUNDOS
+========================================================= */
+
+const backgrounds = [
+
+    {
+        name: "Noite",
+        css:
+        "linear-gradient(135deg,#030305,#171717)"
+    },
+
+    {
+        name: "Roxo",
+        css:
+        "linear-gradient(135deg,#35105c,#08000f)"
+    },
+
+    {
+        name: "Azul",
+        css:
+        "linear-gradient(135deg,#082c59,#020813)"
+    },
+
+    {
+        name: "Oceano",
+        css:
+        "linear-gradient(135deg,#006b83,#001b28)"
+    },
+
+    {
+        name: "Pôr do Sol",
+        css:
+        "linear-gradient(135deg,#ff7a00,#321000)"
+    },
+
+    {
+        name: "Vinho",
+        css:
+        "linear-gradient(135deg,#650b2e,#120009)"
+    },
+
+    {
+        name: "Floresta",
+        css:
+        "linear-gradient(135deg,#164b29,#020b05)"
+    },
+
+    {
+        name: "Aurora",
+        css:
+        "linear-gradient(135deg,#042b45,#39105d,#05020a)"
+    },
+
+    {
+        name: "Espaço",
+        css:
+        "radial-gradient(circle,#20205a,#02020a 70%)"
+    },
+
+    {
+        name: "Luz",
+        css:
+        "linear-gradient(135deg,#666,#111)"
+    },
+
+    {
+        name: "Preto",
+        css:
+        "#000000"
+    },
+
+    {
+        name: "Cinza",
+        css:
+        "linear-gradient(135deg,#292929,#080808)"
+    }
+
+];
+
+
+/* =========================================================
    MENU
-===================================================== */
+========================================================= */
 
 document
 .querySelectorAll(".menu-button")
@@ -1651,38 +2183,37 @@ document
 
     button.addEventListener(
         "click",
-        function() {
+        () => {
 
             document
             .querySelectorAll(".menu-button")
-            .forEach(btn => {
-
-                btn.classList.remove(
+            .forEach(
+                b =>
+                b.classList.remove(
                     "active"
-                );
+                )
+            );
 
-            });
 
-            this.classList.add(
+            button.classList.add(
                 "active"
             );
 
 
             document
             .querySelectorAll(".page")
-            .forEach(page => {
-
+            .forEach(
+                page =>
                 page.classList.remove(
                     "active"
-                );
-
-            });
+                )
+            );
 
 
             const page =
                 document.getElementById(
                     "page-" +
-                    this.dataset.page
+                    button.dataset.page
                 );
 
 
@@ -1700,9 +2231,341 @@ document
 });
 
 
-/* =====================================================
-   MÚSICAS
-===================================================== */
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+function searchMusicWeb() {
+
+    const query =
+        document
+        .getElementById(
+            "musicSearch"
+        )
+        .value
+        .trim();
+
+
+    if(!query) {
+
+        alert(
+            "Digite o nome da música."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Abre uma pesquisa na web.
+       O usuário escolhe a fonte/versão
+       e utiliza conteúdo que tenha
+       autorização para usar.
+    */
+
+    const url =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(
+            query +
+            " letra música"
+        );
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+
+    showSearchResults(query);
+
+}
+
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+function showSearchResults(query) {
+
+    const container =
+        document.getElementById(
+            "searchResults"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="result-card">
+
+            <h3>
+                🎵 ${escapeHTML(query)}
+            </h3>
+
+            <p>
+                Pesquisa aberta no Google.
+                Depois de escolher a versão,
+                cole no editor abaixo o texto
+                que você tem autorização para usar.
+            </p>
+
+            <div class="result-actions">
+
+                <button
+                    class="small-button"
+                    onclick="prepareSong('${escapeAttribute(query)}')">
+
+                    ✨ Usar esta música
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   PREPARAR MÚSICA
+========================================================= */
+
+function prepareSong(title) {
+
+    document
+    .getElementById(
+        "songTitle"
+    )
+    .value =
+        title;
+
+
+    document
+    .getElementById(
+        "songText"
+    )
+    .focus();
+
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   ORGANIZAR MÚSICA
+========================================================= */
+
+function organizeSong() {
+
+    const title =
+        document
+        .getElementById(
+            "songTitle"
+        )
+        .value
+        .trim();
+
+
+    const artist =
+        document
+        .getElementById(
+            "songArtist"
+        )
+        .value
+        .trim();
+
+
+    const rawText =
+        document
+        .getElementById(
+            "songText"
+        )
+        .value
+        .trim();
+
+
+    if(!title) {
+
+        alert(
+            "Digite o nome da música."
+        );
+
+        return;
+
+    }
+
+
+    if(!rawText) {
+
+        alert(
+            "Cole o texto autorizado da música."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Primeiro separamos blocos
+       usando linhas vazias.
+    */
+
+    const blocks =
+        rawText
+        .split(/\n\s*\n/)
+        .map(
+            block =>
+                block
+                .trim()
+                .replace(
+                    /\n{3,}/g,
+                    "\n\n"
+                )
+        )
+        .filter(
+            block =>
+                block.length > 0
+        );
+
+
+    let slides = [];
+
+
+    /*
+       Cada bloco vira um ou mais slides.
+    */
+
+    blocks.forEach(block => {
+
+        const lines =
+            block
+            .split("\n")
+            .map(
+                line =>
+                    line.trim()
+            )
+            .filter(
+                line =>
+                    line.length > 0
+            );
+
+
+        let chunk = [];
+
+
+        lines.forEach(line => {
+
+            chunk.push(line);
+
+
+            /*
+               Evita colocar texto demais
+               em um único slide.
+            */
+
+            if(
+                chunk.length >= 5
+            ) {
+
+                slides.push(
+                    chunk.join("\n")
+                );
+
+                chunk = [];
+
+            }
+
+        });
+
+
+        if(chunk.length > 0) {
+
+            slides.push(
+                chunk.join("\n")
+            );
+
+        }
+
+    });
+
+
+    /*
+       Caso a pessoa não tenha usado
+       linhas vazias, fazemos uma
+       segunda proteção.
+    */
+
+    if(slides.length === 0) {
+
+        slides =
+            rawText
+            .split("\n")
+            .filter(Boolean);
+
+    }
+
+
+    const song = {
+
+        id:
+            Date.now(),
+
+        title:
+            title,
+
+        artist:
+            artist || "Artista não informado",
+
+        slides:
+            slides,
+
+        favorite:
+            false
+
+    };
+
+
+    songs.push(song);
+
+
+    localStorage.setItem(
+        "cultovision_songs",
+        JSON.stringify(songs)
+    );
+
+
+    currentSong =
+        song;
+
+
+    currentSlide = 0;
+
+
+    renderMusic();
+
+    updatePresentation();
+
+    goToPage("home");
+
+
+    alert(
+        "✓ Música organizada e salva!"
+    );
+
+}
+
+
+/* =========================================================
+   MÚSICAS SALVAS
+========================================================= */
 
 function renderMusic() {
 
@@ -1712,25 +2575,17 @@ function renderMusic() {
         );
 
 
-    const search =
-        document.getElementById(
-            "musicSearch"
-        )
-        .value
-        .toLowerCase();
-
-
     grid.innerHTML = "";
 
 
-    songs
-    .filter(song =>
-        song.title
-        .toLowerCase()
-        .includes(search)
-    )
-    .forEach(
-        (song,index) => {
+    document.getElementById(
+        "musicCount"
+    ).textContent =
+        songs.length;
+
+
+    songs.forEach(
+        song => {
 
             const card =
                 document.createElement(
@@ -1753,7 +2608,11 @@ function renderMusic() {
                 </h3>
 
                 <p>
-                    ${song.lyrics.length}
+                    ${escapeHTML(song.artist)}
+                </p>
+
+                <p>
+                    ${song.slides.length}
                     slides
                 </p>
 
@@ -1761,7 +2620,7 @@ function renderMusic() {
 
                     <button
                         class="small-button"
-                        onclick="selectSong(${index})">
+                        onclick="useSong(${song.id})">
 
                         ▶ Usar
 
@@ -1769,13 +2628,22 @@ function renderMusic() {
 
                     <button
                         class="small-button"
-                        onclick="googleSong('${escapeAttribute(song.title)}')">
+                        onclick="toggleFavorite(${song.id})">
 
-                        🔍 Google
+                        ${song.favorite ? "❤️" : "🤍"}
+
+                    </button>
+
+                    <button
+                        class="small-button"
+                        onclick="deleteSong(${song.id})">
+
+                        🗑️
 
                     </button>
 
                 </div>
+
             `;
 
 
@@ -1784,45 +2652,154 @@ function renderMusic() {
         }
     );
 
-
-    document.getElementById(
-        "musicCount"
-    ).textContent =
-        songs.length;
-
 }
 
 
-/* =====================================================
-   SELECIONAR MÚSICA
-===================================================== */
+/* =========================================================
+   USAR MÚSICA
+========================================================= */
 
-function selectSong(index) {
+function useSong(id) {
+
+    const song =
+        songs.find(
+            item =>
+            item.id === id
+        );
+
+
+    if(!song)
+        return;
+
 
     currentSong =
-        songs[index];
+        song;
+
 
     currentSlide = 0;
 
-    updateSlide();
+
+    updatePresentation();
+
 
     goToPage("home");
 
 }
 
 
-/* =====================================================
-   ATUALIZAR SLIDE
-===================================================== */
+/* =========================================================
+   FAVORITA
+========================================================= */
 
-function updateSlide() {
+function toggleFavorite(id) {
 
-    if(!currentSong)
+    const song =
+        songs.find(
+            item =>
+            item.id === id
+        );
+
+
+    if(!song)
         return;
 
 
+    song.favorite =
+        !song.favorite;
+
+
+    saveSongs();
+
+    renderMusic();
+
+}
+
+
+/* =========================================================
+   EXCLUIR
+========================================================= */
+
+function deleteSong(id) {
+
+    if(
+        !confirm(
+            "Excluir esta música?"
+        )
+    )
+        return;
+
+
+    songs =
+        songs.filter(
+            song =>
+            song.id !== id
+        );
+
+
+    saveSongs();
+
+    renderMusic();
+
+
+    if(
+        currentSong &&
+        currentSong.id === id
+    ) {
+
+        currentSong = null;
+
+        currentSlide = 0;
+
+        updatePresentation();
+
+    }
+
+}
+
+
+/* =========================================================
+   SALVAR
+========================================================= */
+
+function saveSongs() {
+
+    localStorage.setItem(
+        "cultovision_songs",
+        JSON.stringify(songs)
+    );
+
+}
+
+
+/* =========================================================
+   ATUALIZAR APRESENTAÇÃO
+========================================================= */
+
+function updatePresentation() {
+
+    if(!currentSong) {
+
+        document.getElementById(
+            "slideText"
+        ).textContent =
+            "Escolha uma música";
+
+
+        document.getElementById(
+            "projectionText"
+        ).textContent =
+            "Nenhuma música selecionada";
+
+
+        renderSlides();
+
+        return;
+
+    }
+
+
     const text =
-        currentSong.lyrics[
+        currentSong.slides[
             currentSlide
         ];
 
@@ -1839,32 +2816,20 @@ function updateSlide() {
         text;
 
 
-    document.getElementById(
-        "preview"
-    ).style.background =
-        backgrounds[
-            currentBackground
-        ].css;
-
-
-    document.getElementById(
-        "projectionPreview"
-    ).style.background =
-        backgrounds[
-            currentBackground
-        ].css;
+    applyVisual();
 
 
     renderSlides();
 
-    updateProjection();
+
+    updateProjectionWindow();
 
 }
 
 
-/* =====================================================
-   LISTA DE SLIDES
-===================================================== */
+/* =========================================================
+   SLIDES
+========================================================= */
 
 function renderSlides() {
 
@@ -1877,9 +2842,12 @@ function renderSlides() {
     list.innerHTML = "";
 
 
-    currentSong.lyrics
-    .forEach(
-        (text,index) => {
+    if(!currentSong)
+        return;
+
+
+    currentSong.slides.forEach(
+        (slide,index) => {
 
             const item =
                 document.createElement(
@@ -1891,7 +2859,10 @@ function renderSlides() {
                 "slide-item";
 
 
-            if(index === currentSlide) {
+            if(
+                index ===
+                currentSlide
+            ) {
 
                 item.classList.add(
                     "active"
@@ -1901,16 +2872,20 @@ function renderSlides() {
 
 
             item.textContent =
-                `${index + 1}. ${text}`;
+                `${index + 1}. ${
+                    slide
+                    .replace(/\n/g," ")
+                    .slice(0,80)
+                }`;
 
 
             item.onclick =
-                function() {
+                () => {
 
                     currentSlide =
                         index;
 
-                    updateSlide();
+                    updatePresentation();
 
                 };
 
@@ -1923,46 +2898,54 @@ function renderSlides() {
 }
 
 
-/* =====================================================
+/* =========================================================
    PRÓXIMO
-===================================================== */
+========================================================= */
 
 function nextSlide() {
 
+    if(!currentSong)
+        return;
+
+
     if(
         currentSlide <
-        currentSong.lyrics.length - 1
+        currentSong.slides.length - 1
     ) {
 
         currentSlide++;
 
-        updateSlide();
+        updatePresentation();
 
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ANTERIOR
-===================================================== */
+========================================================= */
 
 function previousSlide() {
+
+    if(!currentSong)
+        return;
+
 
     if(currentSlide > 0) {
 
         currentSlide--;
 
-        updateSlide();
+        updatePresentation();
 
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FUNDOS
-===================================================== */
+========================================================= */
 
 function renderBackgrounds() {
 
@@ -2009,14 +2992,16 @@ function renderBackgrounds() {
 
 
             card.onclick =
-                function() {
+                () => {
 
                     currentBackground =
                         index;
 
                     renderBackgrounds();
 
-                    updateSlide();
+                    applyVisual();
+
+                    updateProjectionWindow();
 
                 };
 
@@ -2029,49 +3014,81 @@ function renderBackgrounds() {
 }
 
 
-/* =====================================================
-   INICIAR APRESENTAÇÃO
-===================================================== */
+/* =========================================================
+   APLICAR VISUAL
+========================================================= */
+
+function applyVisual() {
+
+    const preview =
+        document.getElementById(
+            "preview"
+        );
+
+
+    const projection =
+        document.getElementById(
+            "projectionPreview"
+        );
+
+
+    preview.style.background =
+        backgrounds[
+            currentBackground
+        ].css;
+
+
+    projection.style.background =
+        backgrounds[
+            currentBackground
+        ].css;
+
+
+    document
+    .querySelectorAll(
+        ".slide-text"
+    )
+    .forEach(
+        element => {
+
+            element.style.fontSize =
+                fontSize + "px";
+
+            element.style.color =
+                fontColor;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   INICIAR PROJEÇÃO
+========================================================= */
 
 async function startPresentation() {
 
-    /*
-       Primeiro tentamos descobrir
-       se existe uma segunda tela.
-    */
-
     await detectSecondScreen();
 
-
-    /*
-       Se conseguimos detectar,
-       abrimos a apresentação
-       diretamente nela.
-    */
 
     if(secondScreen) {
 
         openOnSecondScreen();
 
-        return;
+    }
+    else {
+
+        openProjectionWindow();
 
     }
-
-
-    /*
-       Caso o navegador não permita
-       a detecção automática,
-       usamos uma janela normal.
-    */
-
-    openProjectionWindow();
 
 }
 
 
-/* =====================================================
-   DETECTAR SEGUNDA TELA
-===================================================== */
+/* =========================================================
+   DETECTAR TELA
+========================================================= */
 
 async function detectSecondScreen() {
 
@@ -2084,12 +3101,9 @@ async function detectSecondScreen() {
         );
 
 
-    /*
-       API experimental de múltiplas telas.
-    */
-
     if(
-        "getScreenDetails" in window
+        "getScreenDetails"
+        in window
     ) {
 
         try {
@@ -2098,23 +3112,14 @@ async function detectSecondScreen() {
                 await window.getScreenDetails();
 
 
-            const screens =
-                details.screens;
-
-
             const current =
                 details.currentScreen;
 
 
-            /*
-               Procura uma tela diferente
-               da tela atual.
-            */
-
             secondScreen =
-                screens.find(
+                details.screens.find(
                     screen =>
-                        screen !== current
+                    screen !== current
                 );
 
 
@@ -2131,49 +3136,26 @@ async function detectSecondScreen() {
             }
 
         }
-
         catch(error) {
 
-            console.log(
-                "Não foi possível acessar as telas:",
-                error
-            );
+            console.log(error);
 
         }
 
     }
 
 
-    /*
-       Caso a API não exista,
-       mostramos uma mensagem.
-    */
-
     info.textContent =
-        "O navegador não liberou a detecção automática da segunda tela. Será aberta uma janela de apresentação.";
+        "O navegador não liberou a detecção automática. Será usada uma janela separada.";
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ABRIR NA SEGUNDA TELA
-===================================================== */
+========================================================= */
 
 function openOnSecondScreen() {
-
-    if(!secondScreen) {
-
-        openProjectionWindow();
-
-        return;
-
-    }
-
-
-    /*
-       Calculamos a posição
-       da segunda tela.
-    */
 
     const left =
         secondScreen.availLeft;
@@ -2207,7 +3189,7 @@ function openOnSecondScreen() {
     if(!projectionWindow) {
 
         alert(
-            "O navegador bloqueou a janela de apresentação."
+            "Permita pop-ups para o CultoVision."
         );
 
         return;
@@ -2221,23 +3203,14 @@ function openOnSecondScreen() {
     projectionWindow.focus();
 
 
-    document.getElementById(
-        "projectionStatus"
-    ).textContent =
-        "● Apresentação ativa na segunda tela.";
-
-    document.getElementById(
-        "projectionStatus"
-    ).classList.add(
-        "online"
-    );
+    setProjectionOnline();
 
 }
 
 
-/* =====================================================
-   JANELA NORMAL DE PROJEÇÃO
-===================================================== */
+/* =========================================================
+   JANELA NORMAL
+========================================================= */
 
 function openProjectionWindow() {
 
@@ -2264,7 +3237,7 @@ function openProjectionWindow() {
     if(!projectionWindow) {
 
         alert(
-            "Permita pop-ups para o CultoVision."
+            "O navegador bloqueou a janela. Permita pop-ups."
         );
 
         return;
@@ -2278,25 +3251,48 @@ function openProjectionWindow() {
     projectionWindow.focus();
 
 
-    document.getElementById(
-        "projectionStatus"
-    ).textContent =
-        "● Apresentação ativa.";
-
-    document.getElementById(
-        "projectionStatus"
-    ).classList.add(
-        "online"
-    );
+    setProjectionOnline();
 
 }
 
 
-/* =====================================================
-   CRIAR PÁGINA DA TV
-===================================================== */
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setProjectionOnline() {
+
+    const status =
+        document.getElementById(
+            "projectionStatus"
+        );
+
+
+    status.textContent =
+        "● Apresentação ativa na TV.";
+
+
+    status.style.color =
+        "#22c55e";
+
+}
+
+
+/* =========================================================
+   PÁGINA DA TV
+========================================================= */
 
 function writeProjectionPage() {
+
+    const text =
+        currentSong
+        ?
+        currentSong.slides[
+            currentSlide
+        ]
+        :
+        "CultoVision";
+
 
     projectionWindow.document.open();
 
@@ -2356,48 +3352,51 @@ body {
 
     inset: 0;
 
-    z-index: 0;
-
 }
 
 #text {
 
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
 
     width: 90%;
 
-    font-size: 70px;
+    font-size: ${fontSize}px;
+
+    color: ${fontColor};
 
     font-weight: bold;
 
     line-height: 1.3;
+
+    white-space: pre-line;
 
     text-shadow:
         0 4px 20px rgba(0,0,0,.9);
 
 }
 
-#fullscreenButton {
+#fullscreen {
 
     position: fixed;
 
-    right: 20px;
+    right: 18px;
 
-    bottom: 20px;
+    bottom: 18px;
 
     z-index: 5;
 
-    padding: 12px 18px;
+    background:
+        rgba(255,255,255,.15);
 
     border: none;
 
-    border-radius: 8px;
-
-    background: rgba(255,255,255,.15);
-
     color: white;
+
+    padding: 11px 16px;
+
+    border-radius: 8px;
 
     cursor: pointer;
 
@@ -2411,20 +3410,22 @@ body {
 <body>
 
 
-<div id="background"></div>
+<div
+    id="background"
+    style="
+        background:
+        ${backgrounds[currentBackground].css};
+    ">
+</div>
 
 
 <div id="text">
-
-    ${escapeHTML(
-        currentSong.lyrics[currentSlide]
-    )}
-
+${escapeHTML(text)}
 </div>
 
 
 <button
-    id="fullscreenButton"
+    id="fullscreen"
     onclick="goFullscreen()">
 
     ⛶ Tela cheia
@@ -2436,9 +3437,10 @@ body {
 
 function goFullscreen() {
 
-    document.documentElement
-        .requestFullscreen()
-        .catch(() => {});
+    document
+    .documentElement
+    .requestFullscreen()
+    .catch(() => {});
 
 }
 
@@ -2454,26 +3456,20 @@ function goFullscreen() {
 
     projectionWindow.document.close();
 
-
-    updateProjection();
-
 }
 
 
-/* =====================================================
+/* =========================================================
    ATUALIZAR TV
-===================================================== */
+========================================================= */
 
-function updateProjection() {
+function updateProjectionWindow() {
 
     if(
         !projectionWindow ||
         projectionWindow.closed
-    ) {
-
+    )
         return;
-
-    }
 
 
     try {
@@ -2492,12 +3488,18 @@ function updateProjection() {
             );
 
 
-        if(text) {
+        if(text && currentSong) {
 
             text.textContent =
-                currentSong.lyrics[
+                currentSong.slides[
                     currentSlide
                 ];
+
+            text.style.fontSize =
+                fontSize + "px";
+
+            text.style.color =
+                fontColor;
 
         }
 
@@ -2512,7 +3514,6 @@ function updateProjection() {
         }
 
     }
-
     catch(error) {
 
         console.log(error);
@@ -2522,21 +3523,31 @@ function updateProjection() {
 }
 
 
-/* =====================================================
+/* =========================================================
    TECLADO
-===================================================== */
+========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event) {
-
-        /*
-           Só controla pelo teclado
-           quando o foco estiver no painel.
-        */
+    event => {
 
         if(
-            event.key === "ArrowRight"
+            event.target.tagName ===
+            "INPUT"
+        )
+            return;
+
+
+        if(
+            event.target.tagName ===
+            "TEXTAREA"
+        )
+            return;
+
+
+        if(
+            event.key ===
+            "ArrowRight"
         ) {
 
             nextSlide();
@@ -2545,7 +3556,8 @@ document.addEventListener(
 
 
         if(
-            event.key === "ArrowLeft"
+            event.key ===
+            "ArrowLeft"
         ) {
 
             previousSlide();
@@ -2556,193 +3568,88 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   GOOGLE
-===================================================== */
+/* =========================================================
+   TAMANHO DA LETRA
+========================================================= */
 
-function googleSong(title) {
+function changeFontSize(value) {
 
-    const query =
-        encodeURIComponent(
-            title + " letra"
-        );
+    fontSize =
+        Number(value);
 
 
-    window.open(
-        "https://www.google.com/search?q=" +
-        query,
-        "_blank"
-    );
+    document.getElementById(
+        "fontSizeValue"
+    ).textContent =
+        value;
+
+
+    applyVisual();
+
+    updateProjectionWindow();
 
 }
 
 
-function searchGoogle() {
+/* =========================================================
+   COR
+========================================================= */
 
-    const text =
-        document.getElementById(
-            "musicSearch"
+function changeFontColor(value) {
+
+    fontColor =
+        value;
+
+
+    applyVisual();
+
+    updateProjectionWindow();
+
+}
+
+
+/* =========================================================
+   APAGAR TUDO
+========================================================= */
+
+function clearAllSongs() {
+
+    if(
+        !confirm(
+            "Tem certeza que deseja apagar todas as músicas?"
         )
-        .value
-        .trim();
-
-
-    if(!text) {
-
-        alert(
-            "Digite o nome da música primeiro."
-        );
-
-        return;
-
-    }
-
-
-    googleSong(text);
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-function openMusicModal() {
-
-    document
-    .getElementById(
-        "musicModal"
     )
-    .classList.add(
-        "show"
-    );
-
-}
-
-
-function closeMusicModal() {
-
-    document
-    .getElementById(
-        "musicModal"
-    )
-    .classList.remove(
-        "show"
-    );
-
-}
-
-
-/* =====================================================
-   SALVAR MÚSICA
-===================================================== */
-
-function saveMusic() {
-
-    const title =
-        document.getElementById(
-            "musicTitle"
-        )
-        .value
-        .trim();
-
-
-    const lyrics =
-        document.getElementById(
-            "musicLyrics"
-        )
-        .value
-        .split("---")
-        .map(
-            item =>
-                item.trim()
-        )
-        .filter(
-            item =>
-                item.length > 0
-        );
-
-
-    if(!title) {
-
-        alert(
-            "Digite o nome da música."
-        );
-
         return;
 
-    }
+
+    songs = [];
 
 
-    if(!lyrics.length) {
-
-        alert(
-            "Digite pelo menos um slide."
-        );
-
-        return;
-
-    }
+    saveSongs();
 
 
-    songs.push({
-
-        title: title,
-
-        lyrics: lyrics
-
-    });
-
-
-    localStorage.setItem(
-        "cultovision_songs",
-        JSON.stringify(songs)
-    );
-
-
-    currentSong =
-        songs[
-            songs.length - 1
-        ];
-
+    currentSong = null;
 
     currentSlide = 0;
 
 
-    closeMusicModal();
-
-
     renderMusic();
 
-
-    updateSlide();
-
-
-    document.getElementById(
-        "musicTitle"
-    ).value = "";
-
-
-    document.getElementById(
-        "musicLyrics"
-    ).value = "";
-
-
-    alert(
-        "✓ Música adicionada!"
-    );
+    updatePresentation();
 
 }
 
 
-/* =====================================================
+/* =========================================================
    TROCAR PÁGINA
-===================================================== */
+========================================================= */
 
-function goToPage(pageName) {
+function goToPage(name) {
 
     document
-    .querySelectorAll(".menu-button")
+    .querySelectorAll(
+        ".menu-button"
+    )
     .forEach(
         button => {
 
@@ -2753,7 +3660,7 @@ function goToPage(pageName) {
 
             if(
                 button.dataset.page ===
-                pageName
+                name
             ) {
 
                 button.classList.add(
@@ -2767,21 +3674,20 @@ function goToPage(pageName) {
 
 
     document
-    .querySelectorAll(".page")
+    .querySelectorAll(
+        ".page"
+    )
     .forEach(
-        page => {
-
-            page.classList.remove(
-                "active"
-            );
-
-        }
+        page =>
+        page.classList.remove(
+            "active"
+        )
     );
 
 
     const page =
         document.getElementById(
-            "page-" + pageName
+            "page-" + name
         );
 
 
@@ -2796,18 +3702,38 @@ function goToPage(pageName) {
 }
 
 
-/* =====================================================
-   SEGURANÇA DE TEXTO
-===================================================== */
+/* =========================================================
+   SEGURANÇA
+========================================================= */
 
 function escapeHTML(text) {
 
     return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -2815,22 +3741,31 @@ function escapeHTML(text) {
 function escapeAttribute(text) {
 
     return String(text)
-        .replaceAll("\\", "\\\\")
-        .replaceAll("'", "\\'")
-        .replaceAll('"', "&quot;");
+
+        .replaceAll(
+            "\\",
+            "\\\\"
+        )
+
+        .replaceAll(
+            "'",
+            "\\'"
+        );
 
 }
 
 
-/* =====================================================
-   INICIALIZAÇÃO
-===================================================== */
+/* =========================================================
+   INÍCIO
+========================================================= */
 
 renderMusic();
 
 renderBackgrounds();
 
-updateSlide();
+updatePresentation();
+
+applyVisual();
 
 </script>
 
