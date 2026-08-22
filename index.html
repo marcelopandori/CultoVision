@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CultoVision 2.0</title>
+<title>CultoVision 3.0</title>
 
 <style>
 
@@ -21,7 +21,7 @@
     --card2:#1d2330;
     --border:#2b3240;
     --text:#fff;
-    --muted:#8d96a8;
+    --muted:#929bad;
     --purple:#a855f7;
     --pink:#ec4899;
     --green:#22c55e;
@@ -33,7 +33,7 @@
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:var(--text);
+    color:white;
     height:100vh;
     overflow:hidden;
 }
@@ -45,8 +45,8 @@ header{
     background:var(--sidebar);
     border-bottom:1px solid var(--border);
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     padding:0 22px;
 }
 
@@ -62,16 +62,16 @@ header{
     width:40px;
     height:40px;
     border-radius:10px;
-    background:linear-gradient(135deg,#8b5cf6,#ec4899);
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:22px;
+    justify-content:center;
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    font-size:23px;
 }
 
 .status{
-    font-size:13px;
     color:var(--muted);
+    font-size:13px;
 }
 
 .status span{
@@ -81,8 +81,8 @@ header{
 /* APP */
 
 .app{
-    display:flex;
     height:calc(100vh - 65px);
+    display:flex;
 }
 
 /* SIDEBAR */
@@ -95,8 +95,8 @@ header{
 }
 
 .menuTitle{
-    font-size:10px;
     color:#596274;
+    font-size:10px;
     font-weight:bold;
     margin:15px 10px 8px;
 }
@@ -119,7 +119,7 @@ header{
 .menuButton:hover,
 .menuButton.active{
     background:rgba(168,85,247,.15);
-    color:#fff;
+    color:white;
 }
 
 .menuIcon{
@@ -130,31 +130,34 @@ header{
     transition:.25s;
 }
 
-/* CORES DOS ICONES */
-
 .menuButton[data-page="home"]:hover .menuIcon{
     color:var(--purple);
-    transform:scale(1.25);
+    transform:scale(1.2);
 }
 
 .menuButton[data-page="music"]:hover .menuIcon{
     color:var(--pink);
-    transform:scale(1.25);
+    transform:scale(1.2);
+}
+
+.menuButton[data-page="bible"]:hover .menuIcon{
+    color:#eab308;
+    transform:scale(1.2);
 }
 
 .menuButton[data-page="projection"]:hover .menuIcon{
     color:var(--green);
-    transform:scale(1.25);
+    transform:scale(1.2);
 }
 
 .menuButton[data-page="backgrounds"]:hover .menuIcon{
     color:var(--orange);
-    transform:scale(1.25);
+    transform:scale(1.2);
 }
 
 .menuButton[data-page="settings"]:hover .menuIcon{
     color:var(--cyan);
-    transform:scale(1.25);
+    transform:scale(1.2);
 }
 
 /* CONTENT */
@@ -198,8 +201,8 @@ header{
 }
 
 .button:hover{
-    transform:translateY(-1px);
     filter:brightness(1.15);
+    transform:translateY(-1px);
 }
 
 .button.green{
@@ -215,7 +218,7 @@ header{
     border:1px solid var(--border);
 }
 
-/* HOME CARDS */
+/* HOME */
 
 .cards{
     display:grid;
@@ -235,7 +238,6 @@ header{
 .homeCard:hover{
     transform:translateY(-5px);
     border-color:var(--purple);
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 .cardIcon{
@@ -274,26 +276,31 @@ header{
     height:430px;
     border-radius:10px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     padding:50px;
-    background:linear-gradient(135deg,#050505,#171717);
+    background:#111;
 }
 
 .panelSlideText{
+
     /*
        TAMANHO FIXO DO PAINEL.
-       NÃO muda quando alterar o tamanho da TV.
+       A CONFIGURAÇÃO DA TV NÃO ALTERA ISSO.
     */
-    font-size:38px;
-    font-weight:bold;
-    line-height:1.3;
-    white-space:pre-line;
-    text-shadow:0 4px 20px rgba(0,0,0,.85);
-}
 
-/* CONTROLES */
+    font-size:38px;
+
+    font-weight:bold;
+
+    line-height:1.3;
+
+    white-space:pre-line;
+
+    text-shadow:0 4px 20px rgba(0,0,0,.85);
+
+}
 
 .controls{
     display:flex;
@@ -380,7 +387,7 @@ header{
     border-color:var(--purple);
 }
 
-/* MUSIC RESULTS */
+/* MUSIC */
 
 .results{
     display:grid;
@@ -409,8 +416,6 @@ header{
     gap:8px;
     margin-top:15px;
 }
-
-/* EDITOR */
 
 .editor{
     margin-top:20px;
@@ -442,8 +447,6 @@ textarea{
     resize:vertical;
     line-height:1.5;
 }
-
-/* MUSIC GRID */
 
 .musicGrid{
     display:grid;
@@ -489,64 +492,103 @@ textarea{
     background:#414b5c;
 }
 
-/* BACKGROUNDS */
+/* BIBLE */
 
-.backgroundGrid{
+.bibleLayout{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
-    gap:15px;
+    grid-template-columns:260px 1fr;
+    gap:18px;
 }
 
-.backgroundCard{
-    height:130px;
-    border-radius:12px;
-    border:2px solid transparent;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-weight:bold;
-    text-shadow:0 2px 5px #000;
-    transition:.2s;
-    background-size:cover;
-    background-position:center;
-}
-
-.backgroundCard:hover{
-    transform:scale(1.03);
-}
-
-.backgroundCard.selected{
-    border-color:white;
-    box-shadow:0 0 0 3px var(--purple);
-}
-
-/* UPLOAD */
-
-.uploadBox{
+.bibleBooks{
     background:var(--card);
     border:1px solid var(--border);
-    padding:20px;
     border-radius:12px;
+    padding:15px;
+    max-height:570px;
+    overflow-y:auto;
+}
+
+.bibleBook{
+    padding:11px;
+    border-radius:7px;
+    cursor:pointer;
+    color:#aab2c1;
+    margin-bottom:4px;
+}
+
+.bibleBook:hover,
+.bibleBook.active{
+    background:rgba(234,179,8,.15);
+    color:white;
+}
+
+.bibleMain{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+}
+
+.bibleTop{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.select{
+    background:#0c1016;
+    color:white;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:10px;
+}
+
+.chapterGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(55px,1fr));
+    gap:8px;
     margin-bottom:20px;
 }
 
-.uploadBox p{
-    color:var(--muted);
-    margin-bottom:15px;
-}
-
-.fileInput{
-    display:none;
-}
-
-.uploadButton{
-    display:inline-block;
-    background:var(--blue);
-    padding:11px 17px;
-    border-radius:8px;
+.chapterButton{
+    border:none;
+    background:#222936;
+    color:white;
+    padding:10px;
+    border-radius:7px;
     cursor:pointer;
+}
+
+.chapterButton:hover,
+.chapterButton.active{
+    background:#eab308;
+    color:#000;
+}
+
+.verseList{
+    max-height:400px;
+    overflow-y:auto;
+}
+
+.verse{
+    background:#0d1117;
+    border:1px solid #202733;
+    border-radius:8px;
+    padding:13px;
+    margin-bottom:8px;
+    cursor:pointer;
+}
+
+.verse:hover{
+    border-color:#eab308;
+}
+
+.verseNumber{
+    color:#eab308;
     font-weight:bold;
+    margin-right:8px;
 }
 
 /* PROJECTION */
@@ -566,6 +608,14 @@ textarea{
     line-height:1.3;
     white-space:pre-line;
     width:90%;
+
+    /*
+       O TAMANHO É CONTROLADO
+       SEPARADAMENTE.
+    */
+
+    font-size:52px;
+
     text-shadow:0 4px 20px rgba(0,0,0,.9);
 }
 
@@ -580,6 +630,64 @@ textarea{
 .screenBox p{
     color:var(--muted);
     line-height:1.5;
+}
+
+/* BACKGROUNDS */
+
+.uploadBox{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.uploadBox p{
+    color:var(--muted);
+    margin:8px 0 15px;
+}
+
+.fileInput{
+    display:none;
+}
+
+.uploadButton{
+    display:inline-block;
+    background:var(--blue);
+    padding:11px 17px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.backgroundGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+    gap:15px;
+}
+
+.backgroundCard{
+    height:130px;
+    border-radius:12px;
+    border:2px solid transparent;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    font-weight:bold;
+    text-shadow:0 2px 5px #000;
+    transition:.2s;
+    background-size:cover;
+    background-position:center;
+}
+
+.backgroundCard:hover{
+    transform:scale(1.03);
+}
+
+.backgroundCard.selected{
+    border-color:white;
+    box-shadow:0 0 0 3px var(--purple);
 }
 
 /* SETTINGS */
@@ -608,6 +716,11 @@ input[type="range"]{
     .presentation{
         grid-template-columns:1fr;
     }
+
+    .bibleLayout{
+        grid-template-columns:1fr;
+    }
+
 }
 
 @media(max-width:650px){
@@ -623,6 +736,7 @@ input[type="range"]{
     .content{
         padding:15px;
     }
+
 }
 
 </style>
@@ -632,85 +746,89 @@ input[type="range"]{
 
 <header>
 
-    <div class="logo">
+<div class="logo">
 
-        <div class="logoIcon">
-            ✦
-        </div>
+<div class="logoIcon">
+✦
+</div>
 
-        CultoVision
+CultoVision
 
-    </div>
+</div>
 
-    <div class="status">
+<div class="status">
 
-        <span>●</span>
-        Sistema pronto
+<span>●</span>
+Sistema pronto
 
-    </div>
+</div>
 
 </header>
 
 
 <div class="app">
 
-
-<!-- MENU -->
-
 <aside class="sidebar">
 
-    <div class="menuTitle">
-        PRINCIPAL
-    </div>
-
-    <button class="menuButton active" data-page="home">
-
-        <span class="menuIcon">🏠</span>
-        <span>Início</span>
-
-    </button>
+<div class="menuTitle">
+PRINCIPAL
+</div>
 
 
-    <button class="menuButton" data-page="music">
+<button class="menuButton active" data-page="home">
 
-        <span class="menuIcon">🎵</span>
-        <span>Músicas</span>
+<span class="menuIcon">🏠</span>
+<span>Início</span>
 
-    </button>
-
-
-    <button class="menuButton" data-page="projection">
-
-        <span class="menuIcon">📺</span>
-        <span>Projeção</span>
-
-    </button>
+</button>
 
 
-    <div class="menuTitle">
-        PERSONALIZAÇÃO
-    </div>
+<button class="menuButton" data-page="music">
+
+<span class="menuIcon">🎵</span>
+<span>Músicas</span>
+
+</button>
 
 
-    <button class="menuButton" data-page="backgrounds">
+<button class="menuButton" data-page="bible">
 
-        <span class="menuIcon">🎨</span>
-        <span>Fundos</span>
+<span class="menuIcon">📖</span>
+<span>Bíblia</span>
 
-    </button>
+</button>
 
 
-    <button class="menuButton" data-page="settings">
+<button class="menuButton" data-page="projection">
 
-        <span class="menuIcon">⚙️</span>
-        <span>Configurações</span>
+<span class="menuIcon">📺</span>
+<span>Projeção</span>
 
-    </button>
+</button>
+
+
+<div class="menuTitle">
+PERSONALIZAÇÃO
+</div>
+
+
+<button class="menuButton" data-page="backgrounds">
+
+<span class="menuIcon">🎨</span>
+<span>Fundos</span>
+
+</button>
+
+
+<button class="menuButton" data-page="settings">
+
+<span class="menuIcon">⚙️</span>
+<span>Configurações</span>
+
+</button>
 
 </aside>
 
-
-<!-- CONTEÚDO -->
 
 <main class="content">
 
@@ -719,147 +837,153 @@ input[type="range"]{
 
 <section class="page active" id="page-home">
 
-    <div class="title">
-        Painel principal
-    </div>
+<div class="title">
+Painel principal
+</div>
 
-    <div class="subtitle">
-        Controle tudo do CultoVision por aqui.
-    </div>
-
-
-    <div class="cards">
+<div class="subtitle">
+Controle músicas, Bíblia, fundos e projeção.
+</div>
 
 
-        <div class="homeCard" onclick="goToPage('music')">
+<div class="cards">
 
-            <div class="cardIcon">
-                🎵
-            </div>
+<div class="homeCard"
+onclick="goToPage('music')">
 
-            <div class="cardNumber" id="musicCount">
-                0
-            </div>
+<div class="cardIcon">🎵</div>
 
-            <div class="cardLabel">
-                Músicas
-            </div>
+<div class="cardNumber"
+id="musicCount">
+0
+</div>
 
-        </div>
+<div class="cardLabel">
+Músicas
+</div>
 
-
-        <div class="homeCard" onclick="goToPage('projection')">
-
-            <div class="cardIcon">
-                📺
-            </div>
-
-            <div class="cardNumber">
-                TV
-            </div>
-
-            <div class="cardLabel">
-                Projeção
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="homeCard" onclick="goToPage('backgrounds')">
+<div class="homeCard"
+onclick="goToPage('bible')">
 
-            <div class="cardIcon">
-                🎨
-            </div>
+<div class="cardIcon">📖</div>
 
-            <div class="cardNumber">
-                12+
-            </div>
+<div class="cardNumber">
+Bíblia
+</div>
 
-            <div class="cardLabel">
-                Fundos
-            </div>
+<div class="cardLabel">
+Bíblia ACF
+</div>
 
-        </div>
-
-
-        <div class="homeCard" onclick="goToPage('settings')">
-
-            <div class="cardIcon">
-                ⚙️
-            </div>
-
-            <div class="cardNumber">
-                ⚙
-            </div>
-
-            <div class="cardLabel">
-                Configurações
-            </div>
-
-        </div>
+</div>
 
 
-    </div>
+<div class="homeCard"
+onclick="goToPage('projection')">
+
+<div class="cardIcon">📺</div>
+
+<div class="cardNumber">
+TV
+</div>
+
+<div class="cardLabel">
+Projeção
+</div>
+
+</div>
 
 
-    <div class="presentation">
+<div class="homeCard"
+onclick="goToPage('backgrounds')">
+
+<div class="cardIcon">🎨</div>
+
+<div class="cardNumber">
+12+
+</div>
+
+<div class="cardLabel">
+Fundos
+</div>
+
+</div>
+
+</div>
 
 
-        <div class="previewContainer">
+<div class="presentation">
+
+<div class="previewContainer">
+
+<div class="preview"
+id="preview">
+
+<div class="panelSlideText"
+id="panelSlideText">
+
+Escolha uma música ou versículo
+
+</div>
+
+</div>
 
 
-            <div class="preview" id="preview">
+<div class="controls">
 
-                <div class="panelSlideText" id="panelSlideText">
+<button class="control"
+onclick="previousSlide()">
 
-                    Escolha uma música
+◀ Anterior
 
-                </div>
-
-            </div>
-
-
-            <div class="controls">
-
-                <button class="control" onclick="previousSlide()">
-                    ◀ Anterior
-                </button>
-
-                <button class="control project" onclick="startPresentation()">
-                    📺 APRESENTAR
-                </button>
-
-                <button class="control" onclick="nextSlide()">
-                    Próximo ▶
-                </button>
-
-            </div>
+</button>
 
 
-            <div class="screenBox">
+<button class="control project"
+onclick="startPresentation()">
 
-                <p id="projectionStatus">
-                    ● Apresentação parada.
-                </p>
+📺 APRESENTAR
 
-            </div>
-
-
-        </div>
+</button>
 
 
-        <div class="slideList">
+<button class="control"
+onclick="nextSlide()">
 
-            <div class="slideTitle">
-                Slides
-            </div>
+Próximo ▶
 
-            <div id="slideList"></div>
+</button>
 
-        </div>
+</div>
 
 
-    </div>
+<div class="screenBox">
+
+<p id="projectionStatus">
+
+● Apresentação parada.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="slideList">
+
+<div class="slideTitle">
+Slides
+</div>
+
+<div id="slideList"></div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -868,76 +992,87 @@ input[type="range"]{
 
 <section class="page" id="page-music">
 
-    <div class="title">
-        🎵 Músicas
-    </div>
+<div class="title">
+🎵 Músicas
+</div>
 
-    <div class="subtitle">
-        Pesquise e organize suas músicas.
-    </div>
-
-
-    <div class="searchRow">
-
-        <input
-            class="search"
-            id="musicSearch"
-            placeholder="🔎 Pesquisar música..."
-        >
-
-        <button
-            class="button"
-            onclick="searchMusic()">
-
-            🔍 Pesquisar
-
-        </button>
-
-    </div>
+<div class="subtitle">
+Pesquise músicas e organize seus slides.
+</div>
 
 
-    <div id="searchResults" class="results"></div>
+<div class="searchRow">
+
+<input
+class="search"
+id="musicSearch"
+placeholder="🔎 Pesquisar música no Google..."
+>
+
+<button
+class="button"
+onclick="googleMusicSearch()">
+
+🔎 Google
+
+</button>
+
+</div>
 
 
-    <div class="editor">
+<div class="screenBox">
 
-        <h2>
-            ✨ Nova música
-        </h2>
+<p>
 
-        <p class="editorInfo">
+A pesquisa será aberta em uma nova aba.
+Você pode encontrar a música e depois
+adicionar o conteúdo autorizado ao
+CultoVision.
 
-            Digite o nome e cole abaixo o
-            conteúdo que você tem autorização
-            para utilizar.
+</p>
 
-        </p>
-
-
-        <input
-            class="input"
-            id="songTitle"
-            placeholder="Nome da música"
-        >
+</div>
 
 
-        <input
-            class="input"
-            id="songArtist"
-            placeholder="Cantor / artista"
-        >
+<div class="editor">
+
+<h2>
+✨ Nova música
+</h2>
+
+<p class="editorInfo">
+
+Cole o conteúdo que você tem autorização
+para utilizar. O CultoVision separará
+automaticamente em slides.
+
+</p>
 
 
-        <textarea
-            class="input"
-            id="songText"
-            placeholder="Cole o conteúdo aqui...
+<input
+class="input"
+id="songTitle"
+placeholder="Nome da música"
+>
 
-Separe as partes com uma linha vazia.
+
+<input
+class="input"
+id="songArtist"
+placeholder="Cantor / artista"
+>
+
+
+<textarea
+class="input"
+id="songText"
+placeholder="Cole aqui o conteúdo...
+
+Separe cada estrofe com uma linha vazia.
 
 Exemplo:
 
-Primeira estrofe
+Primeira parte
 linha 1
 linha 2
 linha 3
@@ -949,23 +1084,144 @@ linha 3
 "></textarea>
 
 
-        <button
-            class="button"
-            onclick="organizeSong()">
+<button
+class="button"
+onclick="organizeSong()">
 
-            ✨ ORGANIZAR EM SLIDES
+✨ ORGANIZAR EM SLIDES
 
-        </button>
+</button>
 
-    </div>
-
-
-    <h2 style="margin-top:30px;margin-bottom:15px;">
-        ❤️ Minhas músicas
-    </h2>
+</div>
 
 
-    <div class="musicGrid" id="musicGrid"></div>
+<h2 style="margin-top:30px;margin-bottom:15px;">
+
+❤️ Minhas músicas
+
+</h2>
+
+
+<div
+class="musicGrid"
+id="musicGrid">
+
+</div>
+
+</section>
+
+
+<!-- BIBLIA -->
+
+<section class="page" id="page-bible">
+
+<div class="title">
+📖 Bíblia
+</div>
+
+<div class="subtitle">
+Bíblia preparada para receber o conteúdo ACF autorizado.
+</div>
+
+
+<div class="screenBox">
+
+<p>
+
+📌 Nesta versão a estrutura da Bíblia já está pronta.
+Quando você importar o arquivo ACF autorizado,
+os livros, capítulos e versículos aparecerão aqui.
+
+</p>
+
+<br>
+
+<label class="uploadButton">
+
+📖 Importar Bíblia
+
+<input
+class="fileInput"
+type="file"
+accept=".txt,.json"
+onchange="importBible(event)"
+>
+
+</label>
+
+</div>
+
+
+<div class="bibleLayout"
+style="margin-top:20px;">
+
+
+<div class="bibleBooks">
+
+<h3 style="margin-bottom:12px;">
+Livros
+</h3>
+
+<div id="bibleBooks">
+
+<div style="color:#929bad;font-size:13px;">
+
+Nenhum arquivo bíblico carregado.
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="bibleMain">
+
+<div class="bibleTop">
+
+<h2 id="bibleTitle">
+
+Bíblia
+
+</h2>
+
+<select
+class="select"
+id="bibleChapter"
+onchange="selectBibleChapter(this.value)"
+>
+
+<option>
+Capítulo
+</option>
+
+</select>
+
+</div>
+
+
+<div
+class="chapterGrid"
+id="chapterGrid">
+</div>
+
+
+<div
+class="verseList"
+id="verseList">
+
+<div
+style="color:#929bad;text-align:center;padding:40px;">
+
+Importe a Bíblia para começar.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -974,51 +1230,71 @@ linha 3
 
 <section class="page" id="page-projection">
 
-    <div class="title">
-        📺 Projeção
-    </div>
+<div class="title">
+📺 Projeção
+</div>
 
-    <div class="subtitle">
-        Controle a apresentação que aparece na TV.
-    </div>
-
-
-    <div class="projectionPreview" id="projectionPreview">
-
-        <div class="tvSlideText" id="tvSlideText">
-
-            Nenhuma música selecionada
-
-        </div>
-
-    </div>
+<div class="subtitle">
+Esta é a visualização da tela que será apresentada.
+</div>
 
 
-    <div class="controls">
+<div
+class="projectionPreview"
+id="projectionPreview">
 
-        <button class="control" onclick="previousSlide()">
-            ◀
-        </button>
+<div
+class="tvSlideText"
+id="tvSlideText">
 
-        <button class="control project" onclick="startPresentation()">
-            📺 INICIAR
-        </button>
+Nenhuma apresentação selecionada
 
-        <button class="control" onclick="nextSlide()">
-            ▶
-        </button>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="screenBox">
+<div class="controls">
 
-        <p id="screenInfo">
-            O CultoVision tentará abrir a apresentação
-            na segunda tela automaticamente.
-        </p>
+<button
+class="control"
+onclick="previousSlide()">
 
-    </div>
+◀
+
+</button>
+
+
+<button
+class="control project"
+onclick="startPresentation()">
+
+📺 INICIAR
+
+</button>
+
+
+<button
+class="control"
+onclick="nextSlide()">
+
+▶
+
+</button>
+
+</div>
+
+
+<div class="screenBox">
+
+<p id="screenInfo">
+
+A apresentação será aberta em uma janela
+separada para você colocar na TV.
+
+</p>
+
+</div>
 
 </section>
 
@@ -1027,140 +1303,145 @@ linha 3
 
 <section class="page" id="page-backgrounds">
 
-    <div class="title">
-        🎨 Fundos
-    </div>
+<div class="title">
+🎨 Fundos
+</div>
 
-    <div class="subtitle">
-        Escolha ou envie um fundo para sua apresentação.
-    </div>
-
-
-    <div class="uploadBox">
-
-        <h3>
-            🖼️ Adicionar fundo do computador
-        </h3>
-
-        <p>
-            Escolha uma imagem JPG, PNG ou WEBP.
-        </p>
+<div class="subtitle">
+Escolha um fundo ou carregue uma imagem do computador.
+</div>
 
 
-        <label class="uploadButton">
+<div class="uploadBox">
 
-            📁 Escolher imagem
+<h3>
+🖼️ Adicionar fundo
+</h3>
 
-            <input
-                class="fileInput"
-                type="file"
-                accept="image/*"
-                onchange="addLocalBackground(event)"
-            >
-
-        </label>
-
-    </div>
+<p>
+JPG, PNG ou WEBP.
+</p>
 
 
-    <div class="searchRow">
+<label class="uploadButton">
 
-        <input
-            class="search"
-            id="backgroundSearch"
-            placeholder="🔎 Pesquisar fundo..."
-        >
+📁 Escolher imagem
 
-        <button
-            class="button"
-            onclick="searchBackground()">
+<input
+class="fileInput"
+type="file"
+accept="image/*"
+onchange="addLocalBackground(event)"
+>
 
-            🔍 Pesquisar
+</label>
 
-        </button>
-
-    </div>
+</div>
 
 
-    <div class="backgroundGrid" id="backgroundGrid"></div>
+<div class="searchRow">
 
+<input
+class="search"
+id="backgroundSearch"
+placeholder="🔎 Pesquisar imagem no Google..."
+>
+
+<button
+class="button"
+onclick="googleBackgroundSearch()">
+
+🔎 Google
+
+</button>
+
+</div>
+
+
+<div
+class="backgroundGrid"
+id="backgroundGrid">
+
+</div>
 
 </section>
 
 
-<!-- CONFIGURAÇÕES -->
+<!-- CONFIG -->
 
 <section class="page" id="page-settings">
 
-    <div class="title">
-        ⚙️ Configurações
-    </div>
+<div class="title">
+⚙️ Configurações
+</div>
 
-    <div class="subtitle">
-        Configurações da apresentação.
-    </div>
-
-
-    <div class="screenBox">
+<div class="subtitle">
+Configurações da apresentação.
+</div>
 
 
-        <div class="setting">
-
-            <label>
-
-                Tamanho da letra na TV:
-
-                <strong id="fontSizeValue">
-                    52
-                </strong>
-                px
-
-            </label>
+<div class="screenBox">
 
 
-            <input
-                type="range"
-                min="25"
-                max="100"
-                value="52"
-                id="fontSizeRange"
-                oninput="changeTVFontSize(this.value)"
-            >
+<div class="setting">
 
-            <p>
-                Esta configuração altera somente
-                a apresentação da TV.
-            </p>
+<label>
 
-        </div>
+Tamanho da letra da TV:
+
+<strong id="fontSizeValue">
+52
+</strong>
+px
+
+</label>
 
 
-        <div class="setting">
-
-            <label>
-                Cor da letra da TV
-            </label>
-
-
-            <input
-                type="color"
-                id="fontColor"
-                value="#ffffff"
-                onchange="changeTVFontColor(this.value)"
-            >
-
-        </div>
+<input
+type="range"
+min="25"
+max="120"
+value="52"
+id="fontSizeRange"
+oninput="changeTVFontSize(this.value)"
+>
 
 
-        <button
-            class="button dark"
-            onclick="clearAllSongs()">
+<p>
 
-            🗑️ Apagar músicas
+⚠️ Isso altera somente a apresentação.
+O painel principal continua com tamanho fixo.
 
-        </button>
+</p>
 
-    </div>
+</div>
+
+
+<div class="setting">
+
+<label>
+Cor da letra da TV
+</label>
+
+<input
+type="color"
+id="fontColor"
+value="#ffffff"
+onchange="changeTVFontColor(this.value)"
+>
+
+</div>
+
+
+<button
+class="button dark"
+onclick="clearAllSongs()">
+
+🗑️ Apagar músicas
+
+</button>
+
+</div>
 
 </section>
 
@@ -1172,27 +1453,33 @@ linha 3
 
 <script>
 
-/* =========================================================
+/* =====================================================
    DADOS
-========================================================= */
+===================================================== */
 
 let songs =
 JSON.parse(
-    localStorage.getItem(
-        "cultovision_songs"
-    )
+localStorage.getItem("cultovision_songs")
 ) || [];
 
 
 let customBackgrounds =
 JSON.parse(
-    localStorage.getItem(
-        "cultovision_backgrounds"
-    )
+localStorage.getItem("cultovision_backgrounds")
 ) || [];
 
 
+let bibleData =
+JSON.parse(
+localStorage.getItem("cultovision_bible")
+) || null;
+
+
 let currentSong = null;
+
+let currentBibleVerse = null;
+
+let currentSlides = [];
 
 let currentSlide = 0;
 
@@ -1200,1305 +1487,1296 @@ let currentBackground = 0;
 
 let projectionWindow = null;
 
-let secondScreen = null;
-
-
-/*
-   IMPORTANTE:
-
-   O painel possui tamanho fixo.
-
-   A TV possui tamanho independente.
-*/
-
 let tvFontSize = 52;
 
 let tvFontColor = "#ffffff";
 
 
-/* =========================================================
-   FUNDOS PADRÃO
-========================================================= */
+/* =====================================================
+   FUNDOS
+===================================================== */
 
-const defaultBackgrounds = [
+const defaultBackgrounds=[
 
 {
-    name:"Noite",
-    css:"linear-gradient(135deg,#030305,#171717)"
+name:"Noite",
+css:"linear-gradient(135deg,#030305,#171717)"
 },
 
 {
-    name:"Roxo",
-    css:"linear-gradient(135deg,#35105c,#08000f)"
+name:"Roxo",
+css:"linear-gradient(135deg,#35105c,#08000f)"
 },
 
 {
-    name:"Azul",
-    css:"linear-gradient(135deg,#082c59,#020813)"
+name:"Azul",
+css:"linear-gradient(135deg,#082c59,#020813)"
 },
 
 {
-    name:"Oceano",
-    css:"linear-gradient(135deg,#006b83,#001b28)"
+name:"Oceano",
+css:"linear-gradient(135deg,#006b83,#001b28)"
 },
 
 {
-    name:"Pôr do Sol",
-    css:"linear-gradient(135deg,#ff7a00,#321000)"
+name:"Pôr do Sol",
+css:"linear-gradient(135deg,#ff7a00,#321000)"
 },
 
 {
-    name:"Vinho",
-    css:"linear-gradient(135deg,#650b2e,#120009)"
+name:"Vinho",
+css:"linear-gradient(135deg,#650b2e,#120009)"
 },
 
 {
-    name:"Floresta",
-    css:"linear-gradient(135deg,#164b29,#020b05)"
+name:"Floresta",
+css:"linear-gradient(135deg,#164b29,#020b05)"
 },
 
 {
-    name:"Aurora",
-    css:"linear-gradient(135deg,#042b45,#39105d,#05020a)"
+name:"Aurora",
+css:"linear-gradient(135deg,#042b45,#39105d,#05020a)"
 },
 
 {
-    name:"Espaço",
-    css:"radial-gradient(circle,#20205a,#02020a 70%)"
+name:"Espaço",
+css:"radial-gradient(circle,#20205a,#02020a 70%)"
 },
 
 {
-    name:"Luz",
-    css:"linear-gradient(135deg,#666,#111)"
+name:"Preto",
+css:"#000"
 },
 
 {
-    name:"Preto",
-    css:"#000"
-},
-
-{
-    name:"Cinza",
-    css:"linear-gradient(135deg,#292929,#080808)"
+name:"Cinza",
+css:"linear-gradient(135deg,#292929,#080808)"
 }
 
 ];
 
 
-/* =========================================================
+/* =====================================================
    MENU
-========================================================= */
+===================================================== */
 
 document
 .querySelectorAll(".menuButton")
-.forEach(button => {
+.forEach(button=>{
 
-    button.addEventListener(
-        "click",
-        () => {
+button.onclick=()=>{
 
-            goToPage(
-                button.dataset.page
-            );
+goToPage(
+button.dataset.page
+);
 
-        }
-    );
+};
 
 });
 
 
-/* =========================================================
-   IR PARA PÁGINA
-========================================================= */
+function goToPage(page){
 
-function goToPage(pageName){
+document
+.querySelectorAll(".menuButton")
+.forEach(button=>{
 
-    document
-    .querySelectorAll(".menuButton")
-    .forEach(button => {
+button.classList.toggle(
+"active",
+button.dataset.page===page
+);
 
-        button.classList.toggle(
-            "active",
-            button.dataset.page === pageName
-        );
-
-    });
+});
 
 
-    document
-    .querySelectorAll(".page")
-    .forEach(page => {
+document
+.querySelectorAll(".page")
+.forEach(p=>{
 
-        page.classList.remove(
-            "active"
-        );
+p.classList.remove(
+"active"
+);
 
-    });
-
-
-    const page =
-        document.getElementById(
-            "page-" + pageName
-        );
+});
 
 
-    if(page){
+const selected =
+document.getElementById(
+"page-"+page
+);
 
-        page.classList.add(
-            "active"
-        );
+if(selected){
 
-    }
+selected.classList.add(
+"active"
+);
+
+}
 
 }
 
 
-/* =========================================================
-   PESQUISA DE MÚSICA
-========================================================= */
+/* =====================================================
+   GOOGLE MUSICAS
+===================================================== */
 
-function searchMusic(){
+function googleMusicSearch(){
 
-    const query =
-        document
-        .getElementById(
-            "musicSearch"
-        )
-        .value
-        .trim();
+const query =
+document
+.getElementById("musicSearch")
+.value
+.trim();
 
 
-    if(!query){
+if(!query){
 
-        alert(
-            "Digite o nome da música."
-        );
+alert(
+"Digite o nome da música."
+);
 
-        return;
-
-    }
-
-
-    const results =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    /*
-       IMPORTANTE:
-
-       Aqui mostramos a pesquisa
-       dentro do CultoVision.
-
-       O conteúdo da letra não é
-       copiado automaticamente.
-    */
-
-    results.innerHTML = `
-
-        <div class="resultCard">
-
-            <h3>
-                🎵 ${escapeHTML(query)}
-            </h3>
-
-            <p>
-                Música pesquisada.
-            </p>
-
-            <div class="resultActions">
-
-                <button
-                    class="smallButton"
-                    onclick="useSearchSong('${escapeAttribute(query)}')">
-
-                    ➕ Adicionar ao CultoVision
-
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
+return;
 
 }
 
 
-/* =========================================================
-   USAR RESULTADO
-========================================================= */
+window.open(
 
-function useSearchSong(title){
+"https://www.google.com/search?q="+
+encodeURIComponent(
+query+" letra música"
+),
 
-    document
-    .getElementById(
-        "songTitle"
-    )
-    .value =
-        title;
+"_blank"
 
-
-    document
-    .getElementById(
-        "songText"
-    )
-    .focus();
-
-
-    window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:"smooth"
-    });
+);
 
 }
 
 
-/* =========================================================
-   ORGANIZAR MÚSICA
-========================================================= */
+/* =====================================================
+   GOOGLE FUNDOS
+===================================================== */
+
+function googleBackgroundSearch(){
+
+const query =
+document
+.getElementById(
+"backgroundSearch"
+)
+.value
+.trim();
+
+
+if(!query){
+
+alert(
+"Digite o que deseja pesquisar."
+);
+
+return;
+
+}
+
+
+window.open(
+
+"https://www.google.com/search?tbm=isch&q="+
+encodeURIComponent(query),
+
+"_blank"
+
+);
+
+}
+
+
+/* =====================================================
+   MUSICA
+===================================================== */
 
 function organizeSong(){
 
-    const title =
-        document
-        .getElementById(
-            "songTitle"
-        )
-        .value
-        .trim();
+const title =
+document
+.getElementById("songTitle")
+.value
+.trim();
 
 
-    const artist =
-        document
-        .getElementById(
-            "songArtist"
-        )
-        .value
-        .trim();
+const artist =
+document
+.getElementById("songArtist")
+.value
+.trim();
 
 
-    const rawText =
-        document
-        .getElementById(
-            "songText"
-        )
-        .value
-        .trim();
+const text =
+document
+.getElementById("songText")
+.value
+.trim();
 
 
-    if(!title){
+if(!title){
 
-        alert(
-            "Digite o nome da música."
-        );
+alert(
+"Digite o nome da música."
+);
 
-        return;
-
-    }
-
-
-    if(!rawText){
-
-        alert(
-            "Cole o conteúdo autorizado."
-        );
-
-        return;
-
-    }
-
-
-    const blocks =
-        rawText
-        .split(/\n\s*\n/)
-        .map(
-            block =>
-                block.trim()
-        )
-        .filter(Boolean);
-
-
-    let slides = [];
-
-
-    blocks.forEach(block => {
-
-        const lines =
-            block
-            .split("\n")
-            .map(
-                line =>
-                    line.trim()
-            )
-            .filter(Boolean);
-
-
-        let chunk = [];
-
-
-        lines.forEach(line => {
-
-            chunk.push(line);
-
-
-            if(
-                chunk.length >= 5
-            ){
-
-                slides.push(
-                    chunk.join("\n")
-                );
-
-                chunk = [];
-
-            }
-
-        });
-
-
-        if(chunk.length){
-
-            slides.push(
-                chunk.join("\n")
-            );
-
-        }
-
-    });
-
-
-    const song = {
-
-        id:Date.now(),
-
-        title:title,
-
-        artist:
-            artist ||
-            "Artista não informado",
-
-        slides:slides,
-
-        favorite:false
-
-    };
-
-
-    songs.push(song);
-
-
-    localStorage.setItem(
-        "cultovision_songs",
-        JSON.stringify(songs)
-    );
-
-
-    currentSong = song;
-
-    currentSlide = 0;
-
-
-    renderMusic();
-
-    updatePresentation();
-
-    goToPage("home");
-
-
-    alert(
-        "✓ Música adicionada ao CultoVision!"
-    );
+return;
 
 }
 
 
-/* =========================================================
-   RENDER MUSICAS
-========================================================= */
+if(!text){
+
+alert(
+"Adicione o conteúdo autorizado."
+);
+
+return;
+
+}
+
+
+const blocks =
+text
+.split(/\n\s*\n/)
+.map(x=>x.trim())
+.filter(Boolean);
+
+
+let slides=[];
+
+
+blocks.forEach(block=>{
+
+const lines =
+block
+.split("\n")
+.map(x=>x.trim())
+.filter(Boolean);
+
+
+let part=[];
+
+
+lines.forEach(line=>{
+
+part.push(line);
+
+
+if(part.length>=5){
+
+slides.push(
+part.join("\n")
+);
+
+part=[];
+
+}
+
+});
+
+
+if(part.length){
+
+slides.push(
+part.join("\n")
+);
+
+}
+
+});
+
+
+const song={
+
+id:Date.now(),
+
+title:title,
+
+artist:
+artist ||
+"Artista não informado",
+
+slides:slides
+
+};
+
+
+songs.push(song);
+
+localStorage.setItem(
+"cultovision_songs",
+JSON.stringify(songs)
+);
+
+
+currentSong=song;
+
+currentBibleVerse=null;
+
+currentSlides=slides;
+
+currentSlide=0;
+
+
+renderMusic();
+
+updatePresentation();
+
+goToPage("home");
+
+
+alert(
+"✓ Música adicionada!"
+);
+
+}
+
+
+/* =====================================================
+   MUSIC GRID
+===================================================== */
 
 function renderMusic(){
 
-    const grid =
-        document.getElementById(
-            "musicGrid"
-        );
+const grid =
+document.getElementById(
+"musicGrid"
+);
+
+grid.innerHTML="";
 
 
-    grid.innerHTML = "";
+document.getElementById(
+"musicCount"
+).textContent=
+songs.length;
 
 
-    document.getElementById(
-        "musicCount"
-    ).textContent =
-        songs.length;
+songs.forEach(song=>{
+
+const card=
+document.createElement("div");
+
+card.className=
+"musicCard";
 
 
-    songs.forEach(song => {
+card.innerHTML=`
 
-        const card =
-            document.createElement(
-                "div"
-            );
+<div class="musicIcon">
+🎵
+</div>
 
+<h3>
+${escapeHTML(song.title)}
+</h3>
 
-        card.className =
-            "musicCard";
+<p>
+${escapeHTML(song.artist)}
+</p>
 
+<p>
+${song.slides.length} slides
+</p>
 
-        card.innerHTML = `
+<div class="musicActions">
 
-            <div class="musicIcon">
-                🎵
-            </div>
+<button
+class="smallButton"
+onclick="useSong(${song.id})">
 
-            <h3>
-                ${escapeHTML(song.title)}
-            </h3>
+▶ Usar
 
-            <p>
-                ${escapeHTML(song.artist)}
-            </p>
+</button>
 
-            <p>
-                ${song.slides.length}
-                slides
-            </p>
+<button
+class="smallButton"
+onclick="deleteSong(${song.id})">
 
-            <div class="musicActions">
+🗑️
 
-                <button
-                    class="smallButton"
-                    onclick="useSong(${song.id})">
+</button>
 
-                    ▶ Usar
+</div>
 
-                </button>
-
-                <button
-                    class="smallButton"
-                    onclick="favoriteSong(${song.id})">
-
-                    ${song.favorite ? "❤️" : "🤍"}
-
-                </button>
-
-                <button
-                    class="smallButton"
-                    onclick="deleteSong(${song.id})">
-
-                    🗑️
-
-                </button>
-
-            </div>
-
-        `;
+`;
 
 
-        grid.appendChild(card);
+grid.appendChild(card);
 
-    });
+});
 
 }
 
 
-/* =========================================================
-   USAR MÚSICA
-========================================================= */
+/* =====================================================
+   USAR MUSICA
+===================================================== */
 
 function useSong(id){
 
-    const song =
-        songs.find(
-            item =>
-                item.id === id
-        );
+const song=
+songs.find(
+s=>s.id===id
+);
+
+if(!song)
+return;
 
 
-    if(!song)
-        return;
+currentSong=song;
 
+currentBibleVerse=null;
 
-    currentSong =
-        song;
+currentSlides=
+song.slides;
 
+currentSlide=0;
 
-    currentSlide = 0;
+updatePresentation();
 
-
-    updatePresentation();
-
-    goToPage("home");
-
-}
-
-
-/* =========================================================
-   FAVORITO
-========================================================= */
-
-function favoriteSong(id){
-
-    const song =
-        songs.find(
-            item =>
-                item.id === id
-        );
-
-
-    if(!song)
-        return;
-
-
-    song.favorite =
-        !song.favorite;
-
-
-    saveSongs();
-
-    renderMusic();
+goToPage("home");
 
 }
 
 
-/* =========================================================
+/* =====================================================
    DELETE
-========================================================= */
+===================================================== */
 
 function deleteSong(id){
 
-    if(
-        !confirm(
-            "Excluir esta música?"
-        )
-    )
-        return;
+if(!confirm(
+"Excluir esta música?"
+))
+return;
 
 
-    songs =
-        songs.filter(
-            song =>
-                song.id !== id
-        );
+songs=
+songs.filter(
+s=>s.id!==id
+);
 
 
-    saveSongs();
+localStorage.setItem(
+"cultovision_songs",
+JSON.stringify(songs)
+);
 
-    renderMusic();
 
-
-    if(
-        currentSong &&
-        currentSong.id === id
-    ){
-
-        currentSong = null;
-
-        currentSlide = 0;
-
-        updatePresentation();
-
-    }
+renderMusic();
 
 }
 
 
-/* =========================================================
-   SAVE
-========================================================= */
+/* =====================================================
+   BIBLIA
+===================================================== */
 
-function saveSongs(){
+/*
+Formato esperado do JSON:
 
-    localStorage.setItem(
-        "cultovision_songs",
-        JSON.stringify(songs)
-    );
+{
+ "Gênesis": {
+   "1": {
+     "1": "texto",
+     "2": "texto"
+   }
+ }
+}
+
+Você poderá usar o arquivo ACF
+convertido para esse formato.
+*/
+
+
+function importBible(event){
+
+const file=
+event.target.files[0];
+
+
+if(!file)
+return;
+
+
+const reader=
+new FileReader();
+
+
+reader.onload=
+function(e){
+
+try{
+
+const data=
+JSON.parse(
+e.target.result
+);
+
+
+bibleData=data;
+
+
+localStorage.setItem(
+"cultovision_bible",
+JSON.stringify(data)
+);
+
+
+renderBibleBooks();
+
+
+alert(
+"✓ Bíblia importada!"
+);
+
+
+}
+catch(error){
+
+alert(
+"Não consegui ler esse arquivo JSON.\n\n"+
+"Use um arquivo JSON no formato indicado."
+);
+
+}
+
+};
+
+
+reader.readAsText(file);
 
 }
 
 
-/* =========================================================
-   ATUALIZAR APRESENTAÇÃO
-========================================================= */
+/* =====================================================
+   LIVROS
+===================================================== */
+
+function renderBibleBooks(){
+
+const container=
+document.getElementById(
+"bibleBooks"
+);
+
+
+container.innerHTML="";
+
+
+if(!bibleData){
+
+container.innerHTML=
+`
+<div style="color:#929bad;font-size:13px;">
+Nenhuma Bíblia carregada.
+</div>
+`;
+
+return;
+
+}
+
+
+Object.keys(
+bibleData
+).forEach(book=>{
+
+const div=
+document.createElement("div");
+
+
+div.className=
+"bibleBook";
+
+
+div.textContent=
+book;
+
+
+div.onclick=
+()=>selectBibleBook(book);
+
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   SELECIONAR LIVRO
+===================================================== */
+
+function selectBibleBook(book){
+
+const data=
+bibleData[book];
+
+
+if(!data)
+return;
+
+
+document.getElementById(
+"bibleTitle"
+).textContent=
+book;
+
+
+const chapterGrid=
+document.getElementById(
+"chapterGrid"
+);
+
+
+chapterGrid.innerHTML="";
+
+
+const chapterSelect=
+document.getElementById(
+"bibleChapter"
+);
+
+
+chapterSelect.innerHTML=
+`<option>Capítulo</option>`;
+
+
+Object.keys(data)
+.forEach(chapter=>{
+
+const button=
+document.createElement(
+"button"
+);
+
+button.className=
+"chapterButton";
+
+button.textContent=
+chapter;
+
+button.onclick=
+()=>selectBibleChapter(
+chapter
+);
+
+chapterGrid.appendChild(
+button
+);
+
+
+const option=
+document.createElement(
+"option"
+);
+
+option.value=
+chapter;
+
+option.textContent=
+"Capítulo "+chapter;
+
+chapterSelect.appendChild(
+option
+);
+
+});
+
+}
+
+
+/* =====================================================
+   CAPITULO
+===================================================== */
+
+function selectBibleChapter(chapter){
+
+if(
+!bibleData ||
+!document.getElementById(
+"bibleTitle"
+).textContent
+)
+return;
+
+
+const book=
+document.getElementById(
+"bibleTitle"
+).textContent;
+
+
+const verses=
+bibleData
+[book]
+[chapter];
+
+
+if(!verses)
+return;
+
+
+const list=
+document.getElementById(
+"verseList"
+);
+
+
+list.innerHTML="";
+
+
+Object.keys(verses)
+.forEach(number=>{
+
+const div=
+document.createElement(
+"div"
+);
+
+
+div.className=
+"verse";
+
+
+div.innerHTML=
+
+`
+<span class="verseNumber">
+${number}
+</span>
+
+${escapeHTML(
+verses[number]
+)}
+
+`;
+
+
+div.onclick=
+()=>presentBibleVerse(
+book,
+chapter,
+number,
+verses[number]
+);
+
+
+list.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   APRESENTAR VERSICULO
+===================================================== */
+
+function presentBibleVerse(
+book,
+chapter,
+verse,
+text
+){
+
+currentSong=null;
+
+currentBibleVerse={
+
+book:book,
+
+chapter:chapter,
+
+verse:verse,
+
+text:text
+
+};
+
+
+currentSlides=[
+`${book} ${chapter}:${verse}\n\n${text}`
+];
+
+
+currentSlide=0;
+
+
+updatePresentation();
+
+goToPage("home");
+
+}
+
+
+/* =====================================================
+   PRESENTATION
+===================================================== */
 
 function updatePresentation(){
 
-    const panel =
-        document.getElementById(
-            "panelSlideText"
-        );
+const panel=
+document.getElementById(
+"panelSlideText"
+);
 
 
-    const tv =
-        document.getElementById(
-            "tvSlideText"
-        );
+const tv=
+document.getElementById(
+"tvSlideText"
+);
 
 
-    if(!currentSong){
+if(
+!currentSlides.length
+){
 
-        panel.textContent =
-            "Escolha uma música";
+panel.textContent=
+"Escolha uma música ou versículo";
 
+tv.textContent=
+"Nenhuma apresentação selecionada";
 
-        tv.textContent =
-            "Nenhuma música selecionada";
+renderSlides();
 
-
-        renderSlides();
-
-        return;
-
-    }
-
-
-    const text =
-        currentSong.slides[
-            currentSlide
-        ];
-
-
-    panel.textContent =
-        text;
-
-
-    tv.textContent =
-        text;
-
-
-    applyBackground();
-
-
-    renderSlides();
-
-
-    updateProjectionWindow();
+return;
 
 }
 
 
-/* =========================================================
-   SLIDE LIST
-========================================================= */
+const text=
+currentSlides[
+currentSlide
+];
+
+
+panel.textContent=
+text;
+
+
+tv.textContent=
+text;
+
+
+applyBackground();
+
+renderSlides();
+
+updateProjectionWindow();
+
+}
+
+
+/* =====================================================
+   SLIDES
+===================================================== */
 
 function renderSlides(){
 
-    const list =
-        document.getElementById(
-            "slideList"
-        );
+const list=
+document.getElementById(
+"slideList"
+);
 
 
-    list.innerHTML = "";
+list.innerHTML="";
 
 
-    if(!currentSong)
-        return;
+currentSlides.forEach(
+(slide,index)=>{
+
+const div=
+document.createElement(
+"div"
+);
 
 
-    currentSong.slides.forEach(
-        (slide,index) => {
-
-            const item =
-                document.createElement(
-                    "div"
-                );
+div.className=
+"slideItem";
 
 
-            item.className =
-                "slideItem";
+if(index===currentSlide){
 
-
-            if(
-                index ===
-                currentSlide
-            ){
-
-                item.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            item.textContent =
-                `${index+1}. ${
-                    slide
-                    .replace(/\n/g," ")
-                    .slice(0,80)
-                }`;
-
-
-            item.onclick =
-                () => {
-
-                    currentSlide =
-                        index;
-
-                    updatePresentation();
-
-                };
-
-
-            list.appendChild(item);
-
-        }
-    );
+div.classList.add(
+"active"
+);
 
 }
 
 
-/* =========================================================
+div.textContent=
+`${index+1}. ${
+slide
+.replace(/\n/g," ")
+.slice(0,80)
+}`;
+
+
+div.onclick=
+()=>{
+
+currentSlide=
+index;
+
+updatePresentation();
+
+};
+
+
+list.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
    NEXT
-========================================================= */
+===================================================== */
 
 function nextSlide(){
 
-    if(!currentSong)
-        return;
+if(
+currentSlide <
+currentSlides.length-1
+){
 
+currentSlide++;
 
-    if(
-        currentSlide <
-        currentSong.slides.length - 1
-    ){
+updatePresentation();
 
-        currentSlide++;
-
-        updatePresentation();
-
-    }
+}
 
 }
 
 
-/* =========================================================
+/* =====================================================
    PREVIOUS
-========================================================= */
+===================================================== */
 
 function previousSlide(){
 
-    if(!currentSong)
-        return;
+if(
+currentSlide>0
+){
 
+currentSlide--;
 
-    if(currentSlide > 0){
+updatePresentation();
 
-        currentSlide--;
-
-        updatePresentation();
-
-    }
+}
 
 }
 
 
-/* =========================================================
-   FUNDOS
-========================================================= */
+/* =====================================================
+   BACKGROUNDS
+===================================================== */
 
 function renderBackgrounds(){
 
-    const grid =
-        document.getElementById(
-            "backgroundGrid"
-        );
+const grid=
+document.getElementById(
+"backgroundGrid"
+);
+
+grid.innerHTML="";
 
 
-    grid.innerHTML = "";
+const all=[
+...defaultBackgrounds,
+...customBackgrounds
+];
 
 
-    const allBackgrounds = [
+all.forEach(
+(background,index)=>{
 
-        ...defaultBackgrounds,
-
-        ...customBackgrounds
-
-    ];
-
-
-    allBackgrounds.forEach(
-        (background,index) => {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
+const div=
+document.createElement(
+"div"
+);
 
 
-            card.className =
-                "backgroundCard";
+div.className=
+"backgroundCard";
 
 
-            if(
-                index ===
-                currentBackground
-            ){
+if(
+index===currentBackground
+){
 
-                card.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            card.style.background =
-                background.css;
-
-
-            card.textContent =
-                background.name;
-
-
-            card.onclick =
-                () => {
-
-                    currentBackground =
-                        index;
-
-                    renderBackgrounds();
-
-                    applyBackground();
-
-                    updateProjectionWindow();
-
-                };
-
-
-            grid.appendChild(card);
-
-        }
-    );
+div.classList.add(
+"selected"
+);
 
 }
 
 
-/* =========================================================
-   UPLOAD FUNDO
-========================================================= */
+div.style.background=
+background.css;
+
+
+div.textContent=
+background.name;
+
+
+div.onclick=
+()=>{
+
+currentBackground=
+index;
+
+renderBackgrounds();
+
+applyBackground();
+
+updateProjectionWindow();
+
+};
+
+
+grid.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   UPLOAD BACKGROUND
+===================================================== */
 
 function addLocalBackground(event){
 
-    const file =
-        event.target.files[0];
+const file=
+event.target.files[0];
 
 
-    if(!file)
-        return;
+if(!file)
+return;
 
 
-    if(
-        !file.type.startsWith(
-            "image/"
-        )
-    ){
-
-        alert(
-            "Escolha uma imagem."
-        );
-
-        return;
-
-    }
+const reader=
+new FileReader();
 
 
-    const reader =
-        new FileReader();
+reader.onload=
+function(e){
+
+customBackgrounds.push({
+
+name:file.name,
+
+css:
+`url("${e.target.result}") center/cover no-repeat`
+
+});
 
 
-    reader.onload =
-        function(e){
-
-            const background = {
-
-                name:
-                    file.name,
-
-                css:
-                    `url("${e.target.result}") center/cover no-repeat`
-
-            };
+localStorage.setItem(
+"cultovision_backgrounds",
+JSON.stringify(
+customBackgrounds
+)
+);
 
 
-            customBackgrounds.push(
-                background
-            );
+currentBackground=
+defaultBackgrounds.length+
+customBackgrounds.length-1;
 
 
-            localStorage.setItem(
-                "cultovision_backgrounds",
-                JSON.stringify(
-                    customBackgrounds
-                )
-            );
+renderBackgrounds();
+
+applyBackground();
+
+updateProjectionWindow();
+
+};
 
 
-            currentBackground =
-                defaultBackgrounds.length +
-                customBackgrounds.length -
-                1;
-
-
-            renderBackgrounds();
-
-            applyBackground();
-
-            updateProjectionWindow();
-
-        };
-
-
-    reader.readAsDataURL(file);
+reader.readAsDataURL(file);
 
 }
 
 
-/* =========================================================
-   PESQUISA DE FUNDOS
-========================================================= */
-
-function searchBackground(){
-
-    const query =
-        document
-        .getElementById(
-            "backgroundSearch"
-        )
-        .value
-        .trim();
-
-
-    if(!query){
-
-        alert(
-            "Digite o que deseja pesquisar."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       Abre pesquisa em nova aba.
-
-       O fundo que você baixar pode
-       ser adicionado pelo botão
-       "Escolher imagem".
-    */
-
-    window.open(
-        "https://www.google.com/search?tbm=isch&q=" +
-        encodeURIComponent(query),
-        "_blank"
-    );
-
-}
-
-
-/* =========================================================
-   APLICAR FUNDO
-========================================================= */
+/* =====================================================
+   APPLY BACKGROUND
+===================================================== */
 
 function applyBackground(){
 
-    const all =
-        [
-            ...defaultBackgrounds,
-            ...customBackgrounds
-        ];
+const all=[
+...defaultBackgrounds,
+...customBackgrounds
+];
 
 
-    if(!all[currentBackground])
-        return;
+if(!all[currentBackground])
+return;
 
 
-    const css =
-        all[currentBackground].css;
+document.getElementById(
+"preview"
+).style.background=
+all[currentBackground].css;
 
 
-    document.getElementById(
-        "preview"
-    ).style.background =
-        css;
-
-
-    document.getElementById(
-        "projectionPreview"
-    ).style.background =
-        css;
+document.getElementById(
+"projectionPreview"
+).style.background=
+all[currentBackground].css;
 
 }
 
 
-/* =========================================================
-   TAMANHO TV
-========================================================= */
+/* =====================================================
+   TAMANHO DA TV
+===================================================== */
 
 function changeTVFontSize(value){
 
-    tvFontSize =
-        Number(value);
+tvFontSize=
+Number(value);
 
 
-    document.getElementById(
-        "fontSizeValue"
-    ).textContent =
-        value;
+document.getElementById(
+"fontSizeValue"
+).textContent=
+value;
 
 
-    /*
-       NÃO altera o painel.
+/*
+   SOMENTE A PROJEÇÃO.
 
-       Somente TV.
-    */
+   O painel continua em 38px.
+*/
 
-    document.getElementById(
-        "tvSlideText"
-    ).style.fontSize =
-        value + "px";
+document.getElementById(
+"tvSlideText"
+).style.fontSize=
+value+"px";
 
 
-    updateProjectionWindow();
+updateProjectionWindow();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    COR TV
-========================================================= */
+===================================================== */
 
 function changeTVFontColor(value){
 
-    tvFontColor =
-        value;
+tvFontColor=
+value;
 
 
-    document.getElementById(
-        "tvSlideText"
-    ).style.color =
-        value;
+document.getElementById(
+"tvSlideText"
+).style.color=
+value;
 
 
-    updateProjectionWindow();
-
-}
-
-
-/* =========================================================
-   INICIAR
-========================================================= */
-
-async function startPresentation(){
-
-    await detectSecondScreen();
-
-
-    if(secondScreen){
-
-        openSecondScreen();
-
-    }
-    else{
-
-        openProjectionWindow();
-
-    }
+updateProjectionWindow();
 
 }
 
 
-/* =========================================================
-   SEGUNDA TELA
-========================================================= */
+/* =====================================================
+   APRESENTAÇÃO
+===================================================== */
 
-async function detectSecondScreen(){
+function startPresentation(){
 
-    secondScreen = null;
+if(
+projectionWindow &&
+!projectionWindow.closed
+){
 
+projectionWindow.focus();
 
-    if(
-        "getScreenDetails"
-        in window
-    ){
-
-        try{
-
-            const details =
-                await window.getScreenDetails();
-
-
-            const current =
-                details.currentScreen;
-
-
-            secondScreen =
-                details.screens.find(
-                    screen =>
-                        screen !== current
-                );
-
-
-            if(secondScreen){
-
-                document.getElementById(
-                    "screenInfo"
-                ).textContent =
-                    "✓ Segunda tela detectada.";
-
-                return;
-
-            }
-
-        }
-        catch(error){
-
-            console.log(error);
-
-        }
-
-    }
-
-
-    document.getElementById(
-        "screenInfo"
-    ).textContent =
-        "O navegador não permitiu detectar a segunda tela. Será aberta uma janela de apresentação.";
+return;
 
 }
 
 
-/* =========================================================
-   ABRIR SEGUNDA TELA
-========================================================= */
-
-function openSecondScreen(){
-
-    projectionWindow =
-        window.open(
-            "",
-            "CultoVisionTV",
-            `
-            left=${secondScreen.availLeft},
-            top=${secondScreen.availTop},
-            width=${secondScreen.availWidth},
-            height=${secondScreen.availHeight}
-            `
-        );
+projectionWindow=
+window.open(
+"",
+"CultoVisionTV",
+"width=1200,height=700"
+);
 
 
-    if(!projectionWindow){
+if(!projectionWindow){
 
-        alert(
-            "Permita pop-ups para o CultoVision."
-        );
+alert(
+"Permita pop-ups para o CultoVision."
+);
 
-        return;
-
-    }
-
-
-    writeProjectionPage();
-
-    projectionWindow.focus();
-
-
-    document.getElementById(
-        "projectionStatus"
-    ).textContent =
-        "● Apresentação ativa na TV.";
+return;
 
 }
 
 
-/* =========================================================
-   ABRIR JANELA
-========================================================= */
+writeProjectionPage();
 
-function openProjectionWindow(){
-
-    if(
-        projectionWindow &&
-        !projectionWindow.closed
-    ){
-
-        projectionWindow.focus();
-
-        return;
-
-    }
+projectionWindow.focus();
 
 
-    projectionWindow =
-        window.open(
-            "",
-            "CultoVisionTV",
-            "width=1200,height=700"
-        );
-
-
-    if(!projectionWindow){
-
-        alert(
-            "Permita pop-ups para o CultoVision."
-        );
-
-        return;
-
-    }
-
-
-    writeProjectionPage();
-
-    projectionWindow.focus();
-
-
-    document.getElementById(
-        "projectionStatus"
-    ).textContent =
-        "● Apresentação ativa.";
-
+document.getElementById(
+"projectionStatus"
+).textContent=
+"● Apresentação ativa.";
 
 }
 
 
-/* =========================================================
-   PÁGINA TV
-========================================================= */
+/* =====================================================
+   TV PAGE
+===================================================== */
 
 function writeProjectionPage(){
 
-    const text =
-        currentSong
-        ?
-        currentSong.slides[
-            currentSlide
-        ]
-        :
-        "CultoVision";
+const all=[
+...defaultBackgrounds,
+...customBackgrounds
+];
 
 
-    const all =
-        [
-            ...defaultBackgrounds,
-            ...customBackgrounds
-        ];
+const background=
+all[currentBackground];
 
 
-    const background =
-        all[currentBackground];
+const text=
+currentSlides.length
+?
+currentSlides[currentSlide]
+:
+"CultoVision";
 
 
-    projectionWindow.document.open();
+projectionWindow.document.open();
 
 
-    projectionWindow.document.write(`
+projectionWindow.document.write(`
 
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html>
 
 <head>
 
@@ -2510,92 +2788,91 @@ function writeProjectionPage(){
 
 html,body{
 
-    margin:0;
+margin:0;
 
-    width:100%;
+width:100%;
 
-    height:100%;
+height:100%;
 
-    overflow:hidden;
+overflow:hidden;
 
 }
 
 body{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    justify-content:center;
+justify-content:center;
 
-    text-align:center;
+text-align:center;
 
-    font-family:Arial,sans-serif;
+font-family:Arial,sans-serif;
 
-    background:#000;
+background:#000;
 
-    color:white;
+color:white;
 
 }
 
 #background{
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+inset:0;
 
-    background:
-        ${background.css};
+background:${background.css};
 
-    background-size:cover;
+background-size:cover;
 
-    background-position:center;
+background-position:center;
 
 }
 
 #text{
 
-    position:relative;
+position:relative;
 
-    z-index:2;
+z-index:2;
 
-    width:90%;
+width:90%;
 
-    font-size:${tvFontSize}px;
+font-size:${tvFontSize}px;
 
-    color:${tvFontColor};
+color:${tvFontColor};
 
-    font-weight:bold;
+font-weight:bold;
 
-    line-height:1.3;
+line-height:1.3;
 
-    white-space:pre-line;
+white-space:pre-line;
 
-    text-shadow:0 4px 20px rgba(0,0,0,.9);
+text-shadow:0 4px 20px rgba(0,0,0,.9);
 
 }
 
 #fullscreen{
 
-    position:fixed;
+position:fixed;
 
-    right:18px;
+right:18px;
 
-    bottom:18px;
+bottom:18px;
 
-    z-index:5;
+z-index:5;
 
-    background:rgba(255,255,255,.15);
+background:rgba(255,255,255,.15);
 
-    border:none;
+border:none;
 
-    color:white;
+color:white;
 
-    padding:11px 16px;
+padding:10px 15px;
 
-    border-radius:8px;
+border-radius:7px;
 
-    cursor:pointer;
+cursor:pointer;
 
 }
 
@@ -2607,9 +2884,12 @@ body{
 
 <div id="background"></div>
 
-<div id="text">${escapeHTML(text)}</div>
+<div id="text">
+${escapeHTML(text)}
+</div>
 
-<button id="fullscreen"
+<button
+id="fullscreen"
 onclick="document.documentElement.requestFullscreen()">
 
 ⛶ Tela cheia
@@ -2620,222 +2900,184 @@ onclick="document.documentElement.requestFullscreen()">
 
 </html>
 
-    `);
+`);
 
 
-    projectionWindow.document.close();
+projectionWindow.document.close();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    ATUALIZAR TV
-========================================================= */
+===================================================== */
 
 function updateProjectionWindow(){
 
-    if(
-        !projectionWindow ||
-        projectionWindow.closed
-    )
-        return;
+if(
+!projectionWindow ||
+projectionWindow.closed
+)
+return;
 
 
-    try{
+try{
 
-        const text =
-            projectionWindow.document
-            .getElementById(
-                "text"
-            );
+const text=
+projectionWindow.document
+.getElementById("text");
 
 
-        const background =
-            projectionWindow.document
-            .getElementById(
-                "background"
-            );
+const background=
+projectionWindow.document
+.getElementById("background");
 
 
-        const all =
-            [
-                ...defaultBackgrounds,
-                ...customBackgrounds
-            ];
+const all=[
+...defaultBackgrounds,
+...customBackgrounds
+];
 
 
-        if(text){
+if(text){
 
-            text.textContent =
-                currentSong
-                ?
-                currentSong.slides[
-                    currentSlide
-                ]
-                :
-                "CultoVision";
+text.textContent=
+currentSlides.length
+?
+currentSlides[currentSlide]
+:
+"CultoVision";
 
 
-            text.style.fontSize =
-                tvFontSize + "px";
+text.style.fontSize=
+tvFontSize+"px";
 
 
-            text.style.color =
-                tvFontColor;
-
-        }
-
-
-        if(background){
-
-            background.style.background =
-                all[currentBackground].css;
-
-        }
-
-    }
-    catch(error){
-
-        console.log(error);
-
-    }
+text.style.color=
+tvFontColor;
 
 }
 
 
-/* =========================================================
+if(background){
+
+background.style.background=
+all[currentBackground].css;
+
+}
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+/* =====================================================
    TECLADO
-========================================================= */
+===================================================== */
 
 document.addEventListener(
-    "keydown",
-    event => {
+"keydown",
+event=>{
 
-        if(
-            event.target.tagName ===
-            "INPUT" ||
-            event.target.tagName ===
-            "TEXTAREA"
-        )
-            return;
+if(
+event.target.tagName==="INPUT" ||
+event.target.tagName==="TEXTAREA"
+)
+return;
 
 
-        if(
-            event.key ===
-            "ArrowRight"
-        ){
-
-            nextSlide();
-
-        }
+if(
+event.key==="ArrowRight"
+)
+nextSlide();
 
 
-        if(
-            event.key ===
-            "ArrowLeft"
-        ){
+if(
+event.key==="ArrowLeft"
+)
+previousSlide();
 
-            previousSlide();
-
-        }
-
-    }
-);
+});
 
 
-/* =========================================================
-   APAGAR MUSICAS
-========================================================= */
+/* =====================================================
+   DELETE ALL
+===================================================== */
 
 function clearAllSongs(){
 
-    if(
-        !confirm(
-            "Apagar todas as músicas?"
-        )
-    )
-        return;
+if(!confirm(
+"Apagar todas as músicas?"
+))
+return;
 
 
-    songs = [];
+songs=[];
 
 
-    saveSongs();
+localStorage.setItem(
+"cultovision_songs",
+JSON.stringify(songs)
+);
 
-    currentSong = null;
 
-    currentSlide = 0;
+currentSong=null;
 
-    renderMusic();
+currentSlides=[];
 
-    updatePresentation();
+currentSlide=0;
+
+
+renderMusic();
+
+updatePresentation();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    ESCAPE
-========================================================= */
+===================================================== */
 
 function escapeHTML(text){
 
-    return String(text)
+return String(text)
 
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
+.replaceAll("&","&amp;")
 
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
+.replaceAll("<","&lt;")
 
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
+.replaceAll(">","&gt;")
 
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
+.replaceAll('"',"&quot;")
 
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+.replaceAll("'","&#039;");
 
 }
 
 
-function escapeAttribute(text){
-
-    return String(text)
-        .replaceAll(
-            "\\",
-            "\\\\"
-        )
-        .replaceAll(
-            "'",
-            "\\'"
-        );
-
-}
-
-
-/* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
+/* =====================================================
+   INICIAR
+===================================================== */
 
 renderMusic();
 
 renderBackgrounds();
 
+if(bibleData){
+
+renderBibleBooks();
+
+}
+
 updatePresentation();
 
 applyBackground();
-
 
 </script>
 
