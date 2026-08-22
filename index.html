@@ -4,36 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CultoVision 3.0</title>
+<title>CultoVision</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 :root{
-    --bg:#080a0f;
-    --sidebar:#10131a;
-    --card:#151922;
-    --card2:#1d2330;
-    --border:#2b3240;
-    --text:#fff;
-    --muted:#929bad;
-    --purple:#a855f7;
+    --bg:#090b10;
+    --panel:#11151d;
+    --card:#171c26;
+    --border:#2a3140;
+    --text:#ffffff;
+    --muted:#9aa3b2;
+    --purple:#8b5cf6;
     --pink:#ec4899;
     --green:#22c55e;
     --blue:#3b82f6;
-    --orange:#f59e0b;
-    --cyan:#06b6d4;
+    --yellow:#eab308;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
-    color:white;
+    color:var(--text);
     height:100vh;
     overflow:hidden;
 }
@@ -42,11 +39,11 @@ body{
 
 header{
     height:65px;
-    background:var(--sidebar);
+    background:var(--panel);
     border-bottom:1px solid var(--border);
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     padding:0 22px;
 }
 
@@ -54,19 +51,17 @@ header{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:21px;
+    font-size:22px;
     font-weight:bold;
 }
 
-.logoIcon{
+.logo-icon{
     width:40px;
     height:40px;
     border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:grid;
+    place-items:center;
     background:linear-gradient(135deg,#8b5cf6,#ec4899);
-    font-size:23px;
 }
 
 .status{
@@ -74,98 +69,92 @@ header{
     font-size:13px;
 }
 
-.status span{
+.online{
     color:var(--green);
 }
 
 /* APP */
 
 .app{
-    height:calc(100vh - 65px);
     display:flex;
+    height:calc(100vh - 65px);
 }
 
-/* SIDEBAR */
+/* MENU */
 
 .sidebar{
-    width:235px;
-    background:var(--sidebar);
+    width:230px;
+    background:var(--panel);
     border-right:1px solid var(--border);
-    padding:15px 12px;
+    padding:15px 10px;
 }
 
-.menuTitle{
-    color:#596274;
+.menu-title{
+    color:#596174;
     font-size:10px;
     font-weight:bold;
     margin:15px 10px 8px;
 }
 
-.menuButton{
+.menu-btn{
     width:100%;
     border:none;
     background:transparent;
-    color:#929baa;
+    color:var(--muted);
     padding:12px;
-    border-radius:9px;
+    margin-bottom:4px;
+    border-radius:8px;
     cursor:pointer;
     display:flex;
-    align-items:center;
     gap:12px;
-    margin-bottom:4px;
-    transition:.25s;
+    align-items:center;
+    font-size:14px;
+    transition:.2s;
 }
 
-.menuButton:hover,
-.menuButton.active{
-    background:rgba(168,85,247,.15);
+.menu-btn:hover,
+.menu-btn.active{
+    background:rgba(139,92,246,.15);
     color:white;
 }
 
-.menuIcon{
-    width:30px;
-    min-width:30px;
+.icon{
+    width:28px;
     text-align:center;
-    font-size:21px;
-    transition:.25s;
+    font-size:20px;
+    transition:.2s;
 }
 
-.menuButton[data-page="home"]:hover .menuIcon{
-    color:var(--purple);
+.menu-btn:hover .icon{
     transform:scale(1.2);
 }
 
-.menuButton[data-page="music"]:hover .menuIcon{
+.menu-btn[data-page="music"]:hover .icon{
     color:var(--pink);
-    transform:scale(1.2);
 }
 
-.menuButton[data-page="bible"]:hover .menuIcon{
-    color:#eab308;
-    transform:scale(1.2);
+.menu-btn[data-page="harpa"]:hover .icon{
+    color:var(--yellow);
 }
 
-.menuButton[data-page="projection"]:hover .menuIcon{
+.menu-btn[data-page="projection"]:hover .icon{
     color:var(--green);
-    transform:scale(1.2);
 }
 
-.menuButton[data-page="backgrounds"]:hover .menuIcon{
-    color:var(--orange);
-    transform:scale(1.2);
+.menu-btn[data-page="background"]:hover .icon{
+    color:var(--blue);
 }
 
-.menuButton[data-page="settings"]:hover .menuIcon{
-    color:var(--cyan);
-    transform:scale(1.2);
+.menu-btn[data-page="settings"]:hover .icon{
+    color:#06b6d4;
 }
 
 /* CONTENT */
 
 .content{
     flex:1;
-    padding:28px;
     overflow-y:auto;
+    padding:28px;
 }
 
 .page{
@@ -176,9 +165,8 @@ header{
     display:block;
 }
 
-.title{
+h1{
     font-size:28px;
-    font-weight:bold;
     margin-bottom:7px;
 }
 
@@ -187,198 +175,58 @@ header{
     margin-bottom:25px;
 }
 
-/* BUTTON */
-
-.button{
-    border:none;
-    background:var(--purple);
-    color:white;
-    padding:11px 17px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:.2s;
-}
-
-.button:hover{
-    filter:brightness(1.15);
-    transform:translateY(-1px);
-}
-
-.button.green{
-    background:var(--green);
-}
-
-.button.blue{
-    background:var(--blue);
-}
-
-.button.dark{
-    background:var(--card2);
-    border:1px solid var(--border);
-}
-
-/* HOME */
+/* CARDS */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
-.homeCard{
+.card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:12px;
     padding:20px;
+    border-radius:12px;
     cursor:pointer;
-    transition:.25s;
+    transition:.2s;
 }
 
-.homeCard:hover{
-    transform:translateY(-5px);
+.card:hover{
+    transform:translateY(-4px);
     border-color:var(--purple);
 }
 
-.cardIcon{
+.card-icon{
     font-size:30px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
-.cardNumber{
-    font-size:25px;
+.card-number{
+    font-size:24px;
     font-weight:bold;
 }
 
-.cardLabel{
+.card-label{
     color:var(--muted);
     font-size:13px;
     margin-top:5px;
 }
 
-/* PRESENTATION */
-
-.presentation{
-    display:grid;
-    grid-template-columns:1fr 290px;
-    gap:18px;
-    margin-top:20px;
-}
-
-.previewContainer{
-    background:#040506;
-    border:1px solid var(--border);
-    border-radius:13px;
-    padding:15px;
-}
-
-.preview{
-    height:430px;
-    border-radius:10px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:50px;
-    background:#111;
-}
-
-.panelSlideText{
-
-    /*
-       TAMANHO FIXO DO PAINEL.
-       A CONFIGURAÇÃO DA TV NÃO ALTERA ISSO.
-    */
-
-    font-size:38px;
-
-    font-weight:bold;
-
-    line-height:1.3;
-
-    white-space:pre-line;
-
-    text-shadow:0 4px 20px rgba(0,0,0,.85);
-
-}
-
-.controls{
-    display:flex;
-    gap:9px;
-    margin-top:12px;
-}
-
-.control{
-    flex:1;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:white;
-    padding:13px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.control:hover{
-    background:var(--card2);
-}
-
-.control.project{
-    background:var(--green);
-    border-color:var(--green);
-    font-weight:bold;
-}
-
-/* SLIDES */
-
-.slideList{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:13px;
-    padding:15px;
-    max-height:510px;
-    overflow-y:auto;
-}
-
-.slideTitle{
-    font-weight:bold;
-    margin-bottom:12px;
-}
-
-.slideItem{
-    background:#11151c;
-    border-radius:8px;
-    padding:12px;
-    margin-bottom:7px;
-    cursor:pointer;
-    color:#9ca5b5;
-    font-size:13px;
-}
-
-.slideItem:hover{
-    background:var(--card2);
-    color:white;
-}
-
-.slideItem.active{
-    background:rgba(168,85,247,.18);
-    color:white;
-    border-left:3px solid var(--purple);
-}
-
 /* SEARCH */
 
-.searchRow{
+.search-row{
     display:flex;
     gap:10px;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .search{
     flex:1;
     padding:14px;
-    border:1px solid var(--border);
     border-radius:8px;
-    background:var(--card);
+    border:1px solid var(--border);
+    background:#0d1118;
     color:white;
     outline:none;
 }
@@ -387,338 +235,315 @@ header{
     border-color:var(--purple);
 }
 
-/* MUSIC */
-
-.results{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-    gap:15px;
+button{
+    font-family:inherit;
 }
 
-.resultCard{
+.btn{
+    border:none;
+    padding:12px 17px;
+    border-radius:8px;
+    color:white;
+    background:var(--purple);
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.btn:hover{
+    filter:brightness(1.15);
+    transform:translateY(-1px);
+}
+
+.btn.green{
+    background:var(--green);
+}
+
+.btn.blue{
+    background:var(--blue);
+}
+
+.btn.yellow{
+    background:var(--yellow);
+    color:#111;
+}
+
+/* MUSIC */
+
+.box{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:12px;
-    padding:18px;
-}
-
-.resultCard h3{
-    margin-bottom:7px;
-}
-
-.resultCard p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.resultActions{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.editor{
-    margin-top:20px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:13px;
     padding:20px;
+    margin-bottom:20px;
 }
 
-.editorInfo{
+.box p{
     color:var(--muted);
-    font-size:13px;
-    margin:8px 0 15px;
+    line-height:1.5;
+    margin-top:8px;
 }
 
 .input{
     width:100%;
-    background:#0c1016;
-    border:1px solid var(--border);
-    color:white;
     padding:13px;
+    background:#0d1118;
+    color:white;
+    border:1px solid var(--border);
     border-radius:8px;
     outline:none;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
-textarea{
-    min-height:260px;
+textarea.input{
+    min-height:220px;
     resize:vertical;
-    line-height:1.5;
 }
 
-.musicGrid{
+.music-grid,
+.harpa-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
     gap:15px;
-    margin-top:22px;
 }
 
-.musicCard{
+.music-card,
+.harpa-card{
     background:var(--card);
     border:1px solid var(--border);
-    padding:18px;
     border-radius:12px;
+    padding:18px;
 }
 
-.musicIcon{
-    font-size:28px;
-    margin-bottom:12px;
+.music-card h3,
+.harpa-card h3{
+    margin-bottom:7px;
 }
 
-.musicCard p{
+.music-card p,
+.harpa-card p{
     color:var(--muted);
     font-size:13px;
-    margin-top:6px;
+    line-height:1.4;
 }
 
-.musicActions{
+.actions{
     display:flex;
     gap:7px;
-    margin-top:14px;
+    margin-top:15px;
+    flex-wrap:wrap;
 }
 
-.smallButton{
+.small{
     border:none;
-    background:#303846;
-    color:white;
     padding:8px 11px;
     border-radius:6px;
-    cursor:pointer;
-}
-
-.smallButton:hover{
-    background:#414b5c;
-}
-
-/* BIBLE */
-
-.bibleLayout{
-    display:grid;
-    grid-template-columns:260px 1fr;
-    gap:18px;
-}
-
-.bibleBooks{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:15px;
-    max-height:570px;
-    overflow-y:auto;
-}
-
-.bibleBook{
-    padding:11px;
-    border-radius:7px;
-    cursor:pointer;
-    color:#aab2c1;
-    margin-bottom:4px;
-}
-
-.bibleBook:hover,
-.bibleBook.active{
-    background:rgba(234,179,8,.15);
+    background:#303846;
     color:white;
+    cursor:pointer;
 }
 
-.bibleMain{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
+.small:hover{
+    background:#424c5c;
 }
 
-.bibleTop{
+/* HARPA */
+
+.harpa-header{
     display:flex;
     justify-content:space-between;
-    gap:10px;
-    margin-bottom:18px;
-}
-
-.select{
-    background:#0c1016;
-    color:white;
-    border:1px solid var(--border);
-    border-radius:7px;
-    padding:10px;
-}
-
-.chapterGrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(55px,1fr));
-    gap:8px;
+    gap:15px;
+    align-items:center;
     margin-bottom:20px;
 }
 
-.chapterButton{
-    border:none;
-    background:#222936;
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    border:1px solid var(--border);
+    background:#171c26;
     color:white;
-    padding:10px;
-    border-radius:7px;
+    padding:9px 13px;
+    border-radius:20px;
     cursor:pointer;
 }
 
-.chapterButton:hover,
-.chapterButton.active{
-    background:#eab308;
-    color:#000;
+.filter.active,
+.filter:hover{
+    border-color:var(--yellow);
+    background:rgba(234,179,8,.15);
 }
 
-.verseList{
-    max-height:400px;
-    overflow-y:auto;
-}
-
-.verse{
-    background:#0d1117;
-    border:1px solid #202733;
-    border-radius:8px;
-    padding:13px;
-    margin-bottom:8px;
-    cursor:pointer;
-}
-
-.verse:hover{
-    border-color:#eab308;
-}
-
-.verseNumber{
-    color:#eab308;
+.harpa-number{
+    color:var(--yellow);
     font-weight:bold;
-    margin-right:8px;
+    font-size:13px;
+    margin-bottom:7px;
 }
 
-/* PROJECTION */
+/* HOME PRESENTATION */
 
-.projectionPreview{
-    height:500px;
+.presentation{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:18px;
+    margin-top:25px;
+}
+
+.preview-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:15px;
     border-radius:12px;
+}
+
+.preview{
+    height:420px;
+    background:#000;
+    border-radius:9px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    background:#000;
-}
-
-.tvSlideText{
-    font-weight:bold;
-    line-height:1.3;
-    white-space:pre-line;
-    width:90%;
-
-    /*
-       O TAMANHO É CONTROLADO
-       SEPARADAMENTE.
-    */
-
-    font-size:52px;
-
-    text-shadow:0 4px 20px rgba(0,0,0,.9);
-}
-
-.screenBox{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
-    margin-top:18px;
-}
-
-.screenBox p{
-    color:var(--muted);
-    line-height:1.5;
-}
-
-/* BACKGROUNDS */
-
-.uploadBox{
-    background:var(--card);
-    border:1px solid var(--border);
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
-}
-
-.uploadBox p{
-    color:var(--muted);
-    margin:8px 0 15px;
-}
-
-.fileInput{
-    display:none;
-}
-
-.uploadButton{
-    display:inline-block;
-    background:var(--blue);
-    padding:11px 17px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.backgroundGrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
-    gap:15px;
-}
-
-.backgroundCard{
-    height:130px;
-    border-radius:12px;
-    border:2px solid transparent;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    font-weight:bold;
-    text-shadow:0 2px 5px #000;
-    transition:.2s;
+    padding:40px;
     background-size:cover;
     background-position:center;
 }
 
-.backgroundCard:hover{
-    transform:scale(1.03);
+.panel-text{
+    font-size:38px;
+    line-height:1.3;
+    font-weight:bold;
+    white-space:pre-line;
+    text-shadow:0 4px 20px #000;
 }
 
-.backgroundCard.selected{
+.controls{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.control{
+    flex:1;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    background:#252c38;
+    color:white;
+}
+
+.control:hover{
+    background:#343d4b;
+}
+
+.control.project{
+    background:var(--green);
+}
+
+.slides{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    max-height:500px;
+    overflow-y:auto;
+}
+
+.slide-item{
+    background:#0d1118;
+    padding:12px;
+    margin-bottom:7px;
+    border-radius:7px;
+    cursor:pointer;
+    color:var(--muted);
+    font-size:13px;
+}
+
+.slide-item.active{
+    border-left:3px solid var(--purple);
+    background:rgba(139,92,246,.15);
+    color:white;
+}
+
+/* PROJECTION */
+
+.tv-preview{
+    height:500px;
+    background:#000;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background-size:cover;
+    background-position:center;
+}
+
+.tv-text{
+    width:90%;
+    font-size:52px;
+    line-height:1.3;
+    font-weight:bold;
+    white-space:pre-line;
+    text-shadow:0 4px 20px #000;
+}
+
+/* BACKGROUNDS */
+
+.background-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+}
+
+.background-card{
+    height:130px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    text-shadow:0 2px 5px #000;
+    cursor:pointer;
+    background-size:cover;
+    background-position:center;
+    border:2px solid transparent;
+}
+
+.background-card.selected{
     border-color:white;
     box-shadow:0 0 0 3px var(--purple);
 }
 
-/* SETTINGS */
-
-.setting{
-    margin-bottom:25px;
+.file-input{
+    display:none;
 }
 
-.setting label{
-    display:block;
-    margin-bottom:8px;
+.upload{
+    display:inline-block;
+    background:var(--blue);
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:12px;
 }
 
-input[type="range"]{
-    width:300px;
-}
+/* RESPONSIVO */
 
-/* RESPONSIVE */
-
-@media(max-width:950px){
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
+@media(max-width:900px){
 
     .presentation{
         grid-template-columns:1fr;
     }
 
-    .bibleLayout{
-        grid-template-columns:1fr;
+    .cards{
+        grid-template-columns:1fr 1fr;
     }
 
 }
@@ -726,10 +551,10 @@ input[type="range"]{
 @media(max-width:650px){
 
     .sidebar{
-        width:70px;
+        width:65px;
     }
 
-    .menuButton span:last-child{
+    .menu-btn span:last-child{
         display:none;
     }
 
@@ -738,7 +563,6 @@ input[type="range"]{
     }
 
 }
-
 </style>
 </head>
 
@@ -747,237 +571,127 @@ input[type="range"]{
 <header>
 
 <div class="logo">
-
-<div class="logoIcon">
-✦
-</div>
-
+<div class="logo-icon">✦</div>
 CultoVision
-
 </div>
 
 <div class="status">
-
-<span>●</span>
-Sistema pronto
-
+<span class="online">●</span> Pronto
 </div>
 
 </header>
 
-
 <div class="app">
+
+<!-- MENU -->
 
 <aside class="sidebar">
 
-<div class="menuTitle">
-PRINCIPAL
-</div>
+<div class="menu-title">PRINCIPAL</div>
 
-
-<button class="menuButton active" data-page="home">
-
-<span class="menuIcon">🏠</span>
+<button class="menu-btn active" data-page="home">
+<span class="icon">🏠</span>
 <span>Início</span>
-
 </button>
 
-
-<button class="menuButton" data-page="music">
-
-<span class="menuIcon">🎵</span>
+<button class="menu-btn" data-page="music">
+<span class="icon">🎵</span>
 <span>Músicas</span>
-
 </button>
 
-
-<button class="menuButton" data-page="bible">
-
-<span class="menuIcon">📖</span>
-<span>Bíblia</span>
-
+<button class="menu-btn" data-page="harpa">
+<span class="icon">🎼</span>
+<span>Harpa Cristã</span>
 </button>
 
-
-<button class="menuButton" data-page="projection">
-
-<span class="menuIcon">📺</span>
+<button class="menu-btn" data-page="projection">
+<span class="icon">📺</span>
 <span>Projeção</span>
-
 </button>
 
+<div class="menu-title">PERSONALIZAR</div>
 
-<div class="menuTitle">
-PERSONALIZAÇÃO
-</div>
-
-
-<button class="menuButton" data-page="backgrounds">
-
-<span class="menuIcon">🎨</span>
+<button class="menu-btn" data-page="background">
+<span class="icon">🎨</span>
 <span>Fundos</span>
-
 </button>
 
-
-<button class="menuButton" data-page="settings">
-
-<span class="menuIcon">⚙️</span>
+<button class="menu-btn" data-page="settings">
+<span class="icon">⚙️</span>
 <span>Configurações</span>
-
 </button>
 
 </aside>
 
+<!-- CONTEÚDO -->
 
 <main class="content">
 
-
-<!-- HOME -->
+<!-- INÍCIO -->
 
 <section class="page active" id="page-home">
 
-<div class="title">
-Painel principal
-</div>
+<h1>Painel principal</h1>
 
 <div class="subtitle">
-Controle músicas, Bíblia, fundos e projeção.
+Controle sua apresentação pelo notebook.
 </div>
-
 
 <div class="cards">
 
-<div class="homeCard"
-onclick="goToPage('music')">
-
-<div class="cardIcon">🎵</div>
-
-<div class="cardNumber"
-id="musicCount">
-0
+<div class="card" onclick="goTo('music')">
+<div class="card-icon">🎵</div>
+<div class="card-number" id="musicCount">0</div>
+<div class="card-label">Minhas músicas</div>
 </div>
 
-<div class="cardLabel">
-Músicas
+<div class="card" onclick="goTo('harpa')">
+<div class="card-icon">🎼</div>
+<div class="card-number">636</div>
+<div class="card-label">Harpa Cristã</div>
 </div>
 
-</div>
-
-
-<div class="homeCard"
-onclick="goToPage('bible')">
-
-<div class="cardIcon">📖</div>
-
-<div class="cardNumber">
-Bíblia
-</div>
-
-<div class="cardLabel">
-Bíblia ACF
+<div class="card" onclick="goTo('projection')">
+<div class="card-icon">📺</div>
+<div class="card-number">TV</div>
+<div class="card-label">Projeção</div>
 </div>
 
 </div>
-
-
-<div class="homeCard"
-onclick="goToPage('projection')">
-
-<div class="cardIcon">📺</div>
-
-<div class="cardNumber">
-TV
-</div>
-
-<div class="cardLabel">
-Projeção
-</div>
-
-</div>
-
-
-<div class="homeCard"
-onclick="goToPage('backgrounds')">
-
-<div class="cardIcon">🎨</div>
-
-<div class="cardNumber">
-12+
-</div>
-
-<div class="cardLabel">
-Fundos
-</div>
-
-</div>
-
-</div>
-
 
 <div class="presentation">
 
-<div class="previewContainer">
+<div class="preview-box">
 
-<div class="preview"
-id="preview">
+<div class="preview" id="preview">
 
-<div class="panelSlideText"
-id="panelSlideText">
-
-Escolha uma música ou versículo
-
+<div class="panel-text" id="panelText">
+Escolha uma música ou hino
 </div>
 
 </div>
-
 
 <div class="controls">
 
-<button class="control"
-onclick="previousSlide()">
-
+<button class="control" onclick="previousSlide()">
 ◀ Anterior
-
 </button>
 
-
-<button class="control project"
-onclick="startPresentation()">
-
+<button class="control project" onclick="startPresentation()">
 📺 APRESENTAR
-
 </button>
 
-
-<button class="control"
-onclick="nextSlide()">
-
+<button class="control" onclick="nextSlide()">
 Próximo ▶
-
 </button>
 
 </div>
 
-
-<div class="screenBox">
-
-<p id="projectionStatus">
-
-● Apresentação parada.
-
-</p>
-
 </div>
 
-</div>
+<div class="slides">
 
-
-<div class="slideList">
-
-<div class="slideTitle">
-Slides
-</div>
+<h3 style="margin-bottom:12px">Slides</h3>
 
 <div id="slideList"></div>
 
@@ -987,497 +701,247 @@ Slides
 
 </section>
 
-
-<!-- MUSICAS -->
+<!-- MÚSICAS -->
 
 <section class="page" id="page-music">
 
-<div class="title">
-🎵 Músicas
-</div>
+<h1>🎵 Músicas</h1>
 
 <div class="subtitle">
-Pesquise músicas e organize seus slides.
+Pesquise músicas separadamente ou adicione suas próprias músicas.
 </div>
 
+<div class="box">
 
-<div class="searchRow">
-
-<input
-class="search"
-id="musicSearch"
-placeholder="🔎 Pesquisar música no Google..."
->
-
-<button
-class="button"
-onclick="googleMusicSearch()">
-
-🔎 Google
-
-</button>
-
-</div>
-
-
-<div class="screenBox">
+<h2>🔎 Pesquisar no Google</h2>
 
 <p>
-
-A pesquisa será aberta em uma nova aba.
-Você pode encontrar a música e depois
-adicionar o conteúdo autorizado ao
-CultoVision.
-
+Digite o nome da música. A pesquisa será aberta em uma nova aba.
 </p>
 
-</div>
+<div class="search-row" style="margin-top:15px">
 
+<input class="search" id="googleMusic"
+placeholder="Ex: Nome da música...">
 
-<div class="editor">
-
-<h2>
-✨ Nova música
-</h2>
-
-<p class="editorInfo">
-
-Cole o conteúdo que você tem autorização
-para utilizar. O CultoVision separará
-automaticamente em slides.
-
-</p>
-
-
-<input
-class="input"
-id="songTitle"
-placeholder="Nome da música"
->
-
-
-<input
-class="input"
-id="songArtist"
-placeholder="Cantor / artista"
->
-
-
-<textarea
-class="input"
-id="songText"
-placeholder="Cole aqui o conteúdo...
-
-Separe cada estrofe com uma linha vazia.
-
-Exemplo:
-
-Primeira parte
-linha 1
-linha 2
-linha 3
-
-Refrão
-linha 1
-linha 2
-linha 3
-"></textarea>
-
-
-<button
-class="button"
-onclick="organizeSong()">
-
-✨ ORGANIZAR EM SLIDES
-
+<button class="btn" onclick="searchGoogleMusic()">
+Pesquisar
 </button>
 
 </div>
 
+</div>
 
-<h2 style="margin-top:30px;margin-bottom:15px;">
+<div class="box">
 
-❤️ Minhas músicas
+<h2>➕ Adicionar música</h2>
 
-</h2>
+<p>
+Cole um conteúdo que você tenha autorização para usar. Separe as estrofes com uma linha vazia.
+</p>
 
+<div style="margin-top:15px">
 
-<div
-class="musicGrid"
-id="musicGrid">
+<input class="input" id="songTitle"
+placeholder="Nome da música">
+
+<input class="input" id="songArtist"
+placeholder="Artista / cantor">
+
+<textarea class="input" id="songLyrics"
+placeholder="Cole o conteúdo aqui...
+
+Separe cada parte com uma linha vazia."></textarea>
+
+<button class="btn" onclick="addSong()">
+✨ Criar slides
+</button>
 
 </div>
+
+</div>
+
+<h2 style="margin-bottom:15px">Minhas músicas</h2>
+
+<div class="music-grid" id="musicGrid"></div>
 
 </section>
 
+<!-- HARPA -->
 
-<!-- BIBLIA -->
+<section class="page" id="page-harpa">
 
-<section class="page" id="page-bible">
+<div class="harpa-header">
 
-<div class="title">
-📖 Bíblia
+<div>
+<h1>🎼 Harpa Cristã</h1>
+
+<div class="subtitle" style="margin-bottom:0">
+Pesquise pelo número ou nome do hino.
+</div>
 </div>
 
-<div class="subtitle">
-Bíblia preparada para receber o conteúdo ACF autorizado.
 </div>
 
+<div class="search-row">
 
-<div class="screenBox">
+<input class="search" id="harpaSearch"
+placeholder="🔎 Ex: 15 ou nome do hino..."
+oninput="searchHarpa()">
 
-<p>
+</div>
 
-📌 Nesta versão a estrutura da Bíblia já está pronta.
-Quando você importar o arquivo ACF autorizado,
-os livros, capítulos e versículos aparecerão aqui.
+<div class="filters">
 
-</p>
+<button class="filter active" onclick="setHarpaFilter('all',this)">
+Todos
+</button>
+
+<button class="filter" onclick="setHarpaFilter('favorites',this)">
+⭐ Favoritos
+</button>
+
+<button class="filter" onclick="setHarpaFilter('recent',this)">
+🕘 Recentes
+</button>
+
+</div>
 
 <br>
 
-<label class="uploadButton">
-
-📖 Importar Bíblia
-
-<input
-class="fileInput"
-type="file"
-accept=".txt,.json"
-onchange="importBible(event)"
->
-
-</label>
-
-</div>
-
-
-<div class="bibleLayout"
-style="margin-top:20px;">
-
-
-<div class="bibleBooks">
-
-<h3 style="margin-bottom:12px;">
-Livros
-</h3>
-
-<div id="bibleBooks">
-
-<div style="color:#929bad;font-size:13px;">
-
-Nenhum arquivo bíblico carregado.
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="bibleMain">
-
-<div class="bibleTop">
-
-<h2 id="bibleTitle">
-
-Bíblia
-
-</h2>
-
-<select
-class="select"
-id="bibleChapter"
-onchange="selectBibleChapter(this.value)"
->
-
-<option>
-Capítulo
-</option>
-
-</select>
-
-</div>
-
-
-<div
-class="chapterGrid"
-id="chapterGrid">
-</div>
-
-
-<div
-class="verseList"
-id="verseList">
-
-<div
-style="color:#929bad;text-align:center;padding:40px;">
-
-Importe a Bíblia para começar.
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+<div class="harpa-grid" id="harpaGrid"></div>
 
 </section>
-
 
 <!-- PROJEÇÃO -->
 
 <section class="page" id="page-projection">
 
-<div class="title">
-📺 Projeção
-</div>
+<h1>📺 Projeção</h1>
 
 <div class="subtitle">
-Esta é a visualização da tela que será apresentada.
+Visualização da tela que será apresentada.
 </div>
 
+<div class="tv-preview" id="tvPreview">
 
-<div
-class="projectionPreview"
-id="projectionPreview">
-
-<div
-class="tvSlideText"
-id="tvSlideText">
-
+<div class="tv-text" id="tvText">
 Nenhuma apresentação selecionada
-
 </div>
 
 </div>
-
 
 <div class="controls">
 
-<button
-class="control"
-onclick="previousSlide()">
+<button class="control" onclick="previousSlide()">◀</button>
 
-◀
-
-</button>
-
-
-<button
-class="control project"
-onclick="startPresentation()">
-
+<button class="control project" onclick="startPresentation()">
 📺 INICIAR
-
 </button>
 
-
-<button
-class="control"
-onclick="nextSlide()">
-
-▶
-
-</button>
-
-</div>
-
-
-<div class="screenBox">
-
-<p id="screenInfo">
-
-A apresentação será aberta em uma janela
-separada para você colocar na TV.
-
-</p>
+<button class="control" onclick="nextSlide()">▶</button>
 
 </div>
 
 </section>
 
-
 <!-- FUNDOS -->
 
-<section class="page" id="page-backgrounds">
+<section class="page" id="page-background">
 
-<div class="title">
-🎨 Fundos
-</div>
+<h1>🎨 Fundos</h1>
 
 <div class="subtitle">
-Escolha um fundo ou carregue uma imagem do computador.
+Escolha um fundo para sua apresentação.
 </div>
 
+<div class="box">
 
-<div class="uploadBox">
+<h3>Adicionar imagem do computador</h3>
 
-<h3>
-🖼️ Adicionar fundo
-</h3>
-
-<p>
-JPG, PNG ou WEBP.
-</p>
-
-
-<label class="uploadButton">
+<label class="upload">
 
 📁 Escolher imagem
 
-<input
-class="fileInput"
+<input class="file-input"
 type="file"
 accept="image/*"
-onchange="addLocalBackground(event)"
->
+onchange="uploadBackground(event)">
 
 </label>
 
 </div>
 
-
-<div class="searchRow">
-
-<input
-class="search"
-id="backgroundSearch"
-placeholder="🔎 Pesquisar imagem no Google..."
->
-
-<button
-class="button"
-onclick="googleBackgroundSearch()">
-
-🔎 Google
-
-</button>
-
-</div>
-
-
-<div
-class="backgroundGrid"
-id="backgroundGrid">
-
-</div>
+<div class="background-grid" id="backgroundGrid"></div>
 
 </section>
-
 
 <!-- CONFIG -->
 
 <section class="page" id="page-settings">
 
-<div class="title">
-⚙️ Configurações
-</div>
+<h1>⚙️ Configurações</h1>
 
 <div class="subtitle">
-Configurações da apresentação.
+Configurações exclusivas da projeção.
 </div>
 
+<div class="box">
 
-<div class="screenBox">
+<h3>Tamanho da letra da TV</h3>
 
+<br>
 
-<div class="setting">
-
-<label>
-
-Tamanho da letra da TV:
-
-<strong id="fontSizeValue">
-52
-</strong>
-px
-
-</label>
-
-
-<input
-type="range"
+<input type="range"
 min="25"
 max="120"
 value="52"
-id="fontSizeRange"
-oninput="changeTVFontSize(this.value)"
->
+id="fontRange"
+oninput="changeFont(this.value)">
 
+<strong id="fontValue">52</strong> px
 
 <p>
-
-⚠️ Isso altera somente a apresentação.
-O painel principal continua com tamanho fixo.
-
+O painel do notebook continua fixo. Apenas a projeção muda.
 </p>
 
 </div>
 
+<div class="box">
 
-<div class="setting">
+<h3>Cor da letra</h3>
 
-<label>
-Cor da letra da TV
-</label>
+<br>
 
-<input
-type="color"
-id="fontColor"
+<input type="color"
 value="#ffffff"
-onchange="changeTVFontColor(this.value)"
->
-
-</div>
-
-
-<button
-class="button dark"
-onclick="clearAllSongs()">
-
-🗑️ Apagar músicas
-
-</button>
+oninput="changeColor(this.value)">
 
 </div>
 
 </section>
 
-
 </main>
 
 </div>
 
-
 <script>
 
-/* =====================================================
+/* =====================================
    DADOS
-===================================================== */
+===================================== */
 
 let songs =
-JSON.parse(
-localStorage.getItem("cultovision_songs")
-) || [];
+JSON.parse(localStorage.getItem("cvSongs")) || [];
 
+let favorites =
+JSON.parse(localStorage.getItem("cvFavorites")) || [];
+
+let recent =
+JSON.parse(localStorage.getItem("cvRecent")) || [];
 
 let customBackgrounds =
-JSON.parse(
-localStorage.getItem("cultovision_backgrounds")
-) || [];
-
-
-let bibleData =
-JSON.parse(
-localStorage.getItem("cultovision_bible")
-) || null;
-
-
-let currentSong = null;
-
-let currentBibleVerse = null;
+JSON.parse(localStorage.getItem("cvBackgrounds")) || [];
 
 let currentSlides = [];
 
@@ -1485,1298 +949,832 @@ let currentSlide = 0;
 
 let currentBackground = 0;
 
-let projectionWindow = null;
-
 let tvFontSize = 52;
 
-let tvFontColor = "#ffffff";
+let tvColor = "#ffffff";
+
+let projectionWindow = null;
+
+let harpaFilter = "all";
 
 
-/* =====================================================
-   FUNDOS
-===================================================== */
+/* =====================================
+   CATÁLOGO HARPA
 
-const defaultBackgrounds=[
+   Estrutura com 636 posições.
 
-{
-name:"Noite",
-css:"linear-gradient(135deg,#030305,#171717)"
-},
+   Os nomes/conteúdos podem ser
+   preenchidos posteriormente a partir
+   de uma fonte autorizada.
+===================================== */
 
-{
-name:"Roxo",
-css:"linear-gradient(135deg,#35105c,#08000f)"
-},
+let harpa = [];
 
-{
-name:"Azul",
-css:"linear-gradient(135deg,#082c59,#020813)"
-},
+for(let i=1;i<=636;i++){
 
-{
-name:"Oceano",
-css:"linear-gradient(135deg,#006b83,#001b28)"
-},
+    harpa.push({
+        number:i,
+        title:"Hino da Harpa "+String(i).padStart(3,"0"),
+        slides:[]
+    });
 
-{
-name:"Pôr do Sol",
-css:"linear-gradient(135deg,#ff7a00,#321000)"
-},
-
-{
-name:"Vinho",
-css:"linear-gradient(135deg,#650b2e,#120009)"
-},
-
-{
-name:"Floresta",
-css:"linear-gradient(135deg,#164b29,#020b05)"
-},
-
-{
-name:"Aurora",
-css:"linear-gradient(135deg,#042b45,#39105d,#05020a)"
-},
-
-{
-name:"Espaço",
-css:"radial-gradient(circle,#20205a,#02020a 70%)"
-},
-
-{
-name:"Preto",
-css:"#000"
-},
-
-{
-name:"Cinza",
-css:"linear-gradient(135deg,#292929,#080808)"
 }
 
-];
 
-
-/* =====================================================
+/* =====================================
    MENU
-===================================================== */
+===================================== */
 
-document
-.querySelectorAll(".menuButton")
-.forEach(button=>{
+document.querySelectorAll(".menu-btn").forEach(btn=>{
 
-button.onclick=()=>{
+    btn.addEventListener("click",()=>{
 
-goToPage(
-button.dataset.page
-);
+        goTo(btn.dataset.page);
 
-};
+    });
 
 });
 
 
-function goToPage(page){
+function goTo(page){
 
-document
-.querySelectorAll(".menuButton")
-.forEach(button=>{
+    document.querySelectorAll(".menu-btn")
+    .forEach(btn=>{
 
-button.classList.toggle(
-"active",
-button.dataset.page===page
-);
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page===page
+        );
 
-});
+    });
 
+    document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
 
-document
-.querySelectorAll(".page")
-.forEach(p=>{
-
-p.classList.remove(
-"active"
-);
-
-});
-
-
-const selected =
-document.getElementById(
-"page-"+page
-);
-
-if(selected){
-
-selected.classList.add(
-"active"
-);
-
-}
+    document.getElementById("page-"+page)
+    .classList.add("active");
 
 }
 
 
-/* =====================================================
-   GOOGLE MUSICAS
-===================================================== */
+/* =====================================
+   GOOGLE MÚSICAS
+===================================== */
 
-function googleMusicSearch(){
+function searchGoogleMusic(){
 
-const query =
-document
-.getElementById("musicSearch")
-.value
-.trim();
+    const query =
+    document.getElementById("googleMusic")
+    .value.trim();
 
+    if(!query){
 
-if(!query){
+        alert("Digite o nome da música.");
+        return;
 
-alert(
-"Digite o nome da música."
-);
+    }
 
-return;
-
-}
-
-
-window.open(
-
-"https://www.google.com/search?q="+
-encodeURIComponent(
-query+" letra música"
-),
-
-"_blank"
-
-);
+    window.open(
+        "https://www.google.com/search?q="+
+        encodeURIComponent(query+" música"),
+        "_blank"
+    );
 
 }
 
 
-/* =====================================================
-   GOOGLE FUNDOS
-===================================================== */
+/* =====================================
+   ADICIONAR MÚSICA
+===================================== */
 
-function googleBackgroundSearch(){
+function addSong(){
 
-const query =
-document
-.getElementById(
-"backgroundSearch"
-)
-.value
-.trim();
+    const title =
+    document.getElementById("songTitle")
+    .value.trim();
 
+    const artist =
+    document.getElementById("songArtist")
+    .value.trim();
 
-if(!query){
+    const lyrics =
+    document.getElementById("songLyrics")
+    .value.trim();
 
-alert(
-"Digite o que deseja pesquisar."
-);
+    if(!title || !lyrics){
 
-return;
+        alert("Digite o nome e o conteúdo da música.");
+        return;
 
-}
+    }
 
+    const parts =
+    lyrics
+    .split(/\n\s*\n/)
+    .map(x=>x.trim())
+    .filter(Boolean);
 
-window.open(
+    let slides=[];
 
-"https://www.google.com/search?tbm=isch&q="+
-encodeURIComponent(query),
+    parts.forEach(part=>{
 
-"_blank"
+        const lines =
+        part.split("\n")
+        .map(x=>x.trim())
+        .filter(Boolean);
 
-);
+        let group=[];
 
-}
+        lines.forEach(line=>{
 
+            group.push(line);
 
-/* =====================================================
-   MUSICA
-===================================================== */
+            if(group.length===5){
 
-function organizeSong(){
+                slides.push(group.join("\n"));
 
-const title =
-document
-.getElementById("songTitle")
-.value
-.trim();
+                group=[];
 
+            }
 
-const artist =
-document
-.getElementById("songArtist")
-.value
-.trim();
+        });
 
+        if(group.length){
 
-const text =
-document
-.getElementById("songText")
-.value
-.trim();
+            slides.push(group.join("\n"));
 
+        }
 
-if(!title){
+    });
 
-alert(
-"Digite o nome da música."
-);
+    const song={
 
-return;
+        id:Date.now(),
 
-}
+        title:title,
 
+        artist:artist || "Artista não informado",
 
-if(!text){
+        slides:slides
 
-alert(
-"Adicione o conteúdo autorizado."
-);
+    };
 
-return;
+    songs.push(song);
 
-}
+    localStorage.setItem(
+        "cvSongs",
+        JSON.stringify(songs)
+    );
 
+    document.getElementById("songTitle").value="";
+    document.getElementById("songArtist").value="";
+    document.getElementById("songLyrics").value="";
 
-const blocks =
-text
-.split(/\n\s*\n/)
-.map(x=>x.trim())
-.filter(Boolean);
+    renderSongs();
 
+    useSlides(
+        song.slides,
+        song.title
+    );
 
-let slides=[];
-
-
-blocks.forEach(block=>{
-
-const lines =
-block
-.split("\n")
-.map(x=>x.trim())
-.filter(Boolean);
-
-
-let part=[];
-
-
-lines.forEach(line=>{
-
-part.push(line);
-
-
-if(part.length>=5){
-
-slides.push(
-part.join("\n")
-);
-
-part=[];
+    alert("Música adicionada!");
 
 }
 
-});
 
+/* =====================================
+   MINHAS MÚSICAS
+===================================== */
 
-if(part.length){
+function renderSongs(){
 
-slides.push(
-part.join("\n")
-);
+    const grid =
+    document.getElementById("musicGrid");
 
-}
+    grid.innerHTML="";
 
-});
+    document.getElementById("musicCount")
+    .textContent=songs.length;
 
+    if(songs.length===0){
 
-const song={
+        grid.innerHTML=
+        "<p style='color:#9aa3b2'>Nenhuma música adicionada ainda.</p>";
 
-id:Date.now(),
+        return;
 
-title:title,
+    }
 
-artist:
-artist ||
-"Artista não informado",
+    songs.forEach(song=>{
 
-slides:slides
+        const card =
+        document.createElement("div");
 
-};
+        card.className="music-card";
 
+        card.innerHTML=`
 
-songs.push(song);
+        <h3>🎵 ${escapeHTML(song.title)}</h3>
 
-localStorage.setItem(
-"cultovision_songs",
-JSON.stringify(songs)
-);
+        <p>${escapeHTML(song.artist)}</p>
 
+        <p>${song.slides.length} slides</p>
 
-currentSong=song;
+        <div class="actions">
 
-currentBibleVerse=null;
+        <button class="small"
+        onclick="useSong(${song.id})">
 
-currentSlides=slides;
+        ▶ Usar
 
-currentSlide=0;
+        </button>
 
+        <button class="small"
+        onclick="deleteSong(${song.id})">
 
-renderMusic();
+        🗑️
 
-updatePresentation();
+        </button>
 
-goToPage("home");
+        </div>
 
+        `;
 
-alert(
-"✓ Música adicionada!"
-);
+        grid.appendChild(card);
 
-}
-
-
-/* =====================================================
-   MUSIC GRID
-===================================================== */
-
-function renderMusic(){
-
-const grid =
-document.getElementById(
-"musicGrid"
-);
-
-grid.innerHTML="";
-
-
-document.getElementById(
-"musicCount"
-).textContent=
-songs.length;
-
-
-songs.forEach(song=>{
-
-const card=
-document.createElement("div");
-
-card.className=
-"musicCard";
-
-
-card.innerHTML=`
-
-<div class="musicIcon">
-🎵
-</div>
-
-<h3>
-${escapeHTML(song.title)}
-</h3>
-
-<p>
-${escapeHTML(song.artist)}
-</p>
-
-<p>
-${song.slides.length} slides
-</p>
-
-<div class="musicActions">
-
-<button
-class="smallButton"
-onclick="useSong(${song.id})">
-
-▶ Usar
-
-</button>
-
-<button
-class="smallButton"
-onclick="deleteSong(${song.id})">
-
-🗑️
-
-</button>
-
-</div>
-
-`;
-
-
-grid.appendChild(card);
-
-});
+    });
 
 }
 
-
-/* =====================================================
-   USAR MUSICA
-===================================================== */
 
 function useSong(id){
 
-const song=
-songs.find(
-s=>s.id===id
-);
+    const song =
+    songs.find(s=>s.id===id);
 
-if(!song)
-return;
+    if(!song)return;
 
+    useSlides(
+        song.slides,
+        song.title
+    );
 
-currentSong=song;
-
-currentBibleVerse=null;
-
-currentSlides=
-song.slides;
-
-currentSlide=0;
-
-updatePresentation();
-
-goToPage("home");
+    goTo("home");
 
 }
 
-
-/* =====================================================
-   DELETE
-===================================================== */
 
 function deleteSong(id){
 
-if(!confirm(
-"Excluir esta música?"
-))
-return;
+    if(!confirm("Excluir esta música?"))
+    return;
 
+    songs =
+    songs.filter(s=>s.id!==id);
 
-songs=
-songs.filter(
-s=>s.id!==id
-);
+    localStorage.setItem(
+        "cvSongs",
+        JSON.stringify(songs)
+    );
 
-
-localStorage.setItem(
-"cultovision_songs",
-JSON.stringify(songs)
-);
-
-
-renderMusic();
+    renderSongs();
 
 }
 
 
-/* =====================================================
-   BIBLIA
-===================================================== */
+/* =====================================
+   HARPA
+===================================== */
 
-/*
-Formato esperado do JSON:
+function searchHarpa(){
 
-{
- "Gênesis": {
-   "1": {
-     "1": "texto",
-     "2": "texto"
-   }
- }
-}
-
-Você poderá usar o arquivo ACF
-convertido para esse formato.
-*/
-
-
-function importBible(event){
-
-const file=
-event.target.files[0];
-
-
-if(!file)
-return;
-
-
-const reader=
-new FileReader();
-
-
-reader.onload=
-function(e){
-
-try{
-
-const data=
-JSON.parse(
-e.target.result
-);
-
-
-bibleData=data;
-
-
-localStorage.setItem(
-"cultovision_bible",
-JSON.stringify(data)
-);
-
-
-renderBibleBooks();
-
-
-alert(
-"✓ Bíblia importada!"
-);
-
-
-}
-catch(error){
-
-alert(
-"Não consegui ler esse arquivo JSON.\n\n"+
-"Use um arquivo JSON no formato indicado."
-);
-
-}
-
-};
-
-
-reader.readAsText(file);
+    renderHarpa();
 
 }
 
 
-/* =====================================================
-   LIVROS
-===================================================== */
+function setHarpaFilter(filter,button){
 
-function renderBibleBooks(){
+    harpaFilter=filter;
 
-const container=
-document.getElementById(
-"bibleBooks"
-);
+    document.querySelectorAll(".filter")
+    .forEach(btn=>btn.classList.remove("active"));
 
+    button.classList.add("active");
 
-container.innerHTML="";
-
-
-if(!bibleData){
-
-container.innerHTML=
-`
-<div style="color:#929bad;font-size:13px;">
-Nenhuma Bíblia carregada.
-</div>
-`;
-
-return;
+    renderHarpa();
 
 }
 
 
-Object.keys(
-bibleData
-).forEach(book=>{
+function renderHarpa(){
 
-const div=
-document.createElement("div");
+    const search =
+    document.getElementById("harpaSearch")
+    .value.toLowerCase()
+    .trim();
 
+    const grid =
+    document.getElementById("harpaGrid");
 
-div.className=
-"bibleBook";
+    grid.innerHTML="";
 
+    let list=[...harpa];
 
-div.textContent=
-book;
+    if(harpaFilter==="favorites"){
 
+        list=list.filter(h=>
+            favorites.includes(h.number)
+        );
 
-div.onclick=
-()=>selectBibleBook(book);
+    }
 
+    if(harpaFilter==="recent"){
 
-container.appendChild(div);
+        list=list.filter(h=>
+            recent.includes(h.number)
+        );
 
-});
+    }
+
+    if(search){
+
+        list=list.filter(h=>
+
+            String(h.number).includes(search) ||
+
+            h.title.toLowerCase()
+            .includes(search)
+
+        );
+
+    }
+
+    if(list.length===0){
+
+        grid.innerHTML=
+        "<p style='color:#9aa3b2'>Nenhum hino encontrado.</p>";
+
+        return;
+
+    }
+
+    list.forEach(hino=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className="harpa-card";
+
+        const isFavorite =
+        favorites.includes(hino.number);
+
+        card.innerHTML=`
+
+        <div class="harpa-number">
+
+        HINO ${String(hino.number).padStart(3,"0")}
+
+        </div>
+
+        <h3>${escapeHTML(hino.title)}</h3>
+
+        <p>
+
+        ${
+            hino.slides.length
+            ? hino.slides.length+" slides disponíveis"
+            : "Conteúdo ainda não importado"
+        }
+
+        </p>
+
+        <div class="actions">
+
+        <button class="small"
+        onclick="useHarpa(${hino.number})">
+
+        ▶ Usar
+
+        </button>
+
+        <button class="small"
+        onclick="toggleFavorite(${hino.number})">
+
+        ${isFavorite ? "⭐" : "☆"}
+
+        </button>
+
+        </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
 
 }
 
 
-/* =====================================================
-   SELECIONAR LIVRO
-===================================================== */
+function useHarpa(number){
 
-function selectBibleBook(book){
+    const hino =
+    harpa.find(h=>h.number===number);
 
-const data=
-bibleData[book];
+    if(!hino)return;
 
+    if(!recent.includes(number)){
 
-if(!data)
-return;
+        recent.unshift(number);
 
+        recent=recent.slice(0,20);
 
-document.getElementById(
-"bibleTitle"
-).textContent=
-book;
+        localStorage.setItem(
+            "cvRecent",
+            JSON.stringify(recent)
+        );
 
+    }
 
-const chapterGrid=
-document.getElementById(
-"chapterGrid"
-);
+    if(!hino.slides.length){
 
+        alert(
+            "Este hino já está no catálogo, mas o conteúdo ainda não foi importado."
+        );
 
-chapterGrid.innerHTML="";
+        return;
 
+    }
 
-const chapterSelect=
-document.getElementById(
-"bibleChapter"
-);
+    useSlides(
+        hino.slides,
+        hino.title
+    );
 
-
-chapterSelect.innerHTML=
-`<option>Capítulo</option>`;
-
-
-Object.keys(data)
-.forEach(chapter=>{
-
-const button=
-document.createElement(
-"button"
-);
-
-button.className=
-"chapterButton";
-
-button.textContent=
-chapter;
-
-button.onclick=
-()=>selectBibleChapter(
-chapter
-);
-
-chapterGrid.appendChild(
-button
-);
-
-
-const option=
-document.createElement(
-"option"
-);
-
-option.value=
-chapter;
-
-option.textContent=
-"Capítulo "+chapter;
-
-chapterSelect.appendChild(
-option
-);
-
-});
+    goTo("home");
 
 }
 
 
-/* =====================================================
-   CAPITULO
-===================================================== */
+function toggleFavorite(number){
 
-function selectBibleChapter(chapter){
+    if(favorites.includes(number)){
 
-if(
-!bibleData ||
-!document.getElementById(
-"bibleTitle"
-).textContent
-)
-return;
+        favorites=
+        favorites.filter(n=>n!==number);
 
+    }else{
 
-const book=
-document.getElementById(
-"bibleTitle"
-).textContent;
+        favorites.push(number);
 
+    }
 
-const verses=
-bibleData
-[book]
-[chapter];
+    localStorage.setItem(
+        "cvFavorites",
+        JSON.stringify(favorites)
+    );
 
-
-if(!verses)
-return;
-
-
-const list=
-document.getElementById(
-"verseList"
-);
-
-
-list.innerHTML="";
-
-
-Object.keys(verses)
-.forEach(number=>{
-
-const div=
-document.createElement(
-"div"
-);
-
-
-div.className=
-"verse";
-
-
-div.innerHTML=
-
-`
-<span class="verseNumber">
-${number}
-</span>
-
-${escapeHTML(
-verses[number]
-)}
-
-`;
-
-
-div.onclick=
-()=>presentBibleVerse(
-book,
-chapter,
-number,
-verses[number]
-);
-
-
-list.appendChild(div);
-
-});
+    renderHarpa();
 
 }
 
 
-/* =====================================================
-   APRESENTAR VERSICULO
-===================================================== */
-
-function presentBibleVerse(
-book,
-chapter,
-verse,
-text
-){
-
-currentSong=null;
-
-currentBibleVerse={
-
-book:book,
-
-chapter:chapter,
-
-verse:verse,
-
-text:text
-
-};
-
-
-currentSlides=[
-`${book} ${chapter}:${verse}\n\n${text}`
-];
-
-
-currentSlide=0;
-
-
-updatePresentation();
-
-goToPage("home");
-
-}
-
-
-/* =====================================================
-   PRESENTATION
-===================================================== */
-
-function updatePresentation(){
-
-const panel=
-document.getElementById(
-"panelSlideText"
-);
-
-
-const tv=
-document.getElementById(
-"tvSlideText"
-);
-
-
-if(
-!currentSlides.length
-){
-
-panel.textContent=
-"Escolha uma música ou versículo";
-
-tv.textContent=
-"Nenhuma apresentação selecionada";
-
-renderSlides();
-
-return;
-
-}
-
-
-const text=
-currentSlides[
-currentSlide
-];
-
-
-panel.textContent=
-text;
-
-
-tv.textContent=
-text;
-
-
-applyBackground();
-
-renderSlides();
-
-updateProjectionWindow();
-
-}
-
-
-/* =====================================================
+/* =====================================
    SLIDES
-===================================================== */
+===================================== */
 
-function renderSlides(){
+function useSlides(slides,title){
 
-const list=
-document.getElementById(
-"slideList"
-);
+    currentSlides=slides;
 
+    currentSlide=0;
 
-list.innerHTML="";
+    updatePresentation();
 
-
-currentSlides.forEach(
-(slide,index)=>{
-
-const div=
-document.createElement(
-"div"
-);
-
-
-div.className=
-"slideItem";
-
-
-if(index===currentSlide){
-
-div.classList.add(
-"active"
-);
+    addRecentPresentation(title);
 
 }
 
-
-div.textContent=
-`${index+1}. ${
-slide
-.replace(/\n/g," ")
-.slice(0,80)
-}`;
-
-
-div.onclick=
-()=>{
-
-currentSlide=
-index;
-
-updatePresentation();
-
-};
-
-
-list.appendChild(div);
-
-});
-
-}
-
-
-/* =====================================================
-   NEXT
-===================================================== */
 
 function nextSlide(){
 
-if(
-currentSlide <
-currentSlides.length-1
-){
+    if(
+        currentSlide <
+        currentSlides.length-1
+    ){
 
-currentSlide++;
+        currentSlide++;
 
-updatePresentation();
+        updatePresentation();
+
+    }
 
 }
 
-}
-
-
-/* =====================================================
-   PREVIOUS
-===================================================== */
 
 function previousSlide(){
 
-if(
-currentSlide>0
-){
+    if(currentSlide>0){
 
-currentSlide--;
+        currentSlide--;
 
-updatePresentation();
+        updatePresentation();
 
-}
+    }
 
 }
 
 
-/* =====================================================
-   BACKGROUNDS
-===================================================== */
+function updatePresentation(){
+
+    const text =
+    currentSlides.length
+    ? currentSlides[currentSlide]
+    : "Escolha uma música ou hino";
+
+    document.getElementById("panelText")
+    .textContent=text;
+
+    document.getElementById("tvText")
+    .textContent=text;
+
+    renderSlideList();
+
+    applyBackground();
+
+    updateProjection();
+
+}
+
+
+function renderSlideList(){
+
+    const list =
+    document.getElementById("slideList");
+
+    list.innerHTML="";
+
+    currentSlides.forEach((slide,index)=>{
+
+        const item =
+        document.createElement("div");
+
+        item.className="slide-item";
+
+        if(index===currentSlide){
+
+            item.classList.add("active");
+
+        }
+
+        item.textContent=
+        (index+1)+". "+
+        slide.replace(/\n/g," ").slice(0,70);
+
+        item.onclick=()=>{
+
+            currentSlide=index;
+
+            updatePresentation();
+
+        };
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================
+   FUNDOS
+===================================== */
+
+let backgrounds=[
+
+    {
+        name:"Escuro",
+        css:"linear-gradient(135deg,#020203,#191919)"
+    },
+
+    {
+        name:"Roxo",
+        css:"linear-gradient(135deg,#4c1d95,#08000f)"
+    },
+
+    {
+        name:"Azul",
+        css:"linear-gradient(135deg,#0c4a6e,#020617)"
+    },
+
+    {
+        name:"Floresta",
+        css:"linear-gradient(135deg,#14532d,#020b05)"
+    },
+
+    {
+        name:"Pôr do Sol",
+        css:"linear-gradient(135deg,#ea580c,#3b0a00)"
+    },
+
+    {
+        name:"Espaço",
+        css:"radial-gradient(circle,#312e81,#020617)"
+    },
+
+    ...customBackgrounds
+
+];
+
 
 function renderBackgrounds(){
 
-const grid=
-document.getElementById(
-"backgroundGrid"
-);
+    const grid =
+    document.getElementById("backgroundGrid");
 
-grid.innerHTML="";
+    grid.innerHTML="";
 
+    backgrounds.forEach((bg,index)=>{
 
-const all=[
-...defaultBackgrounds,
-...customBackgrounds
-];
+        const card =
+        document.createElement("div");
 
+        card.className="background-card";
 
-all.forEach(
-(background,index)=>{
+        if(index===currentBackground){
 
-const div=
-document.createElement(
-"div"
-);
+            card.classList.add("selected");
 
+        }
 
-div.className=
-"backgroundCard";
+        card.style.background=bg.css;
 
+        card.textContent=bg.name;
 
-if(
-index===currentBackground
-){
+        card.onclick=()=>{
 
-div.classList.add(
-"selected"
-);
+            currentBackground=index;
 
-}
+            renderBackgrounds();
 
+            applyBackground();
 
-div.style.background=
-background.css;
+            updateProjection();
 
+        };
 
-div.textContent=
-background.name;
+        grid.appendChild(card);
 
-
-div.onclick=
-()=>{
-
-currentBackground=
-index;
-
-renderBackgrounds();
-
-applyBackground();
-
-updateProjectionWindow();
-
-};
-
-
-grid.appendChild(div);
-
-});
+    });
 
 }
 
 
-/* =====================================================
-   UPLOAD BACKGROUND
-===================================================== */
+function uploadBackground(event){
 
-function addLocalBackground(event){
+    const file=event.target.files[0];
 
-const file=
-event.target.files[0];
+    if(!file)return;
 
+    const reader=new FileReader();
 
-if(!file)
-return;
+    reader.onload=function(e){
 
+        const bg={
 
-const reader=
-new FileReader();
+            name:file.name,
 
+            css:
+            `url("${e.target.result}") center/cover no-repeat`
 
-reader.onload=
-function(e){
+        };
 
-customBackgrounds.push({
+        customBackgrounds.push(bg);
 
-name:file.name,
+        backgrounds.push(bg);
 
-css:
-`url("${e.target.result}") center/cover no-repeat`
+        localStorage.setItem(
+            "cvBackgrounds",
+            JSON.stringify(customBackgrounds)
+        );
 
-});
+        currentBackground=
+        backgrounds.length-1;
 
+        renderBackgrounds();
 
-localStorage.setItem(
-"cultovision_backgrounds",
-JSON.stringify(
-customBackgrounds
-)
-);
+        applyBackground();
 
+    };
 
-currentBackground=
-defaultBackgrounds.length+
-customBackgrounds.length-1;
-
-
-renderBackgrounds();
-
-applyBackground();
-
-updateProjectionWindow();
-
-};
-
-
-reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 
 }
 
-
-/* =====================================================
-   APPLY BACKGROUND
-===================================================== */
 
 function applyBackground(){
 
-const all=[
-...defaultBackgrounds,
-...customBackgrounds
-];
+    const bg=
+    backgrounds[currentBackground];
 
+    if(!bg)return;
 
-if(!all[currentBackground])
-return;
+    document.getElementById("preview")
+    .style.background=bg.css;
 
-
-document.getElementById(
-"preview"
-).style.background=
-all[currentBackground].css;
-
-
-document.getElementById(
-"projectionPreview"
-).style.background=
-all[currentBackground].css;
+    document.getElementById("tvPreview")
+    .style.background=bg.css;
 
 }
 
 
-/* =====================================================
-   TAMANHO DA TV
-===================================================== */
+/* =====================================
+   CONFIGURAÇÕES
+===================================== */
 
-function changeTVFontSize(value){
+function changeFont(value){
 
-tvFontSize=
-Number(value);
+    tvFontSize=Number(value);
 
+    document.getElementById("fontValue")
+    .textContent=value;
 
-document.getElementById(
-"fontSizeValue"
-).textContent=
-value;
+    document.getElementById("tvText")
+    .style.fontSize=value+"px";
 
-
-/*
-   SOMENTE A PROJEÇÃO.
-
-   O painel continua em 38px.
-*/
-
-document.getElementById(
-"tvSlideText"
-).style.fontSize=
-value+"px";
-
-
-updateProjectionWindow();
+    updateProjection();
 
 }
 
 
-/* =====================================================
-   COR TV
-===================================================== */
+function changeColor(value){
 
-function changeTVFontColor(value){
+    tvColor=value;
 
-tvFontColor=
-value;
+    document.getElementById("tvText")
+    .style.color=value;
 
-
-document.getElementById(
-"tvSlideText"
-).style.color=
-value;
-
-
-updateProjectionWindow();
+    updateProjection();
 
 }
 
 
-/* =====================================================
-   APRESENTAÇÃO
-===================================================== */
+/* =====================================
+   PROJEÇÃO
+===================================== */
 
 function startPresentation(){
 
-if(
-projectionWindow &&
-!projectionWindow.closed
-){
+    if(
+        projectionWindow &&
+        !projectionWindow.closed
+    ){
 
-projectionWindow.focus();
+        projectionWindow.focus();
 
-return;
+        return;
 
-}
+    }
 
+    projectionWindow=
+    window.open(
+        "",
+        "CultoVisionTV",
+        "width=1280,height=720"
+    );
 
-projectionWindow=
-window.open(
-"",
-"CultoVisionTV",
-"width=1200,height=700"
-);
+    if(!projectionWindow){
 
+        alert(
+            "Permita pop-ups para abrir a projeção."
+        );
 
-if(!projectionWindow){
+        return;
 
-alert(
-"Permita pop-ups para o CultoVision."
-);
+    }
 
-return;
-
-}
-
-
-writeProjectionPage();
-
-projectionWindow.focus();
-
-
-document.getElementById(
-"projectionStatus"
-).textContent=
-"● Apresentação ativa.";
+    writeProjection();
 
 }
 
 
-/* =====================================================
-   TV PAGE
-===================================================== */
+function writeProjection(){
 
-function writeProjectionPage(){
+    const bg =
+    backgrounds[currentBackground];
 
-const all=[
-...defaultBackgrounds,
-...customBackgrounds
-];
+    const text =
+    currentSlides.length
+    ? currentSlides[currentSlide]
+    : "CultoVision";
 
+    projectionWindow.document.open();
 
-const background=
-all[currentBackground];
-
-
-const text=
-currentSlides.length
-?
-currentSlides[currentSlide]
-:
-"CultoVision";
-
-
-projectionWindow.document.open();
-
-
-projectionWindow.document.write(`
+    projectionWindow.document.write(`
 
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-BR">
 
 <head>
 
@@ -2786,94 +1784,42 @@ projectionWindow.document.write(`
 
 <style>
 
+*{
+box-sizing:border-box;
+}
+
 html,body{
-
 margin:0;
-
 width:100%;
-
 height:100%;
-
 overflow:hidden;
-
-}
-
-body{
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-text-align:center;
-
 font-family:Arial,sans-serif;
-
 background:#000;
-
-color:white;
-
 }
 
-#background{
-
+#bg{
 position:fixed;
-
 inset:0;
-
-background:${background.css};
-
+background:${bg.css};
 background-size:cover;
-
 background-position:center;
-
 }
 
 #text{
-
 position:relative;
-
 z-index:2;
-
-width:90%;
-
-font-size:${tvFontSize}px;
-
-color:${tvFontColor};
-
-font-weight:bold;
-
-line-height:1.3;
-
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:8%;
 white-space:pre-line;
-
-text-shadow:0 4px 20px rgba(0,0,0,.9);
-
-}
-
-#fullscreen{
-
-position:fixed;
-
-right:18px;
-
-bottom:18px;
-
-z-index:5;
-
-background:rgba(255,255,255,.15);
-
-border:none;
-
-color:white;
-
-padding:10px 15px;
-
-border-radius:7px;
-
-cursor:pointer;
-
+font-size:${tvFontSize}px;
+font-weight:bold;
+line-height:1.3;
+color:${tvColor};
+text-shadow:0 4px 20px #000;
 }
 
 </style>
@@ -2882,19 +1828,9 @@ cursor:pointer;
 
 <body>
 
-<div id="background"></div>
+<div id="bg"></div>
 
-<div id="text">
-${escapeHTML(text)}
-</div>
-
-<button
-id="fullscreen"
-onclick="document.documentElement.requestFullscreen()">
-
-⛶ Tela cheia
-
-</button>
+<div id="text">${escapeHTML(text)}</div>
 
 </body>
 
@@ -2902,180 +1838,113 @@ onclick="document.documentElement.requestFullscreen()">
 
 `);
 
-
-projectionWindow.document.close();
-
-}
-
-
-/* =====================================================
-   ATUALIZAR TV
-===================================================== */
-
-function updateProjectionWindow(){
-
-if(
-!projectionWindow ||
-projectionWindow.closed
-)
-return;
-
-
-try{
-
-const text=
-projectionWindow.document
-.getElementById("text");
-
-
-const background=
-projectionWindow.document
-.getElementById("background");
-
-
-const all=[
-...defaultBackgrounds,
-...customBackgrounds
-];
-
-
-if(text){
-
-text.textContent=
-currentSlides.length
-?
-currentSlides[currentSlide]
-:
-"CultoVision";
-
-
-text.style.fontSize=
-tvFontSize+"px";
-
-
-text.style.color=
-tvFontColor;
+    projectionWindow.document.close();
 
 }
 
 
-if(background){
+function updateProjection(){
 
-background.style.background=
-all[currentBackground].css;
+    if(
+        !projectionWindow ||
+        projectionWindow.closed
+    )return;
+
+    const text =
+    currentSlides.length
+    ? currentSlides[currentSlide]
+    : "CultoVision";
+
+    const bg =
+    backgrounds[currentBackground];
+
+    const tvText =
+    projectionWindow.document
+    .getElementById("text");
+
+    const tvBg =
+    projectionWindow.document
+    .getElementById("bg");
+
+    if(tvText){
+
+        tvText.textContent=text;
+
+        tvText.style.fontSize=
+        tvFontSize+"px";
+
+        tvText.style.color=
+        tvColor;
+
+    }
+
+    if(tvBg){
+
+        tvBg.style.background=bg.css;
+
+    }
 
 }
 
-}
-catch(error){
 
-console.log(error);
-
-}
-
-}
-
-
-/* =====================================================
+/* =====================================
    TECLADO
-===================================================== */
+===================================== */
 
-document.addEventListener(
-"keydown",
-event=>{
+document.addEventListener("keydown",event=>{
 
-if(
-event.target.tagName==="INPUT" ||
-event.target.tagName==="TEXTAREA"
-)
-return;
+    if(
+        event.target.tagName==="INPUT" ||
+        event.target.tagName==="TEXTAREA"
+    )return;
 
+    if(event.key==="ArrowRight"){
+        nextSlide();
+    }
 
-if(
-event.key==="ArrowRight"
-)
-nextSlide();
-
-
-if(
-event.key==="ArrowLeft"
-)
-previousSlide();
+    if(event.key==="ArrowLeft"){
+        previousSlide();
+    }
 
 });
 
 
-/* =====================================================
-   DELETE ALL
-===================================================== */
+/* =====================================
+   RECENTES
+===================================== */
 
-function clearAllSongs(){
+function addRecentPresentation(title){
 
-if(!confirm(
-"Apagar todas as músicas?"
-))
-return;
-
-
-songs=[];
-
-
-localStorage.setItem(
-"cultovision_songs",
-JSON.stringify(songs)
-);
-
-
-currentSong=null;
-
-currentSlides=[];
-
-currentSlide=0;
-
-
-renderMusic();
-
-updatePresentation();
+    console.log("Apresentação selecionada:",title);
 
 }
 
 
-/* =====================================================
-   ESCAPE
-===================================================== */
+/* =====================================
+   SEGURANÇA HTML
+===================================== */
 
 function escapeHTML(text){
 
-return String(text)
-
-.replaceAll("&","&amp;")
-
-.replaceAll("<","&lt;")
-
-.replaceAll(">","&gt;")
-
-.replaceAll('"',"&quot;")
-
-.replaceAll("'","&#039;");
+    return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-/* =====================================================
+/* =====================================
    INICIAR
-===================================================== */
+===================================== */
 
-renderMusic();
+renderSongs();
+
+renderHarpa();
 
 renderBackgrounds();
-
-if(bibleData){
-
-renderBibleBooks();
-
-}
-
-updatePresentation();
 
 applyBackground();
 
