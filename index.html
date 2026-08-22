@@ -3,44 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CultoVision</title>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-:root{
-    --bg:#090b10;
-    --panel:#11151d;
-    --card:#171c26;
-    --border:#2a3140;
-    --text:#ffffff;
-    --muted:#9aa3b2;
-    --purple:#8b5cf6;
-    --pink:#ec4899;
-    --green:#22c55e;
-    --blue:#3b82f6;
-    --yellow:#eab308;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
+    background:#080a0f;
+    color:#fff;
     height:100vh;
     overflow:hidden;
 }
 
-/* HEADER */
-
 header{
-    height:65px;
-    background:var(--panel);
-    border-bottom:1px solid var(--border);
+    height:64px;
+    background:#11151d;
+    border-bottom:1px solid #29303d;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -51,109 +34,99 @@ header{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:22px;
+    font-size:21px;
     font-weight:bold;
 }
 
-.logo-icon{
+.logoIcon{
     width:40px;
     height:40px;
-    border-radius:10px;
     display:grid;
     place-items:center;
-    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    border-radius:10px;
+    background:linear-gradient(135deg,#7c3aed,#ec4899);
 }
 
 .status{
-    color:var(--muted);
+    color:#22c55e;
     font-size:13px;
 }
 
-.online{
-    color:var(--green);
-}
-
-/* APP */
-
 .app{
+    height:calc(100vh - 64px);
     display:flex;
-    height:calc(100vh - 65px);
 }
-
-/* MENU */
 
 .sidebar{
     width:230px;
-    background:var(--panel);
-    border-right:1px solid var(--border);
-    padding:15px 10px;
+    background:#11151d;
+    border-right:1px solid #29303d;
+    padding:14px 10px;
 }
 
-.menu-title{
-    color:#596174;
+.sectionTitle{
+    color:#687185;
     font-size:10px;
     font-weight:bold;
     margin:15px 10px 8px;
 }
 
-.menu-btn{
+.menu{
     width:100%;
-    border:none;
+    border:0;
     background:transparent;
-    color:var(--muted);
+    color:#aab2c0;
     padding:12px;
-    margin-bottom:4px;
     border-radius:8px;
-    cursor:pointer;
+    margin-bottom:4px;
     display:flex;
-    gap:12px;
     align-items:center;
-    font-size:14px;
+    gap:12px;
+    cursor:pointer;
     transition:.2s;
+    text-align:left;
 }
 
-.menu-btn:hover,
-.menu-btn.active{
-    background:rgba(139,92,246,.15);
-    color:white;
+.menu:hover,
+.menu.active{
+    background:#1d2230;
+    color:#fff;
 }
 
-.icon{
-    width:28px;
+.menuIcon{
+    width:30px;
     text-align:center;
-    font-size:20px;
+    font-size:21px;
     transition:.2s;
 }
 
-.menu-btn:hover .icon{
+.menu:hover .menuIcon{
     transform:scale(1.2);
 }
 
-.menu-btn[data-page="music"]:hover .icon{
-    color:var(--pink);
+.menu[data-page="harpa"]:hover .menuIcon{
+    color:#facc15;
 }
 
-.menu-btn[data-page="harpa"]:hover .icon{
-    color:var(--yellow);
+.menu[data-page="bible"]:hover .menuIcon{
+    color:#60a5fa;
 }
 
-.menu-btn[data-page="projection"]:hover .icon{
-    color:var(--green);
+.menu[data-page="music"]:hover .menuIcon{
+    color:#ec4899;
 }
 
-.menu-btn[data-page="background"]:hover .icon{
-    color:var(--blue);
+.menu[data-page="projection"]:hover .menuIcon{
+    color:#22c55e;
 }
 
-.menu-btn[data-page="settings"]:hover .icon{
-    color:#06b6d4;
+.menu[data-page="background"]:hover .menuIcon{
+    color:#38bdf8;
 }
-
-/* CONTENT */
 
 .content{
     flex:1;
-    overflow-y:auto;
+    overflow:auto;
     padding:28px;
 }
 
@@ -171,21 +144,19 @@ h1{
 }
 
 .subtitle{
-    color:var(--muted);
-    margin-bottom:25px;
+    color:#929aaa;
+    margin-bottom:24px;
 }
-
-/* CARDS */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
 
 .card{
-    background:var(--card);
-    border:1px solid var(--border);
+    background:#151a23;
+    border:1px solid #29303d;
     padding:20px;
     border-radius:12px;
     cursor:pointer;
@@ -194,59 +165,82 @@ h1{
 
 .card:hover{
     transform:translateY(-4px);
-    border-color:var(--purple);
+    border-color:#7c3aed;
 }
 
-.card-icon{
+.cardIcon{
     font-size:30px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.card-number{
-    font-size:24px;
+.cardNumber{
+    font-size:23px;
     font-weight:bold;
 }
 
-.card-label{
-    color:var(--muted);
+.cardText{
+    color:#929aaa;
     font-size:13px;
     margin-top:5px;
 }
 
-/* SEARCH */
+.box{
+    background:#151a23;
+    border:1px solid #29303d;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+}
 
-.search-row{
+.box p{
+    color:#929aaa;
+    margin-top:8px;
+    line-height:1.5;
+}
+
+.searchRow{
     display:flex;
     gap:10px;
     margin-bottom:20px;
 }
 
-.search{
-    flex:1;
-    padding:14px;
-    border-radius:8px;
-    border:1px solid var(--border);
+input,
+textarea{
     background:#0d1118;
-    color:white;
+    color:#fff;
+    border:1px solid #29303d;
+    border-radius:8px;
     outline:none;
 }
 
-.search:focus{
-    border-color:var(--purple);
+input{
+    padding:13px;
 }
 
-button{
-    font-family:inherit;
+textarea{
+    width:100%;
+    min-height:220px;
+    padding:13px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#7c3aed;
+}
+
+.search{
+    flex:1;
 }
 
 .btn{
-    border:none;
-    padding:12px 17px;
+    border:0;
     border-radius:8px;
-    color:white;
-    background:var(--purple);
-    cursor:pointer;
+    padding:12px 17px;
+    background:#7c3aed;
+    color:#fff;
     font-weight:bold;
+    cursor:pointer;
     transition:.2s;
 }
 
@@ -256,136 +250,66 @@ button{
 }
 
 .btn.green{
-    background:var(--green);
+    background:#16a34a;
 }
 
 .btn.blue{
-    background:var(--blue);
+    background:#2563eb;
 }
 
 .btn.yellow{
-    background:var(--yellow);
+    background:#eab308;
     color:#111;
 }
 
-/* MUSIC */
-
-.box{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:20px;
+.btn.red{
+    background:#dc2626;
 }
 
-.box p{
-    color:var(--muted);
-    line-height:1.5;
-    margin-top:8px;
-}
-
-.input{
-    width:100%;
-    padding:13px;
-    background:#0d1118;
-    color:white;
-    border:1px solid var(--border);
-    border-radius:8px;
-    outline:none;
-    margin-bottom:10px;
-}
-
-textarea.input{
-    min-height:220px;
-    resize:vertical;
-}
-
-.music-grid,
-.harpa-grid{
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
     gap:15px;
 }
 
-.music-card,
-.harpa-card{
-    background:var(--card);
-    border:1px solid var(--border);
+.item{
+    background:#151a23;
+    border:1px solid #29303d;
     border-radius:12px;
     padding:18px;
 }
 
-.music-card h3,
-.harpa-card h3{
+.item h3{
     margin-bottom:7px;
 }
 
-.music-card p,
-.harpa-card p{
-    color:var(--muted);
+.item p{
+    color:#929aaa;
     font-size:13px;
     line-height:1.4;
 }
 
 .actions{
     display:flex;
-    gap:7px;
-    margin-top:15px;
     flex-wrap:wrap;
+    gap:7px;
+    margin-top:14px;
 }
 
 .small{
-    border:none;
-    padding:8px 11px;
+    border:0;
+    background:#2b3340;
+    color:#fff;
     border-radius:6px;
-    background:#303846;
-    color:white;
+    padding:8px 11px;
     cursor:pointer;
 }
 
 .small:hover{
-    background:#424c5c;
+    background:#3b4555;
 }
 
-/* HARPA */
-
-.harpa-header{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.filters{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-.filter{
-    border:1px solid var(--border);
-    background:#171c26;
-    color:white;
-    padding:9px 13px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-.filter.active,
-.filter:hover{
-    border-color:var(--yellow);
-    background:rgba(234,179,8,.15);
-}
-
-.harpa-number{
-    color:var(--yellow);
-    font-weight:bold;
-    font-size:13px;
-    margin-bottom:7px;
-}
-
-/* HOME PRESENTATION */
+/* APRESENTAÇÃO */
 
 .presentation{
     display:grid;
@@ -394,28 +318,27 @@ textarea.input{
     margin-top:25px;
 }
 
-.preview-box{
-    background:var(--card);
-    border:1px solid var(--border);
+.previewBox{
+    background:#151a23;
+    border:1px solid #29303d;
     padding:15px;
     border-radius:12px;
 }
 
 .preview{
     height:420px;
-    background:#000;
     border-radius:9px;
+    background:#000;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:40px;
     background-size:cover;
     background-position:center;
 }
 
-.panel-text{
-    font-size:38px;
+.previewText{
+    font-size:36px;
     line-height:1.3;
     font-weight:bold;
     white-space:pre-line;
@@ -430,62 +353,101 @@ textarea.input{
 
 .control{
     flex:1;
-    border:none;
+    border:0;
+    background:#29313d;
+    color:#fff;
     padding:12px;
     border-radius:8px;
     cursor:pointer;
-    background:#252c38;
-    color:white;
 }
 
 .control:hover{
-    background:#343d4b;
+    background:#3b4655;
 }
 
 .control.project{
-    background:var(--green);
+    background:#16a34a;
 }
 
-.slides{
-    background:var(--card);
-    border:1px solid var(--border);
+.slideList{
+    background:#151a23;
+    border:1px solid #29303d;
     border-radius:12px;
     padding:15px;
     max-height:500px;
-    overflow-y:auto;
+    overflow:auto;
 }
 
-.slide-item{
+.slide{
     background:#0d1118;
+    color:#929aaa;
     padding:12px;
-    margin-bottom:7px;
     border-radius:7px;
+    margin-bottom:7px;
     cursor:pointer;
-    color:var(--muted);
-    font-size:13px;
 }
 
-.slide-item.active{
-    border-left:3px solid var(--purple);
-    background:rgba(139,92,246,.15);
-    color:white;
+.slide.active{
+    background:#21183c;
+    color:#fff;
+    border-left:3px solid #8b5cf6;
 }
 
-/* PROJECTION */
+/* FUNDOS */
 
-.tv-preview{
-    height:500px;
-    background:#000;
+.backgroundGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+}
+
+.background{
+    height:130px;
     border-radius:12px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    text-shadow:0 2px 5px #000;
+    background-size:cover;
+    background-position:center;
+    border:2px solid transparent;
+    cursor:pointer;
+}
+
+.background.selected{
+    border-color:#fff;
+    box-shadow:0 0 0 3px #7c3aed;
+}
+
+.file{
+    display:none;
+}
+
+.upload{
+    display:inline-block;
+    padding:11px 16px;
+    background:#2563eb;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:12px;
+}
+
+/* PROJEÇÃO */
+
+.tv{
+    height:500px;
+    border-radius:12px;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
     background-size:cover;
     background-position:center;
 }
 
-.tv-text{
+.tvText{
     width:90%;
     font-size:52px;
     line-height:1.3;
@@ -494,56 +456,16 @@ textarea.input{
     text-shadow:0 4px 20px #000;
 }
 
-/* BACKGROUNDS */
-
-.background-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:15px;
-}
-
-.background-card{
-    height:130px;
-    border-radius:12px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:bold;
-    text-shadow:0 2px 5px #000;
-    cursor:pointer;
-    background-size:cover;
-    background-position:center;
-    border:2px solid transparent;
-}
-
-.background-card.selected{
-    border-color:white;
-    box-shadow:0 0 0 3px var(--purple);
-}
-
-.file-input{
-    display:none;
-}
-
-.upload{
-    display:inline-block;
-    background:var(--blue);
-    padding:11px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:12px;
-}
-
 /* RESPONSIVO */
 
-@media(max-width:900px){
-
-    .presentation{
-        grid-template-columns:1fr;
-    }
+@media(max-width:950px){
 
     .cards{
         grid-template-columns:1fr 1fr;
+    }
+
+    .presentation{
+        grid-template-columns:1fr;
     }
 
 }
@@ -554,7 +476,7 @@ textarea.input{
         width:65px;
     }
 
-    .menu-btn span:last-child{
+    .menu span:last-child{
         display:none;
     }
 
@@ -571,59 +493,58 @@ textarea.input{
 <header>
 
 <div class="logo">
-<div class="logo-icon">✦</div>
-CultoVision
+    <div class="logoIcon">✦</div>
+    CultoVision
 </div>
 
-<div class="status">
-<span class="online">●</span> Pronto
-</div>
+<div class="status">● Sistema pronto</div>
 
 </header>
 
 <div class="app">
 
-<!-- MENU -->
-
 <aside class="sidebar">
 
-<div class="menu-title">PRINCIPAL</div>
+<div class="sectionTitle">PRINCIPAL</div>
 
-<button class="menu-btn active" data-page="home">
-<span class="icon">🏠</span>
-<span>Início</span>
+<button class="menu active" data-page="home">
+    <span class="menuIcon">🏠</span>
+    <span>Início</span>
 </button>
 
-<button class="menu-btn" data-page="music">
-<span class="icon">🎵</span>
-<span>Músicas</span>
+<button class="menu" data-page="music">
+    <span class="menuIcon">🎵</span>
+    <span>Músicas</span>
 </button>
 
-<button class="menu-btn" data-page="harpa">
-<span class="icon">🎼</span>
-<span>Harpa Cristã</span>
+<button class="menu" data-page="harpa">
+    <span class="menuIcon">🎼</span>
+    <span>Harpa</span>
 </button>
 
-<button class="menu-btn" data-page="projection">
-<span class="icon">📺</span>
-<span>Projeção</span>
+<button class="menu" data-page="bible">
+    <span class="menuIcon">📖</span>
+    <span>Bíblia</span>
 </button>
 
-<div class="menu-title">PERSONALIZAR</div>
-
-<button class="menu-btn" data-page="background">
-<span class="icon">🎨</span>
-<span>Fundos</span>
+<button class="menu" data-page="projection">
+    <span class="menuIcon">📺</span>
+    <span>Projeção</span>
 </button>
 
-<button class="menu-btn" data-page="settings">
-<span class="icon">⚙️</span>
-<span>Configurações</span>
+<div class="sectionTitle">PERSONALIZAÇÃO</div>
+
+<button class="menu" data-page="background">
+    <span class="menuIcon">🎨</span>
+    <span>Fundos</span>
+</button>
+
+<button class="menu" data-page="settings">
+    <span class="menuIcon">⚙️</span>
+    <span>Configurações</span>
 </button>
 
 </aside>
-
-<!-- CONTEÚDO -->
 
 <main class="content">
 
@@ -634,39 +555,45 @@ CultoVision
 <h1>Painel principal</h1>
 
 <div class="subtitle">
-Controle sua apresentação pelo notebook.
+Escolha o que deseja apresentar.
 </div>
 
 <div class="cards">
 
-<div class="card" onclick="goTo('music')">
-<div class="card-icon">🎵</div>
-<div class="card-number" id="musicCount">0</div>
-<div class="card-label">Minhas músicas</div>
+<div class="card" onclick="openPage('music')">
+<div class="cardIcon">🎵</div>
+<div class="cardNumber" id="musicCount">0</div>
+<div class="cardText">Minhas músicas</div>
 </div>
 
-<div class="card" onclick="goTo('harpa')">
-<div class="card-icon">🎼</div>
-<div class="card-number">636</div>
-<div class="card-label">Harpa Cristã</div>
+<div class="card" onclick="openPage('harpa')">
+<div class="cardIcon">🎼</div>
+<div class="cardNumber">Harpa</div>
+<div class="cardText">Importar e apresentar</div>
 </div>
 
-<div class="card" onclick="goTo('projection')">
-<div class="card-icon">📺</div>
-<div class="card-number">TV</div>
-<div class="card-label">Projeção</div>
+<div class="card" onclick="openPage('bible')">
+<div class="cardIcon">📖</div>
+<div class="cardNumber">Bíblia</div>
+<div class="cardText">Importar e pesquisar</div>
+</div>
+
+<div class="card" onclick="openPage('projection')">
+<div class="cardIcon">📺</div>
+<div class="cardNumber">TV</div>
+<div class="cardText">Projeção</div>
 </div>
 
 </div>
 
 <div class="presentation">
 
-<div class="preview-box">
+<div class="previewBox">
 
 <div class="preview" id="preview">
 
-<div class="panel-text" id="panelText">
-Escolha uma música ou hino
+<div class="previewText" id="previewText">
+Escolha um conteúdo
 </div>
 
 </div>
@@ -677,7 +604,7 @@ Escolha uma música ou hino
 ◀ Anterior
 </button>
 
-<button class="control project" onclick="startPresentation()">
+<button class="control project" onclick="openProjection()">
 📺 APRESENTAR
 </button>
 
@@ -689,17 +616,18 @@ Próximo ▶
 
 </div>
 
-<div class="slides">
+<div class="slideList">
 
 <h3 style="margin-bottom:12px">Slides</h3>
 
-<div id="slideList"></div>
+<div id="slides"></div>
 
 </div>
 
 </div>
 
 </section>
+
 
 <!-- MÚSICAS -->
 
@@ -708,23 +636,25 @@ Próximo ▶
 <h1>🎵 Músicas</h1>
 
 <div class="subtitle">
-Pesquise músicas separadamente ou adicione suas próprias músicas.
+Pesquise músicas e adicione conteúdos autorizados ao CultoVision.
 </div>
 
 <div class="box">
 
-<h2>🔎 Pesquisar no Google</h2>
+<h2>🔎 Pesquisar música</h2>
 
 <p>
-Digite o nome da música. A pesquisa será aberta em uma nova aba.
+A pesquisa abre o Google em uma nova aba.
 </p>
 
-<div class="search-row" style="margin-top:15px">
+<div class="searchRow" style="margin-top:15px">
 
-<input class="search" id="googleMusic"
-placeholder="Ex: Nome da música...">
+<input
+class="search"
+id="musicSearch"
+placeholder="Digite o nome da música">
 
-<button class="btn" onclick="searchGoogleMusic()">
+<button class="btn" onclick="googleMusic()">
 Pesquisar
 </button>
 
@@ -734,84 +664,140 @@ Pesquisar
 
 <div class="box">
 
-<h2>➕ Adicionar música</h2>
+<h2>➕ Criar música</h2>
 
-<p>
-Cole um conteúdo que você tenha autorização para usar. Separe as estrofes com uma linha vazia.
-</p>
+<br>
 
-<div style="margin-top:15px">
-
-<input class="input" id="songTitle"
+<input
+id="musicName"
+style="width:100%;margin-bottom:10px"
 placeholder="Nome da música">
 
-<input class="input" id="songArtist"
-placeholder="Artista / cantor">
+<input
+id="musicArtist"
+style="width:100%;margin-bottom:10px"
+placeholder="Artista">
 
-<textarea class="input" id="songLyrics"
-placeholder="Cole o conteúdo aqui...
+<textarea
+id="musicText"
+placeholder="Cole aqui um conteúdo que você tenha autorização para usar.
 
-Separe cada parte com uma linha vazia."></textarea>
+Separe cada estrofe com uma linha vazia."></textarea>
 
-<button class="btn" onclick="addSong()">
+<br><br>
+
+<button class="btn" onclick="createMusic()">
 ✨ Criar slides
 </button>
 
 </div>
 
-</div>
-
-<h2 style="margin-bottom:15px">Minhas músicas</h2>
-
-<div class="music-grid" id="musicGrid"></div>
+<div class="grid" id="musicGrid"></div>
 
 </section>
+
 
 <!-- HARPA -->
 
 <section class="page" id="page-harpa">
 
-<div class="harpa-header">
-
-<div>
 <h1>🎼 Harpa Cristã</h1>
 
-<div class="subtitle" style="margin-bottom:0">
-Pesquise pelo número ou nome do hino.
+<div class="subtitle">
+Importe seu arquivo da Harpa e pesquise os hinos.
 </div>
-</div>
+
+<div class="box">
+
+<h2>📁 Importar Harpa</h2>
+
+<p>
+Escolha um arquivo <b>.txt</b> ou <b>.json</b> que você tenha autorização para utilizar.
+</p>
+
+<label class="upload">
+
+📁 Escolher arquivo da Harpa
+
+<input
+class="file"
+type="file"
+accept=".txt,.json"
+onchange="importHarpa(event)">
+
+</label>
+
+<p id="harpaStatus">
+Nenhuma Harpa importada.
+</p>
 
 </div>
 
-<div class="search-row">
+<div class="searchRow">
 
-<input class="search" id="harpaSearch"
-placeholder="🔎 Ex: 15 ou nome do hino..."
+<input
+class="search"
+id="harpaSearch"
+placeholder="🔎 Número ou nome do hino"
 oninput="searchHarpa()">
 
 </div>
 
-<div class="filters">
+<div class="grid" id="harpaGrid"></div>
 
-<button class="filter active" onclick="setHarpaFilter('all',this)">
-Todos
-</button>
+</section>
 
-<button class="filter" onclick="setHarpaFilter('favorites',this)">
-⭐ Favoritos
-</button>
 
-<button class="filter" onclick="setHarpaFilter('recent',this)">
-🕘 Recentes
-</button>
+<!-- BÍBLIA -->
+
+<section class="page" id="page-bible">
+
+<h1>📖 Bíblia</h1>
+
+<div class="subtitle">
+Importe sua Bíblia para pesquisar e apresentar os versículos.
+</div>
+
+<div class="box">
+
+<h2>📁 Importar Bíblia</h2>
+
+<p>
+Escolha um arquivo <b>.txt</b> ou <b>.json</b> que você tenha autorização para utilizar.
+</p>
+
+<label class="upload">
+
+📁 Escolher arquivo da Bíblia
+
+<input
+class="file"
+type="file"
+accept=".txt,.json"
+onchange="importBible(event)">
+
+</label>
+
+<p id="bibleStatus">
+Nenhuma Bíblia importada.
+</p>
 
 </div>
 
-<br>
+<div class="searchRow">
 
-<div class="harpa-grid" id="harpaGrid"></div>
+<input
+class="search"
+id="bibleSearch"
+placeholder="🔎 Pesquise livro, capítulo ou palavra"
+oninput="searchBible()">
+
+</div>
+
+<div class="grid" id="bibleGrid"></div>
 
 </section>
+
 
 <!-- PROJEÇÃO -->
 
@@ -820,30 +806,35 @@ Todos
 <h1>📺 Projeção</h1>
 
 <div class="subtitle">
-Visualização da tela que será apresentada.
+Esta é a visualização da tela que será apresentada.
 </div>
 
-<div class="tv-preview" id="tvPreview">
+<div class="tv" id="tv">
 
-<div class="tv-text" id="tvText">
-Nenhuma apresentação selecionada
+<div class="tvText" id="tvText">
+Nenhuma apresentação
 </div>
 
 </div>
 
 <div class="controls">
 
-<button class="control" onclick="previousSlide()">◀</button>
-
-<button class="control project" onclick="startPresentation()">
-📺 INICIAR
+<button class="control" onclick="previousSlide()">
+◀
 </button>
 
-<button class="control" onclick="nextSlide()">▶</button>
+<button class="control project" onclick="openProjection()">
+📺 ABRIR PROJEÇÃO
+</button>
+
+<button class="control" onclick="nextSlide()">
+▶
+</button>
 
 </div>
 
 </section>
+
 
 <!-- FUNDOS -->
 
@@ -852,29 +843,29 @@ Nenhuma apresentação selecionada
 <h1>🎨 Fundos</h1>
 
 <div class="subtitle">
-Escolha um fundo para sua apresentação.
+Escolha ou importe um fundo do seu computador.
 </div>
 
 <div class="box">
 
-<h3>Adicionar imagem do computador</h3>
-
 <label class="upload">
 
-📁 Escolher imagem
+📁 Importar fundo
 
-<input class="file-input"
+<input
+class="file"
 type="file"
 accept="image/*"
-onchange="uploadBackground(event)">
+onchange="importBackground(event)">
 
 </label>
 
 </div>
 
-<div class="background-grid" id="backgroundGrid"></div>
+<div class="backgroundGrid" id="backgroundGrid"></div>
 
 </section>
+
 
 <!-- CONFIG -->
 
@@ -882,38 +873,37 @@ onchange="uploadBackground(event)">
 
 <h1>⚙️ Configurações</h1>
 
-<div class="subtitle">
-Configurações exclusivas da projeção.
-</div>
-
 <div class="box">
 
-<h3>Tamanho da letra da TV</h3>
+<h2>🔤 Tamanho da letra da projeção</h2>
 
 <br>
 
-<input type="range"
+<input
+type="range"
 min="25"
 max="120"
 value="52"
-id="fontRange"
+id="fontSize"
 oninput="changeFont(this.value)">
 
-<strong id="fontValue">52</strong> px
+<span id="fontNumber">52</span> px
 
 <p>
-O painel do notebook continua fixo. Apenas a projeção muda.
+Somente a tela de projeção será alterada.
+O painel do computador permanece no tamanho normal.
 </p>
 
 </div>
 
 <div class="box">
 
-<h3>Cor da letra</h3>
+<h2>🎨 Cor da letra</h2>
 
 <br>
 
-<input type="color"
+<input
+type="color"
 value="#ffffff"
 oninput="changeColor(this.value)">
 
@@ -927,21 +917,18 @@ oninput="changeColor(this.value)">
 
 <script>
 
-/* =====================================
-   DADOS
-===================================== */
+/* ========================================
+   VARIÁVEIS
+======================================== */
 
 let songs =
 JSON.parse(localStorage.getItem("cvSongs")) || [];
 
-let favorites =
-JSON.parse(localStorage.getItem("cvFavorites")) || [];
+let bibleData =
+JSON.parse(localStorage.getItem("cvBible")) || [];
 
-let recent =
-JSON.parse(localStorage.getItem("cvRecent")) || [];
-
-let customBackgrounds =
-JSON.parse(localStorage.getItem("cvBackgrounds")) || [];
+let harpaData =
+JSON.parse(localStorage.getItem("cvHarpa")) || [];
 
 let currentSlides = [];
 
@@ -949,202 +936,192 @@ let currentSlide = 0;
 
 let currentBackground = 0;
 
-let tvFontSize = 52;
+let fontSize = 52;
 
-let tvColor = "#ffffff";
+let fontColor = "#ffffff";
 
 let projectionWindow = null;
 
-let harpaFilter = "all";
 
-
-/* =====================================
-   CATÁLOGO HARPA
-
-   Estrutura com 636 posições.
-
-   Os nomes/conteúdos podem ser
-   preenchidos posteriormente a partir
-   de uma fonte autorizada.
-===================================== */
-
-let harpa = [];
-
-for(let i=1;i<=636;i++){
-
-    harpa.push({
-        number:i,
-        title:"Hino da Harpa "+String(i).padStart(3,"0"),
-        slides:[]
-    });
-
-}
-
-
-/* =====================================
+/* ========================================
    MENU
-===================================== */
+======================================== */
 
-document.querySelectorAll(".menu-btn").forEach(btn=>{
+document.querySelectorAll(".menu").forEach(button => {
 
-    btn.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
-        goTo(btn.dataset.page);
+        openPage(button.dataset.page);
 
     });
 
 });
 
 
-function goTo(page){
+function openPage(page){
 
-    document.querySelectorAll(".menu-btn")
-    .forEach(btn=>{
+    document.querySelectorAll(".menu")
+    .forEach(button => {
 
-        btn.classList.toggle(
+        button.classList.toggle(
             "active",
-            btn.dataset.page===page
+            button.dataset.page === page
         );
 
     });
 
     document.querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
+    .forEach(section => {
 
-    document.getElementById("page-"+page)
+        section.classList.remove("active");
+
+    });
+
+    document
+    .getElementById("page-"+page)
     .classList.add("active");
 
 }
 
 
-/* =====================================
-   GOOGLE MÚSICAS
-===================================== */
+/* ========================================
+   GOOGLE
+======================================== */
 
-function searchGoogleMusic(){
+function googleMusic(){
 
-    const query =
-    document.getElementById("googleMusic")
+    const text =
+    document.getElementById("musicSearch")
     .value.trim();
 
-    if(!query){
+    if(!text){
 
-        alert("Digite o nome da música.");
+        alert("Digite uma música.");
+
         return;
 
     }
 
     window.open(
         "https://www.google.com/search?q="+
-        encodeURIComponent(query+" música"),
+        encodeURIComponent(text+" música"),
         "_blank"
     );
 
 }
 
 
-/* =====================================
-   ADICIONAR MÚSICA
-===================================== */
+/* ========================================
+   CRIAR MÚSICA
+======================================== */
 
-function addSong(){
+function createMusic(){
 
-    const title =
-    document.getElementById("songTitle")
+    const name =
+    document.getElementById("musicName")
     .value.trim();
 
     const artist =
-    document.getElementById("songArtist")
+    document.getElementById("musicArtist")
     .value.trim();
 
-    const lyrics =
-    document.getElementById("songLyrics")
+    const text =
+    document.getElementById("musicText")
     .value.trim();
 
-    if(!title || !lyrics){
+    if(!name || !text){
 
-        alert("Digite o nome e o conteúdo da música.");
+        alert("Informe o nome e o conteúdo.");
+
         return;
 
     }
 
-    const parts =
-    lyrics
-    .split(/\n\s*\n/)
-    .map(x=>x.trim())
-    .filter(Boolean);
+    const slides =
+    splitIntoSlides(text);
 
-    let slides=[];
-
-    parts.forEach(part=>{
-
-        const lines =
-        part.split("\n")
-        .map(x=>x.trim())
-        .filter(Boolean);
-
-        let group=[];
-
-        lines.forEach(line=>{
-
-            group.push(line);
-
-            if(group.length===5){
-
-                slides.push(group.join("\n"));
-
-                group=[];
-
-            }
-
-        });
-
-        if(group.length){
-
-            slides.push(group.join("\n"));
-
-        }
-
-    });
-
-    const song={
+    const music = {
 
         id:Date.now(),
 
-        title:title,
+        name,
 
-        artist:artist || "Artista não informado",
+        artist,
 
-        slides:slides
+        slides
 
     };
 
-    songs.push(song);
+    songs.push(music);
 
     localStorage.setItem(
         "cvSongs",
         JSON.stringify(songs)
     );
 
-    document.getElementById("songTitle").value="";
-    document.getElementById("songArtist").value="";
-    document.getElementById("songLyrics").value="";
-
     renderSongs();
 
-    useSlides(
-        song.slides,
-        song.title
-    );
+    useSlides(slides);
 
-    alert("Música adicionada!");
+    alert("Música criada!");
 
 }
 
 
-/* =====================================
-   MINHAS MÚSICAS
-===================================== */
+function splitIntoSlides(text){
+
+    const blocks =
+    text
+    .split(/\n\s*\n/)
+    .map(x => x.trim())
+    .filter(Boolean);
+
+    let slides=[];
+
+    blocks.forEach(block => {
+
+        const lines =
+        block
+        .split("\n")
+        .map(x => x.trim())
+        .filter(Boolean);
+
+        let current=[];
+
+        lines.forEach(line => {
+
+            current.push(line);
+
+            if(current.length >= 5){
+
+                slides.push(
+                    current.join("\n")
+                );
+
+                current=[];
+
+            }
+
+        });
+
+        if(current.length){
+
+            slides.push(
+                current.join("\n")
+            );
+
+        }
+
+    });
+
+    return slides;
+
+}
+
+
+/* ========================================
+   MÚSICAS
+======================================== */
 
 function renderSongs(){
 
@@ -1156,81 +1133,60 @@ function renderSongs(){
     document.getElementById("musicCount")
     .textContent=songs.length;
 
-    if(songs.length===0){
+    songs.forEach(song => {
 
-        grid.innerHTML=
-        "<p style='color:#9aa3b2'>Nenhuma música adicionada ainda.</p>";
-
-        return;
-
-    }
-
-    songs.forEach(song=>{
-
-        const card =
+        const div =
         document.createElement("div");
 
-        card.className="music-card";
+        div.className="item";
 
-        card.innerHTML=`
+        div.innerHTML=`
 
-        <h3>🎵 ${escapeHTML(song.title)}</h3>
+        <h3>🎵 ${safe(song.name)}</h3>
 
-        <p>${escapeHTML(song.artist)}</p>
-
-        <p>${song.slides.length} slides</p>
+        <p>${safe(song.artist || "Artista não informado")}</p>
 
         <div class="actions">
 
         <button class="small"
-        onclick="useSong(${song.id})">
-
+        onclick="useSlidesById(${song.id})">
         ▶ Usar
-
         </button>
 
         <button class="small"
         onclick="deleteSong(${song.id})">
-
         🗑️
-
         </button>
 
         </div>
 
         `;
 
-        grid.appendChild(card);
+        grid.appendChild(div);
 
     });
 
 }
 
 
-function useSong(id){
+function useSlidesById(id){
 
     const song =
-    songs.find(s=>s.id===id);
+    songs.find(x => x.id === id);
 
     if(!song)return;
 
-    useSlides(
-        song.slides,
-        song.title
-    );
+    useSlides(song.slides);
 
-    goTo("home");
+    openPage("home");
 
 }
 
 
 function deleteSong(id){
 
-    if(!confirm("Excluir esta música?"))
-    return;
-
     songs =
-    songs.filter(s=>s.id!==id);
+    songs.filter(x => x.id !== id);
 
     localStorage.setItem(
         "cvSongs",
@@ -1242,126 +1198,168 @@ function deleteSong(id){
 }
 
 
-/* =====================================
-   HARPA
-===================================== */
+/* ========================================
+   IMPORTAR HARPA
+======================================== */
+
+function importHarpa(event){
+
+    const file =
+    event.target.files[0];
+
+    if(!file)return;
+
+    const reader =
+    new FileReader();
+
+    reader.onload = function(){
+
+        try{
+
+            if(file.name.endsWith(".json")){
+
+                harpaData =
+                JSON.parse(reader.result);
+
+            }else{
+
+                harpaData =
+                parseTextDatabase(
+                    reader.result,
+                    "harpa"
+                );
+
+            }
+
+            localStorage.setItem(
+                "cvHarpa",
+                JSON.stringify(harpaData)
+            );
+
+            document.getElementById("harpaStatus")
+            .textContent =
+            "✅ Harpa importada: "+
+            harpaData.length+
+            " registros.";
+
+            renderHarpa();
+
+        }catch(error){
+
+            alert(
+                "Não consegui ler esse arquivo. Verifique se ele está em TXT ou JSON."
+            );
+
+        }
+
+    };
+
+    reader.readAsText(file);
+
+}
+
+
+function parseTextDatabase(text,type){
+
+    const blocks =
+    text
+    .split(/\n\s*\n/)
+    .map(x => x.trim())
+    .filter(Boolean);
+
+    return blocks.map((block,index) => {
+
+        const lines =
+        block
+        .split("\n")
+        .map(x => x.trim())
+        .filter(Boolean);
+
+        return {
+
+            number:index+1,
+
+            title:lines[0] ||
+            `${type} ${index+1}`,
+
+            slides:
+            splitIntoSlides(
+                lines.slice(1).join("\n")
+            )
+
+        };
+
+    });
+
+}
+
 
 function searchHarpa(){
 
-    renderHarpa();
-
-}
-
-
-function setHarpaFilter(filter,button){
-
-    harpaFilter=filter;
-
-    document.querySelectorAll(".filter")
-    .forEach(btn=>btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    renderHarpa();
-
-}
-
-
-function renderHarpa(){
-
     const search =
     document.getElementById("harpaSearch")
-    .value.toLowerCase()
+    .value
+    .toLowerCase()
     .trim();
+
+    const list =
+    harpaData.filter(hino => {
+
+        return !search ||
+
+        String(hino.number)
+        .includes(search) ||
+
+        String(hino.title)
+        .toLowerCase()
+        .includes(search);
+
+    });
+
+    renderHarpa(list);
+
+}
+
+
+function renderHarpa(list=harpaData){
 
     const grid =
     document.getElementById("harpaGrid");
 
     grid.innerHTML="";
 
-    let list=[...harpa];
-
-    if(harpaFilter==="favorites"){
-
-        list=list.filter(h=>
-            favorites.includes(h.number)
-        );
-
-    }
-
-    if(harpaFilter==="recent"){
-
-        list=list.filter(h=>
-            recent.includes(h.number)
-        );
-
-    }
-
-    if(search){
-
-        list=list.filter(h=>
-
-            String(h.number).includes(search) ||
-
-            h.title.toLowerCase()
-            .includes(search)
-
-        );
-
-    }
-
-    if(list.length===0){
+    if(!list.length){
 
         grid.innerHTML=
-        "<p style='color:#9aa3b2'>Nenhum hino encontrado.</p>";
+        "<p style='color:#929aaa'>Nenhum hino importado.</p>";
 
         return;
 
     }
 
-    list.forEach(hino=>{
+    list.forEach(hino => {
 
-        const card =
+        const div =
         document.createElement("div");
 
-        card.className="harpa-card";
+        div.className="item";
 
-        const isFavorite =
-        favorites.includes(hino.number);
+        div.innerHTML=`
 
-        card.innerHTML=`
+        <h3>🎼 Hino ${
+            safe(hino.number)
+        }</h3>
 
-        <div class="harpa-number">
+        <p>${safe(hino.title)}</p>
 
-        HINO ${String(hino.number).padStart(3,"0")}
-
-        </div>
-
-        <h3>${escapeHTML(hino.title)}</h3>
-
-        <p>
-
-        ${
-            hino.slides.length
-            ? hino.slides.length+" slides disponíveis"
-            : "Conteúdo ainda não importado"
-        }
-
-        </p>
+        <p>${hino.slides?.length || 0} slides</p>
 
         <div class="actions">
 
         <button class="small"
-        onclick="useHarpa(${hino.number})">
+        onclick='useHarpa(${JSON.stringify(hino)})'>
 
         ▶ Usar
-
-        </button>
-
-        <button class="small"
-        onclick="toggleFavorite(${hino.number})">
-
-        ${isFavorite ? "⭐" : "☆"}
 
         </button>
 
@@ -1369,89 +1367,207 @@ function renderHarpa(){
 
         `;
 
-        grid.appendChild(card);
+        grid.appendChild(div);
 
     });
 
 }
 
 
-function useHarpa(number){
+function useHarpa(hino){
 
-    const hino =
-    harpa.find(h=>h.number===number);
-
-    if(!hino)return;
-
-    if(!recent.includes(number)){
-
-        recent.unshift(number);
-
-        recent=recent.slice(0,20);
-
-        localStorage.setItem(
-            "cvRecent",
-            JSON.stringify(recent)
-        );
-
-    }
-
-    if(!hino.slides.length){
+    if(!hino.slides || !hino.slides.length){
 
         alert(
-            "Este hino já está no catálogo, mas o conteúdo ainda não foi importado."
+            "Esse registro não possui conteúdo para criar slides."
         );
 
         return;
 
     }
 
-    useSlides(
-        hino.slides,
-        hino.title
-    );
+    useSlides(hino.slides);
 
-    goTo("home");
+    openPage("home");
 
 }
 
 
-function toggleFavorite(number){
+/* ========================================
+   IMPORTAR BÍBLIA
+======================================== */
 
-    if(favorites.includes(number)){
+function importBible(event){
 
-        favorites=
-        favorites.filter(n=>n!==number);
+    const file =
+    event.target.files[0];
 
-    }else{
+    if(!file)return;
 
-        favorites.push(number);
+    const reader =
+    new FileReader();
 
-    }
+    reader.onload=function(){
 
-    localStorage.setItem(
-        "cvFavorites",
-        JSON.stringify(favorites)
-    );
+        try{
 
-    renderHarpa();
+            if(file.name.endsWith(".json")){
+
+                bibleData =
+                JSON.parse(reader.result);
+
+            }else{
+
+                bibleData =
+                parseBibleText(
+                    reader.result
+                );
+
+            }
+
+            localStorage.setItem(
+                "cvBible",
+                JSON.stringify(bibleData)
+            );
+
+            document.getElementById("bibleStatus")
+            .textContent =
+            "✅ Bíblia importada: "+
+            bibleData.length+
+            " registros.";
+
+            renderBible();
+
+        }catch(error){
+
+            alert(
+                "Não consegui ler esse arquivo."
+            );
+
+        }
+
+    };
+
+    reader.readAsText(file);
 
 }
 
 
-/* =====================================
+function parseBibleText(text){
+
+    return text
+    .split(/\n\s*\n/)
+    .map((block,index) => {
+
+        const lines =
+        block
+        .split("\n")
+        .map(x => x.trim())
+        .filter(Boolean);
+
+        return {
+
+            id:index+1,
+
+            reference:
+            lines[0] ||
+            "Referência",
+
+            text:
+            lines.slice(1).join("\n")
+
+        };
+
+    })
+    .filter(x => x.text);
+
+}
+
+
+function searchBible(){
+
+    const search =
+    document.getElementById("bibleSearch")
+    .value
+    .toLowerCase()
+    .trim();
+
+    const results =
+    bibleData
+    .filter(item => {
+
+        return !search ||
+
+        String(item.reference)
+        .toLowerCase()
+        .includes(search) ||
+
+        String(item.text)
+        .toLowerCase()
+        .includes(search);
+
+    })
+    .slice(0,100);
+
+    const grid =
+    document.getElementById("bibleGrid");
+
+    grid.innerHTML="";
+
+    results.forEach(item => {
+
+        const div =
+        document.createElement("div");
+
+        div.className="item";
+
+        div.innerHTML=`
+
+        <h3>📖 ${
+            safe(item.reference)
+        }</h3>
+
+        <p>${safe(item.text)}</p>
+
+        <div class="actions">
+
+        <button class="small"
+        onclick='useBible(${JSON.stringify(item)})'>
+
+        ▶ Apresentar
+
+        </button>
+
+        </div>
+
+        `;
+
+        grid.appendChild(div);
+
+    });
+
+}
+
+
+function renderBible(){
+
+    searchBible();
+
+}
+
+
+/* ========================================
    SLIDES
-===================================== */
+======================================== */
 
-function useSlides(slides,title){
+function useSlides(slides){
 
-    currentSlides=slides;
+    currentSlides =
+    slides || [];
 
     currentSlide=0;
 
-    updatePresentation();
-
-    addRecentPresentation(title);
+    updateScreen();
 
 }
 
@@ -1465,7 +1581,7 @@ function nextSlide(){
 
         currentSlide++;
 
-        updatePresentation();
+        updateScreen();
 
     }
 
@@ -1478,27 +1594,27 @@ function previousSlide(){
 
         currentSlide--;
 
-        updatePresentation();
+        updateScreen();
 
     }
 
 }
 
 
-function updatePresentation(){
+function updateScreen(){
 
     const text =
     currentSlides.length
     ? currentSlides[currentSlide]
-    : "Escolha uma música ou hino";
+    : "Escolha um conteúdo";
 
-    document.getElementById("panelText")
+    document.getElementById("previewText")
     .textContent=text;
 
     document.getElementById("tvText")
     .textContent=text;
 
-    renderSlideList();
+    renderSlides();
 
     applyBackground();
 
@@ -1507,64 +1623,82 @@ function updatePresentation(){
 }
 
 
-function renderSlideList(){
+function renderSlides(){
 
-    const list =
-    document.getElementById("slideList");
+    const container =
+    document.getElementById("slides");
 
-    list.innerHTML="";
+    container.innerHTML="";
 
-    currentSlides.forEach((slide,index)=>{
+    currentSlides.forEach((text,index)=>{
 
-        const item =
+        const div =
         document.createElement("div");
 
-        item.className="slide-item";
+        div.className="slide";
 
         if(index===currentSlide){
 
-            item.classList.add("active");
+            div.classList.add("active");
 
         }
 
-        item.textContent=
-        (index+1)+". "+
-        slide.replace(/\n/g," ").slice(0,70);
+        div.textContent =
+        `${index+1}. ${
+            text.replace(/\n/g," ")
+            .slice(0,65)
+        }`;
 
-        item.onclick=()=>{
+        div.onclick=()=>{
 
             currentSlide=index;
 
-            updatePresentation();
+            updateScreen();
 
         };
 
-        list.appendChild(item);
+        container.appendChild(div);
 
     });
 
 }
 
 
-/* =====================================
+/* ========================================
+   BÍBLIA -> SLIDE
+======================================== */
+
+function useBible(item){
+
+    const slides =
+    splitIntoSlides(item.text);
+
+    useSlides(slides);
+
+    openPage("home");
+
+}
+
+
+/* ========================================
    FUNDOS
-===================================== */
+======================================== */
 
 let backgrounds=[
 
     {
         name:"Escuro",
-        css:"linear-gradient(135deg,#020203,#191919)"
+        css:"linear-gradient(135deg,#000,#202020)"
     },
 
     {
         name:"Roxo",
-        css:"linear-gradient(135deg,#4c1d95,#08000f)"
+        css:"linear-gradient(135deg,#4c1d95,#090014)"
     },
 
     {
         name:"Azul",
-        css:"linear-gradient(135deg,#0c4a6e,#020617)"
+        css:"linear-gradient(135deg,#075985,#020617)"
     },
 
     {
@@ -1573,16 +1707,9 @@ let backgrounds=[
     },
 
     {
-        name:"Pôr do Sol",
+        name:"Pôr do sol",
         css:"linear-gradient(135deg,#ea580c,#3b0a00)"
-    },
-
-    {
-        name:"Espaço",
-        css:"radial-gradient(circle,#312e81,#020617)"
-    },
-
-    ...customBackgrounds
+    }
 
 ];
 
@@ -1596,22 +1723,22 @@ function renderBackgrounds(){
 
     backgrounds.forEach((bg,index)=>{
 
-        const card =
+        const div =
         document.createElement("div");
 
-        card.className="background-card";
+        div.className="background";
 
         if(index===currentBackground){
 
-            card.classList.add("selected");
+            div.classList.add("selected");
 
         }
 
-        card.style.background=bg.css;
+        div.style.background=bg.css;
 
-        card.textContent=bg.name;
+        div.textContent=bg.name;
 
-        card.onclick=()=>{
+        div.onclick=()=>{
 
             currentBackground=index;
 
@@ -1623,42 +1750,35 @@ function renderBackgrounds(){
 
         };
 
-        grid.appendChild(card);
+        grid.appendChild(div);
 
     });
 
 }
 
 
-function uploadBackground(event){
+function importBackground(event){
 
-    const file=event.target.files[0];
+    const file =
+    event.target.files[0];
 
     if(!file)return;
 
-    const reader=new FileReader();
+    const reader =
+    new FileReader();
 
-    reader.onload=function(e){
+    reader.onload=function(){
 
-        const bg={
+        backgrounds.push({
 
             name:file.name,
 
             css:
-            `url("${e.target.result}") center/cover no-repeat`
+            `url("${reader.result}") center/cover no-repeat`
 
-        };
+        });
 
-        customBackgrounds.push(bg);
-
-        backgrounds.push(bg);
-
-        localStorage.setItem(
-            "cvBackgrounds",
-            JSON.stringify(customBackgrounds)
-        );
-
-        currentBackground=
+        currentBackground =
         backgrounds.length-1;
 
         renderBackgrounds();
@@ -1674,7 +1794,7 @@ function uploadBackground(event){
 
 function applyBackground(){
 
-    const bg=
+    const bg =
     backgrounds[currentBackground];
 
     if(!bg)return;
@@ -1682,25 +1802,27 @@ function applyBackground(){
     document.getElementById("preview")
     .style.background=bg.css;
 
-    document.getElementById("tvPreview")
+    document.getElementById("tv")
     .style.background=bg.css;
 
 }
 
 
-/* =====================================
+/* ========================================
    CONFIGURAÇÕES
-===================================== */
+======================================== */
 
 function changeFont(value){
 
-    tvFontSize=Number(value);
+    fontSize =
+    Number(value);
 
-    document.getElementById("fontValue")
+    document.getElementById("fontNumber")
     .textContent=value;
 
     document.getElementById("tvText")
-    .style.fontSize=value+"px";
+    .style.fontSize=
+    value+"px";
 
     updateProjection();
 
@@ -1709,7 +1831,7 @@ function changeFont(value){
 
 function changeColor(value){
 
-    tvColor=value;
+    fontColor=value;
 
     document.getElementById("tvText")
     .style.color=value;
@@ -1719,11 +1841,11 @@ function changeColor(value){
 }
 
 
-/* =====================================
+/* ========================================
    PROJEÇÃO
-===================================== */
+======================================== */
 
-function startPresentation(){
+function openProjection(){
 
     if(
         projectionWindow &&
@@ -1736,17 +1858,17 @@ function startPresentation(){
 
     }
 
-    projectionWindow=
+    projectionWindow =
     window.open(
         "",
-        "CultoVisionTV",
+        "CultoVisionProjection",
         "width=1280,height=720"
     );
 
     if(!projectionWindow){
 
         alert(
-            "Permita pop-ups para abrir a projeção."
+            "O navegador bloqueou a janela. Permita pop-ups para o CultoVision."
         );
 
         return;
@@ -1764,9 +1886,8 @@ function writeProjection(){
     backgrounds[currentBackground];
 
     const text =
-    currentSlides.length
-    ? currentSlides[currentSlide]
-    : "CultoVision";
+    currentSlides[currentSlide] ||
+    "CultoVision";
 
     projectionWindow.document.open();
 
@@ -1774,30 +1895,26 @@ function writeProjection(){
 
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
 
-<title>CultoVision TV</title>
+<title>CultoVision - Projeção</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
 
 html,body{
 margin:0;
 width:100%;
 height:100%;
 overflow:hidden;
-font-family:Arial,sans-serif;
 background:#000;
+font-family:Arial,sans-serif;
 }
 
-#bg{
+#background{
 position:fixed;
 inset:0;
 background:${bg.css};
@@ -1813,12 +1930,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:8%;
-white-space:pre-line;
-font-size:${tvFontSize}px;
+padding:7%;
+font-size:${fontSize}px;
 font-weight:bold;
 line-height:1.3;
-color:${tvColor};
+color:${fontColor};
+white-space:pre-line;
 text-shadow:0 4px 20px #000;
 }
 
@@ -1828,9 +1945,9 @@ text-shadow:0 4px 20px #000;
 
 <body>
 
-<div id="bg"></div>
+<div id="background"></div>
 
-<div id="text">${escapeHTML(text)}</div>
+<div id="text">${safe(text)}</div>
 
 </body>
 
@@ -1848,85 +1965,94 @@ function updateProjection(){
     if(
         !projectionWindow ||
         projectionWindow.closed
-    )return;
+    ){
+
+        return;
+
+    }
 
     const text =
-    currentSlides.length
-    ? currentSlides[currentSlide]
-    : "CultoVision";
+    currentSlides[currentSlide] ||
+    "CultoVision";
 
     const bg =
     backgrounds[currentBackground];
 
-    const tvText =
+    const textElement =
     projectionWindow.document
     .getElementById("text");
 
-    const tvBg =
+    const backgroundElement =
     projectionWindow.document
-    .getElementById("bg");
+    .getElementById("background");
 
-    if(tvText){
+    if(textElement){
 
-        tvText.textContent=text;
+        textElement.textContent=text;
 
-        tvText.style.fontSize=
-        tvFontSize+"px";
+        textElement.style.fontSize=
+        fontSize+"px";
 
-        tvText.style.color=
-        tvColor;
+        textElement.style.color=
+        fontColor;
 
     }
 
-    if(tvBg){
+    if(backgroundElement){
 
-        tvBg.style.background=bg.css;
+        backgroundElement.style.background=
+        bg.css;
 
     }
 
 }
 
 
-/* =====================================
+/* ========================================
    TECLADO
-===================================== */
+======================================== */
 
 document.addEventListener("keydown",event=>{
 
     if(
         event.target.tagName==="INPUT" ||
         event.target.tagName==="TEXTAREA"
-    )return;
+    ){
+
+        return;
+
+    }
 
     if(event.key==="ArrowRight"){
+
         nextSlide();
+
     }
 
     if(event.key==="ArrowLeft"){
+
         previousSlide();
+
+    }
+
+    if(event.code==="Space"){
+
+        event.preventDefault();
+
+        nextSlide();
+
     }
 
 });
 
 
-/* =====================================
-   RECENTES
-===================================== */
+/* ========================================
+   SEGURANÇA
+======================================== */
 
-function addRecentPresentation(title){
+function safe(text){
 
-    console.log("Apresentação selecionada:",title);
-
-}
-
-
-/* =====================================
-   SEGURANÇA HTML
-===================================== */
-
-function escapeHTML(text){
-
-    return String(text)
+    return String(text ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -1936,13 +2062,15 @@ function escapeHTML(text){
 }
 
 
-/* =====================================
-   INICIAR
-===================================== */
+/* ========================================
+   INICIALIZAÇÃO
+======================================== */
 
 renderSongs();
 
 renderHarpa();
+
+renderBible();
 
 renderBackgrounds();
 
